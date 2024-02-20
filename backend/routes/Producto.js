@@ -51,5 +51,17 @@ api.get(
   productoController.obtener_portada_producto
 );
 
+api.get(
+  "/obtener_producto_admin/:id",
+  authenticate.decodeToken,
+  productoController.obtener_producto_admin
+);
+
+api.put(
+  "/actualizar_producto_admin/:id",
+  [authenticate.decodeToken, path],
+  productoController.actualizar_producto_admin
+);
+
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;

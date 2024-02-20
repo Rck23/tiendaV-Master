@@ -17,7 +17,7 @@
                     <h6 class="header-pretitle">Productos</h6>
 
                     <!-- Title -->
-                    <h1 class="header-title">Panel de productos</h1>
+                    <h1 class="header-title">Nuevo producto</h1>
                   </div>
                 </div>
                 <!-- / .row -->
@@ -26,11 +26,13 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
-                        <a class="nav-link active"> Todos los productos </a>
+                    
+                        <router-link to="/producto" class="nav-link ">
+                          Todos los productos</router-link>
                       </li>
-                      <li class="nav-item">
-                        <router-link to="/producto/create" class="nav-link">
-                          Nuevo producto</router-link>
+                      <li class="nav-item ">
+                        <a  class="nav-link active">
+                          Nuevo producto</a>
                       </li>
                     </ul>
                   </div>

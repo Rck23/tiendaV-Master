@@ -42,6 +42,8 @@ const routes = [
     component: () => import("@/views/DashboardApp.vue"),
     meta: { requiresAuth: true },
   },
+
+
   // Ruta del índice de productos
   {
     path: "/producto",
@@ -56,6 +58,13 @@ const routes = [
     component: () => import("@/views/Productos/CrearProductoApp.vue"),
     meta: { requiresAuth: true },
   },
+    // Ruta para editar un colaborador existente
+    {
+      path: "/producto/edit/:id",
+      name: "producto-edit",
+      component: () => import("@/views/Productos/EditarProductoApp.vue"),
+      meta: { requiresAuth: true },
+    },
 ];
 
 // Creamos una nueva instancia de VueRouter con las rutas definidas
