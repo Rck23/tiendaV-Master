@@ -99,8 +99,8 @@
                                 <!-- Text -->
                                 <p class="card-text small text-muted mb-1">
                                   {{ item.categoria }} &nbsp;
-                                  <span v-if="!item.estado" class="item-score badge bg-danger-soft">Borrador</span>
-                                  <span v-if="item.estado" class="item-score badge bg-success-soft">Publicado</span>
+                                  <span v-if="!item.estado" class="item-score badge bg-danger-soft">No disponible</span>
+                                  <span v-if="item.estado" class="item-score badge bg-success-soft">Disponible</span>
                                 </p>
 
                                 <!-- Time -->

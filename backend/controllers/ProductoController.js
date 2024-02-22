@@ -122,23 +122,84 @@ const obtener_producto_admin = async function (req, res) {
   }
 };
 
+
 const actualizar_producto_admin = async function (req, res) {
   // VALIDAR EL TOKEN
   if (req.user) {
     let data = req.body;
 
     let id = req.params['id']; 
+    
 
     // Buscar productos existentes con el mismo título
     let productos = await Producto.find({ titulo: data.titulo });
 
     if (productos.length >= 1) {
-      // Si el título ya existe, enviar un mensaje de error
-      res
-        .status(200)
-        .send({ data: undefined, message: "El titulo del producto ya existe" });
+      if (productos[0]._id == id) {
+        if (req.files && req.files.portada) {
+          // ACTUALIZACION PRODUCTO
+          var img_path = req.files.portada.path;
+          var str_img = img_path.split("\\");
+          var str_portada = str_img[2];
+  
+          // Asignar la ruta de la imagen y el slug al objeto de datos
+          data.portada = str_portada;
+          data.slug = slugify(data.titulo);
+  
+          try {
+            // Intentar crear el producto
+            let producto = await Producto.findByIdAndUpdate({_id: id},{
+              titulo: data.titulo,
+              categoria: data.categoria,
+             // precio: data.precio,
+              extracto: data.extracto,
+              estado: data.estado,
+              descuento: data.descuento,
+              portada: data.portada,
+            });
+            // Si se crea con éxito, enviar el producto creado
+            res.status(200).send({ data: producto });
+          } catch (error) {
+            // Si hay un error, enviar un mensaje de error
+            res
+              .status(200)
+              .send({ data: undefined, message: "No se pudo crear el producto" });
+          }
+        }else{
+  
+            // ACTUALIZACION PRODUCTO
+            data.slug = slugify(data.titulo);
+    
+            try {
+              // Intentar crear el producto
+              let producto = await Producto.findByIdAndUpdate({_id: id},{
+                titulo: data.titulo,
+                categoria: data.categoria,
+                precio: data.precio,
+                extracto: data.extracto,
+                estado: data.estado,
+                descuento: data.descuento,
+      
+              });
+              // Si se crea con éxito, enviar el producto creado
+              res.status(200).send({ data: producto });
+            } catch (error) {
+              // Si hay un error, enviar un mensaje de error
+              res
+                .status(200)
+                .send({ data: undefined, message: "No se pudo crear el producto" });
+            }
+  
+        }
+      } else {
+        // Si el título ya existe, enviar un mensaje de error
+        res
+          .status(200)
+          .send({ data: undefined, message: "El titulo del producto ya existe" });
+        
+      }
     } else {
-      if (req.files) {
+      if (req.files && req.files.portada) {
         // ACTUALIZACION PRODUCTO
         var img_path = req.files.portada.path;
         var str_img = img_path.split("\\");
@@ -153,7 +214,7 @@ const actualizar_producto_admin = async function (req, res) {
           let producto = await Producto.findByIdAndUpdate({_id: id},{
             titulo: data.titulo,
             categoria: data.categoria,
-            precio: data.precio,
+           // precio: data.precio,
             extracto: data.extracto,
             estado: data.estado,
             descuento: data.descuento,

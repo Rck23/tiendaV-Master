@@ -58,7 +58,7 @@
 
                       <!-- Text -->
                       <small class="text-muted">
-                        PNG or JPG no bigger than 1000px wide and tall.
+                        PNG. WEBP, JPEG o JPG que no pese más de 1MB.
                       </small>
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                   <!-- Button -->
 
                   <label for="file-upload" class="btn btn-sm btn-primary">
-                    Upload
+                    Subir imagen
                   </label>
                   <input style="display: none" id="file-upload" type="file" v-on:change="uploadImage($event)" />
                 </div>
@@ -87,8 +87,7 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      This contact will be shown to others publicly, so choose
-                      it carefully.
+                      Este titulo es el que aparecera en todas las vistas del producto, elige con cuidado.
                     </small>
 
                     <!-- Input -->
@@ -125,10 +124,10 @@
                   <!-- Phone -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class="form-label"> Extracto </label>
+                    <label class="form-label"> Descripción </label>
 
                     <!-- Input -->
-                    <textarea class="form-control" id="" rows="3" placeholder="Extracto"
+                    <textarea class="form-control" id="" rows="3" placeholder="Descripción del producto..."
                       v-model="producto.extracto"></textarea>
                   </div>
                 </div>
@@ -144,9 +143,8 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      Making your profile public means that anyone on the
-                      Dashkit network will be able to find you.
-                    </small>
+                        Si esta activado el producto aparece en la página principal el ecommerce, caso contrario no aparece entre los productos.
+                      </small>
 
                     <div class="row">
                       <div class="col-auto">
@@ -158,7 +156,7 @@
                       </div>
                       <div class="col ms-n2">
                         <!-- Help text -->
-                        <small class="text-muted"> Borrador activado </small>
+                        <small class="text-muted">  No disponible o Disponible </small>
                       </div>
                     </div>
                     <!-- / .row -->
@@ -172,8 +170,7 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      If you are available for hire outside of the current
-                      situation, you can encourage others to hire you.
+                      Si esta activado el producto aparece en la sección de descuentos.
                     </small>
 
                     <div class="row">
@@ -187,7 +184,7 @@
                       <div class="col ms-n2">
                         <!-- Help text -->
                         <small class="text-muted">
-                          Descuento desactivado
+                          Activar/Desactivar Descuento
                         </small>
                       </div>
                     </div>
@@ -336,8 +333,15 @@ export default {
         },
       }).then((resultado) => {
         console.log(resultado);
+        this.$notify({
+          group: "foo",
+          title: "Exito!",
+          text: "Producto creado exitosamente",
+          type: "success",
+        });
 
       }).catch((error) => {
+        console.log(error);
 
       });;
     }
