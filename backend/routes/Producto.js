@@ -10,6 +10,8 @@ var api = express.Router();
 // Configuramos el middleware para manejar la subida de archivos
 var path = multipart({ uploadDir: "./uploads/productos" });
 
+// PETICIONES DE PRODUCTOS
+
 /**
  * Ruta para registrar un producto desde el panel de administración.
  * Requiere autenticación y manejo de archivos subidos.
@@ -61,6 +63,27 @@ api.put(
   "/actualizar_producto_admin/:id",
   [authenticate.decodeToken, path],
   productoController.actualizar_producto_admin
+);
+
+
+// PETICIONES DE VARIEDAD 
+
+api.post(
+  "/registro_variedad_producto",
+  authenticate.decodeToken,
+  productoController.registro_variedad_producto
+);
+
+api.get(
+  "/obtener_variedades_producto/:id",
+  authenticate.decodeToken,
+  productoController.obtener_variedades_producto
+);
+
+api.delete(
+  "/eliminar_variedad_producto/:id",
+  authenticate.decodeToken,
+  productoController.eliminar_variedad_producto
 );
 
 // Exportamos el enrutador para su uso en la aplicación

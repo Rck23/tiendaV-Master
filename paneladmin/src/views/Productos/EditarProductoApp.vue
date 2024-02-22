@@ -252,7 +252,8 @@
                   <small class="text-muted">
                     Acción*
                   </small> <br>
-                  <button class="btn btn-primary btn-block" style="width: 100% !important;" v-on:click="validar_variedad()">Agregar</button>
+                  <button class="btn btn-primary btn-block" style="width: 100% !important;"
+                    v-on:click="validar_variedad()">Agregar</button>
                 </div>
               </div>
 
@@ -261,85 +262,65 @@
 
                   <!-- List group -->
                   <div class="list-group list-group-flush my-n3">
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
+
+                    <div class="list-group-item" v-for="item in variedades">
+                      <div class="row align-i tems-center">
                         <div class="col">
 
                           <!-- Heading -->
                           <h4 class="mb-1">
-                            Authenticator app
+                            {{ item.variedad.toUpperCase() }}
                           </h4>
 
                           <!-- Text -->
                           <small class="text-muted">
-                            Google auth or 1Password
+                            <b>SKU:</b> {{ item.sku.toUpperCase() }}
                           </small>
 
                         </div>
-                        <div class="col-auto">
-
-                          <!-- Button -->
-                          <button class="btn btn-sm btn-white">
-                            Setup
-                          </button>
-
-                        </div>
-                      </div> <!-- / .row -->
-                    </div>
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
                         <div class="col">
-
                           <!-- Heading -->
                           <h4 class="mb-1">
-                            SMS Recovery <i class="fe fe-info text-muted ms-1" data-bs-toggle="tooltip"
-                              data-title="We use the the phone number you provide in General" data-bs-original-title=""
-                              title=""></i>
+                            {{ item.stock }}
                           </h4>
 
                           <!-- Text -->
                           <small class="text-muted">
-                            Standard messaging rates apply
+                            Unidades
                           </small>
-
                         </div>
                         <div class="col-auto">
 
                           <!-- Button -->
-                          <button class="btn btn-sm btn-danger">
-                            Disable
+                          <button v-if="item.stock == 0" class="btn btn-sm btn-danger" v-b-modal="'delete-' + item._id" type="button">
+                            Eliminar
                           </button>
+
+                          <button v-if="item.stock >= 1" disabled class="btn btn-sm btn-danger" type="button">
+                            Eliminar
+                          </button>
+
+                          <b-modal centered :id="'delete-' + item._id"
+                          title-html="<h4 class='card-header-title'><b>Borrar variedad</b></h4>"
+                          @ok="eliminar(item._id)">
+                          <p class="my-4">¿Estas seguro de borrar <b>{{ item.variedad.toUpperCase() }}</b>  de las variedades?</p>
+                          <template #modal-footer="{ ok, cancel }">
+                      
+                            <!-- Emulate built in modal footer ok and cancel button actions -->
+                            <b-button  variant="outline-danger" @click="cancel()">
+                              Cancelar
+                            </b-button>
+                            <b-button  variant="outline-success" @click="ok()">
+                              Eliminar
+                            </b-button>
+                    
+                          </template>
+                        </b-modal>
 
                         </div>
                       </div> <!-- / .row -->
                     </div>
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
-                        <div class="col">
 
-                          <!-- Heading -->
-                          <h4 class="mb-1">
-                            Recovery codes <i class="fe fe-info text-muted ms-1" data-bs-toggle="tooltip"
-                              data-title="We use the the phone number you provide in General" data-bs-original-title=""
-                              title=""></i>
-                          </h4>
-
-                          <!-- Text -->
-                          <small class="text-muted">
-                            Standard messaging rates apply
-                          </small>
-
-                        </div>
-                        <div class="col-auto">
-
-                          <!-- Button -->
-                          <button class="btn btn-sm btn-white">
-                            Reveal
-                          </button>
-
-                        </div>
-                      </div> <!-- / .row -->
-                    </div>
                   </div>
 
                 </div>
@@ -378,6 +359,8 @@ export default {
       },
       portada: undefined, // <--- Variable para almacenar la imagen de portada seleccionada
       variedad: {},
+      sku: '',
+      variedades: [],
     };
   },
   methods: {
@@ -400,7 +383,7 @@ export default {
             this.producto = result.data;
             this.str_imagen = this.$urlAPI + '/obtener_portada_producto/' + this.producto.portada;
           }
-          console.log(this.data);
+
         })
         .catch((error) => {
           // Manejamos cualquier error que ocurra durante la solicitud
@@ -415,7 +398,7 @@ export default {
         imagen = $event.target.files[0];
       }
 
-      if (imagen.size <= 100000) {
+      if (imagen.size <= 1000000) {
         if (
           imagen.type == "image/jpg" ||
           imagen.type == "image/jpeg" ||
@@ -537,7 +520,7 @@ export default {
       });
     },
 
-    validar_variedad(){
+    validar_variedad() {
 
       if (!this.variedad.proveedor) {
         this.$notify({
@@ -546,38 +529,96 @@ export default {
           text: "El proveedor es obligatorio",
           type: "error",
         });
-      }else   if (!this.variedad.variedad) {
+      } else if (!this.variedad.variedad) {
         this.$notify({
           group: "foo",
           title: "ERROR",
           text: "La variedad es obligatoria",
           type: "error",
         });
-      }else{
+      } else {
         this.variedad.producto = this.$route.params.id;
         this.variedad.sku = this.generar_sku();
 
-        console.log(this.variedad);
+        this.registro_variedad();
       }
 
     },
 
-    registro_variedad(){
+    registro_variedad() {
+      axios.post(this.$urlAPI + '/registro_variedad_producto', this.variedad, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': this.$store.state.token
+        }
+      }).then((result) => {
+        this.variedad = {};
+        this.$notify({
+          group: 'foo',
+          title: 'SUCCESS',
+          text: 'Se agrego la nueva variedad.',
+          type: 'success'
+        });
+        this.init_variedades();
+      });
+    },
 
-},
-
-    generar_sku(){
-      let sku = this.producto.titulo.substr(0,3)+''+this.producto.str_variedad.substr(0,3)+''+this.variedad.variedad.substr(0,3)+''+this.variedad.proveedor.substr(0,3);
-
+    generar_sku() {
+      let sku = this.producto.titulo.substr(0, 3) + '' + this.producto.str_variedad.substr(0, 3) + '' + this.variedad.variedad.substr(0, 3) + '' + this.variedad.proveedor.substr(0, 3);
       return sku.toUpperCase();
+      //XIACOLROJREA  <-- ejemplo
+    },
+
+    init_variedades() {
+      axios.get(this.$urlAPI + '/obtener_variedades_producto/' + this.$route.params.id, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': this.$store.state.token
+        }
+      }).then((result) => {
+        this.variedades = result.data;
+
+      });
+    },
+
+    eliminar(id){
+      axios.delete(this.$urlAPI + '/eliminar_variedad_producto/'+id, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': this.$store.state.token
+        }
+      }).then((resultado) => {
+       
+        if (resultado.data.message) {
+          this.$notify({
+              group: 'foo',
+              title: 'ERROR',
+              text: result.data.message,
+              type: 'error'
+          });
+        }else{
+
+          this.$notify({
+                group: 'foo',
+                title: 'SUCCESS',
+                text: 'Se elimino la variedad.',
+                type: 'success'
+            }); 
+  
+            this.init_variedades();
+        }
+      });
 
     }
   },
 
+
+
   beforeMount() {
-    // Llamamos al método para inicializar los datos antes de que el componente se monte
+    // Assuming init_data is defined elsewhere in your component
     this.init_data();
+    this.init_variedades();
   },
-};
+}
 </script>
   

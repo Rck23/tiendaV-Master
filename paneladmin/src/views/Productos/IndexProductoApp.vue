@@ -67,7 +67,7 @@
                         <div class="row">
                           <div class="col-12 text-center">
                             <div class="spinner-border mt-5 mb-5" role="status">
-                              <span class="visually-hidden">Loading...</span>
+                              <span class="visually-hidden">Cargando...</span>
                             </div>
                           </div>
                         </div>
@@ -145,12 +145,12 @@
 
                               <!-- Heading -->
                               <h1 class="display-4 mb-3">
-                                No hay productos con tu busqueda 😭
+                                Aún no hay productos 😭
                               </h1>
 
                               <!-- Subheading -->
                               <p class="text-muted mb-4 display-6">
-                                vuelve a buscar
+                                vuelve más tarde
                               </p>
 
                             </div>

@@ -149,16 +149,27 @@
                                 </a>
 
 
-                                <a href="#!" class="dropdown-item">
+                                <!-- <a href="#!" class="dropdown-item">
                                   Eliminar
-                                </a>
+                                </a> -->
 
                               </div>
                             </div>
                             <b-modal centered :id="'delete-' + item._id"
-                              title-html="<h4 class='card-header-title'><b>Agregar empleado</b></h4>"
+                              title-html="<h4 class='card-header-title'><b>Desactivar/Activar Usuario</b></h4>"
                               @ok="eliminar(item._id, item.estado)">
-                              <p class="my-4">{{ item._id }} + {{ item.nombres }}</p>
+                              <p class="my-4">Los usuarios con estado "Inactivo" ya no podran interactuar ni ingresar al sistema. Los usuarios activos seguiran interactuando con el sistema.</p>
+                              <template #modal-footer="{ ok, cancel }">
+                      
+                                <!-- Emulate built in modal footer ok and cancel button actions -->
+                                <b-button  variant="outline-danger" @click="cancel()">
+                                  Cancelar
+                                </b-button>
+                                <b-button  variant="outline-success" @click="ok()">
+                                  Cambiar estado
+                                </b-button>
+                        
+                              </template>
                             </b-modal>
                           </td>
                         </tr>

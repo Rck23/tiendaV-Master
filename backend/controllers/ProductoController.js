@@ -1,5 +1,6 @@
 // Importamos el modelo de Producto y las librerías necesarias
 const Producto = require("../models/Producto");
+const  Variedad = require("../models/Variedad");
 var slugify = require("slugify");
 var fs = require("fs");
 var path = require("path");
@@ -69,7 +70,7 @@ const listar_producto_admin = async function (req, res) {
         { titulo: new RegExp(filtro, "i") },
         { categorias: new RegExp(filtro, "i") },
       ],
-    }).sort({createdAt:-1});
+    }).sort({createAt:-1});
     // Enviar la lista de productos
     res.status(200).send(productos);
   } else {
@@ -263,6 +264,58 @@ const actualizar_producto_admin = async function (req, res) {
   }
 };
 
+
+const registro_variedad_producto = async  (req, res) =>{
+  if (req.user) {
+    let data = req.body; 
+
+    let variedad = await Variedad.create(data); 
+
+
+    res.status(200).send({ data: variedad});
+ 
+  } else {
+    // Si no hay un usuario autenticado, enviar un mensaje de error
+    res.status(500).send({ data: undefined, message: "Error Token" });
+  }
+};
+
+const obtener_variedades_producto = async function  (req, res){
+  if (req.user) {
+    
+    let id = req.params['id']; 
+    let variedades = await Variedad.find({producto:id}).sort({stock:-1})
+
+
+    res.status(200).send(variedades);
+ 
+  } else {
+    // Si no hay un usuario autenticado, enviar un mensaje de error
+    res.status(500).send({ data: undefined, message: "Error Token" });
+  }
+};
+
+const eliminar_variedad_producto = async function(req,res){
+  if(req.user){
+
+     let id = req.params['id'];
+
+     let reg = await Variedad.findById({_id:id});
+
+     if(reg.stock == 0){
+          let variedad = await Variedad.findOneAndDelete({_id:id});
+          res.status(200).send(variedad);
+     }else{
+          res.status(200).send({data:undefined,message: 'No se puede eliminar esta variedad'});
+     }
+
+     
+
+  }else{
+      res.status(500).send({data:undefined,message: 'ErrorToken'});
+  }
+}
+
 // Exportar las funciones para su uso en otros módulos
 module.exports = {
   registro_producto_admin,
@@ -270,4 +323,10 @@ module.exports = {
   obtener_portada_producto,
   obtener_producto_admin,
   actualizar_producto_admin,
+
+//////////////////////////////////
+
+  registro_variedad_producto,
+  obtener_variedades_producto,
+  eliminar_variedad_producto
 };

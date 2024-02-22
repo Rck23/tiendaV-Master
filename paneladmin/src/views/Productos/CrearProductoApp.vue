@@ -253,7 +253,7 @@ export default {
         imagen = $event.target.files[0];
       }
 
-      if (imagen.size <= 100000) {
+      if (imagen.size <= 1000000) {
         if (
           imagen.type == "image/jpg" ||
           imagen.type == "image/jpeg" ||
@@ -271,6 +271,7 @@ export default {
             text: "La imagen debe ser tipo: 'jpeg' 'png' 'jpg' o 'webp'",
             type: "error",
           });
+          this.portada = undefined; 
         }
       } else {
         this.$notify({
@@ -279,6 +280,7 @@ export default {
           text: "La imagen debe ser inferior a 1Mb",
           type: "error",
         });
+        this.portada = undefined; 
       }
     },
     // Método para validar los campos del formulario antes de enviar la solicitud de registro

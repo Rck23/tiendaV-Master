@@ -17,7 +17,9 @@ var VariedadEsquema = esquema({
   sku: { type: String, required: true },
 
     // Referencia hacia la tabla producto
-  producto: { type: Schema.ObjectId, ref: 'producto', required: true },
+  producto: { type: esquema.ObjectId, ref: 'producto', required: true },
+
+  stock: { type: Number, default: 0, required: true },
     
   // Fecha de creación de variedad
   createAt: { type: Date, default: Date.now },
