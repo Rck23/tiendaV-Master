@@ -79,17 +79,13 @@
               <hr class="my-5" />
 
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                   <!-- Email address -->
                   <div class="form-group">
                     <!-- Label -->
                     <label class="mb-1"> Título del producto </label>
 
-                    <!-- Form text -->
-                    <small class="form-text text-muted">
-                      Este titulo es el que aparecera en todas las vistas del producto, elige con cuidado.
-                    </small>
-
+                
                     <!-- Input -->
                     <input type="text" v-model="producto.titulo" class="form-control" placeholder="Título del producto" />
                   </div>
@@ -98,7 +94,7 @@
                   <!-- First name -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class="form-label"> Categoria </label>
+                    <label class=""> Categoria </label>
 
                     <!-- Input -->
                     <select name="" class="form-select" v-model="producto.categoria">
@@ -109,6 +105,19 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="col-12 col-md-6">
+                  <!-- Last name -->
+                  <div class="form-group">
+                    <!-- Label -->
+                    <label class="form-label"> Variedad </label>
+
+                    <!-- Input -->
+                    <input type="text" class="form-control" placeholder="Variedades..." 
+                    v-model="producto.str_variedad" />
+                  </div>
+                </div>
+
                 <div class="col-12 col-md-6">
                   <!-- Last name -->
                   <div class="form-group">
@@ -303,7 +312,14 @@ export default {
           text: "El extracto es obligatorio",
           type: "error",
         });
-      } else if (this.producto.portada == undefined) {
+      } else if (!this.producto.str_variedad) {
+          this.$notify({
+            group: "foo",
+            title: "ERROR",
+            text: "El campo variedad es obligatorio",
+            type: "error",
+          });
+        } else if (this.producto.portada == undefined) {
         this.$notify({
           group: "foo",
           title: "ERROR",
@@ -324,6 +340,7 @@ export default {
       fm.append('extracto', this.producto.extracto);
       fm.append('estado', this.producto.estado);
       fm.append('descuento', this.producto.descuento);
+      fm.append('str_variedad', this.producto.str_variedad);
       fm.append('portada', this.producto.portada); // IMAGEN
 
       axios.post(this.$urlAPI + '/registro_producto_admin', fm, {
@@ -333,12 +350,24 @@ export default {
         },
       }).then((resultado) => {
         console.log(resultado);
-        this.$notify({
-          group: "foo",
-          title: "Exito!",
-          text: "Producto creado exitosamente",
-          type: "success",
-        });
+        if (resultado.data.message) {
+            this.$notify({
+            group: "foo",
+            title: "ERROR",
+            text: resultado.data.message,
+            type: "error",
+          });
+            
+           }else{
+            this.$notify({
+            group: "foo",
+            title: "Exito!",
+            text: 'Producto creado exitosamente',
+            type: "success",
+          });
+           }
+
+           this.$router.push({name: 'producto-index'})
 
       }).catch((error) => {
         console.log(error);

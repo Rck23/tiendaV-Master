@@ -69,7 +69,7 @@ const listar_producto_admin = async function (req, res) {
         { titulo: new RegExp(filtro, "i") },
         { categorias: new RegExp(filtro, "i") },
       ],
-    });
+    }).sort({createdAt:-1});
     // Enviar la lista de productos
     res.status(200).send(productos);
   } else {
@@ -151,7 +151,7 @@ const actualizar_producto_admin = async function (req, res) {
             let producto = await Producto.findByIdAndUpdate({_id: id},{
               titulo: data.titulo,
               categoria: data.categoria,
-             // precio: data.precio,
+              str_variedad: data.str_variedad,
               extracto: data.extracto,
               estado: data.estado,
               descuento: data.descuento,
@@ -175,7 +175,7 @@ const actualizar_producto_admin = async function (req, res) {
               let producto = await Producto.findByIdAndUpdate({_id: id},{
                 titulo: data.titulo,
                 categoria: data.categoria,
-                precio: data.precio,
+                str_variedad: data.str_variedad,
                 extracto: data.extracto,
                 estado: data.estado,
                 descuento: data.descuento,
@@ -214,7 +214,7 @@ const actualizar_producto_admin = async function (req, res) {
           let producto = await Producto.findByIdAndUpdate({_id: id},{
             titulo: data.titulo,
             categoria: data.categoria,
-           // precio: data.precio,
+            str_variedad: data.str_variedad,
             extracto: data.extracto,
             estado: data.estado,
             descuento: data.descuento,
@@ -238,10 +238,12 @@ const actualizar_producto_admin = async function (req, res) {
             let producto = await Producto.findByIdAndUpdate({_id: id},{
               titulo: data.titulo,
               categoria: data.categoria,
-              precio: data.precio,
+              //precio: data.precio,
               extracto: data.extracto,
               estado: data.estado,
               descuento: data.descuento,
+              str_variedad: data.str_variedad,
+
     
             });
             // Si se crea con éxito, enviar el producto creado

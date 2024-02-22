@@ -25,6 +25,8 @@ var ProductoEsquema = esquema({
   estado: { type: Boolean, required: true },
   // Indica si el producto tiene descuento
   descuento: { type: Boolean, required: true },
+  // Indica si el producto tiene variedades (color, talla, etc.)
+  str_variedad: { type: String, required: true },
   // Fecha de creación del producto
   createAt: { type: Date, default: Date.now },
   // Fecha de actualización del producto (opcional)
