@@ -65,6 +65,16 @@ const routes = [
       component: () => import("@/views/Productos/EditarProductoApp.vue"),
       meta: { requiresAuth: true },
     },
+
+
+    // RUTAS DE INGRESOS
+
+    {
+      path: "/ingreso/create",
+      name: "ingreso-create",
+      component: () => import("@/views/Ingresos/CrearIngresoApp.vue"),
+      meta: { requiresAuth: true },
+    },
 ];
 
 // Creamos una nueva instancia de VueRouter con las rutas definidas

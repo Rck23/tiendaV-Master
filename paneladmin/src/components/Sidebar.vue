@@ -90,12 +90,18 @@
         <h6 class="navbar-heading">CONTROL</h6>
 
         <ul class="navbar-nav mb-md-4">
+          
           <li class="nav-item">
-
+            
             <router-link to="/producto" class="nav-link" active-class="active"> <i class="fe fe-shopping-cart"></i>
               Productos</router-link>
-          </li>
-        </ul>
+            </li>
+            <li class="nav-item">
+  
+              <router-link to="/ingreso/create" class="nav-link" active-class="active"> <i class="fe fe-folder"></i>
+                Ingresos</router-link>
+            </li>
+          </ul>
         <!-- Push content down -->
         <div class="mt-auto"></div>
 
