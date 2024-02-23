@@ -2,13 +2,14 @@
 var express = require("express");
 var productoController = require("../controllers/ProductoController");
 var authenticate = require("../middlewares/authenticate");
-var multipart = require("connect-multiparty");
+var multipart = require('connect-multiparty');
 
 // Creamos un nuevo enrutador de Express
 var api = express.Router();
 
 // Configuramos el middleware para manejar la subida de archivos
 var path = multipart({ uploadDir: "./uploads/productos" });
+var path2 = multipart({ uploadDir: "./uploads/facturas" });
 
 // PETICIONES DE PRODUCTOS
 
@@ -92,6 +93,13 @@ api.get(
   "/listar_activos_productos_admin",
   authenticate.decodeToken,
   productoController.listar_activos_productos_admin
+);
+
+
+api.post(
+  "/registro_ingreso_admin",
+  [authenticate.decodeToken, path2],
+  productoController.registro_ingreso_admin
 );
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;
