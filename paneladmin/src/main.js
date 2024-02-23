@@ -13,6 +13,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import { ModalPlugin } from "bootstrap-vue";
 
+import "vue-search-select/dist/VueSearchSelect.css"
+
 // Desactivamos el mensaje de producción en entorno de desarrollo
 Vue.config.productionTip = false;
 

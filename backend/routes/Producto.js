@@ -40,6 +40,7 @@ api.get(
   productoController.listar_producto_admin
 );
 
+
 /**
  * Ruta para obtener la imagen de portada de un producto.
  * No requiere autenticación.
@@ -86,5 +87,11 @@ api.delete(
   productoController.eliminar_variedad_producto
 );
 
+
+api.get(
+  "/listar_activos_productos_admin",
+  authenticate.decodeToken,
+  productoController.listar_activos_productos_admin
+);
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;

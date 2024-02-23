@@ -98,7 +98,7 @@
             </li>
             <li class="nav-item">
   
-              <router-link to="/ingreso/create" class="nav-link" active-class="active"> <i class="fe fe-folder"></i>
+              <router-link to="/ingreso" class="nav-link" active-class="active"> <i class="fe fe-folder"></i>
                 Ingresos</router-link>
             </li>
           </ul>

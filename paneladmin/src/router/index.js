@@ -70,6 +70,13 @@ const routes = [
     // RUTAS DE INGRESOS
 
     {
+      path: "/ingreso",
+      name: "ingreso-index",
+      component: () => import("@/views/Ingresos/IndexIngresoApp.vue"),
+      meta: { requiresAuth: true },
+    },
+
+    {
       path: "/ingreso/create",
       name: "ingreso-create",
       component: () => import("@/views/Ingresos/CrearIngresoApp.vue"),

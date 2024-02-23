@@ -207,7 +207,7 @@
               <hr class="mt-4 mb-5" />
 
               <!-- Button -->
-              <button class="btn btn-primary mb-10" v-on:click="validar()">
+              <button class="btn btn-primary mb-7" v-on:click="validar()">
                 Crear producto
               </button>
             </div>
