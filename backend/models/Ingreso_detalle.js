@@ -12,7 +12,7 @@ var Ingreso_detalleEsquema = esquema({
 
   
      cantidad: { type: Number, required: true }, 
-     precio: { type: Number, required: true }, 
+     precio_unidad: { type: Number, required: true }, 
 
      ingreso: { type: esquema.ObjectId, ref: 'ingreso', required: true },
      producto: { type: esquema.ObjectId, ref: 'producto', required: true },

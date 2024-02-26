@@ -337,6 +337,14 @@ const registro_ingreso_admin = async function(req,res){
           let detalles = JSON.parse(data.detalles); //detalles ingreso
           console.log(detalles);
 
+          let reg_ingreso = await Ingreso.find().sort({createAt:-1}); 
+
+          if (reg_ingreso == 0) {
+            data.serie = 1; 
+          }else{
+            data.serie = reg_ingreso[0].serie+1;
+          }
+
           var img_path = req.files.documento.path;
           var str_img = img_path.split('\\');
           var str_documento = str_img[2];
@@ -348,13 +356,36 @@ const registro_ingreso_admin = async function(req,res){
           for(var item of detalles){
               item.ingreso = ingreso._id;
               await Ingreso_detalle.create(item);
+
+              // ACTUALIZAR CANTIDADES
+              let variedad = await Variedad.findById({_id: item.variedad});
+              await Variedad.findByIdAndUpdate({_id: item.variedad},{
+                stock: parseInt(variedad.stock) + parseInt(item.cantidad)
+              });
+
+              
+              let producto = await Producto.findById({_id: item.producto});
+              await Producto.findByIdAndUpdate({_id: item.producto},{
+                stock: parseInt(producto.stock) + parseInt(item.cantidad)
+              });
+
+              // CALCULAR MARGEN DE GANANCIA
+              if (producto.stock >= 1) {
+                //
+              }else{
+                let ganancia = Math.ceil((item.precio_unidad * data.ganancia)/100);
+                await Producto.findByIdAndUpdate({_id: item.producto},{
+                    precio: parseFloat(item.precio_unidad) + parseFloat(ganancia)
+                });
+            }
           }
 
 
 
           res.status(200).send(ingreso);
       } catch (error) {
-          res.status(200).send({message: 'No se puedo registrar el ingreso'});
+          // res.status(200).send({message: 'No se puedo registrar el ingreso'});
+          res.status(200).send(error);
       }
 
 

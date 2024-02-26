@@ -125,7 +125,7 @@
                     <label class="form-label"> Precio </label>
 
                     <!-- Input -->
-                    <input type="number" class="form-control" placeholder="Precio" v-model="producto.precio" />
+                    <input type="number" class="form-control" placeholder="Precio" disabled value="0"/>
                   </div>
                 </div>
 
@@ -300,13 +300,6 @@ export default {
           text: "La categoria es obligatoria",
           type: "error",
         });
-      } else if (!this.producto.precio) {
-        this.$notify({
-          group: "foo",
-          title: "ERROR",
-          text: "El precio es obligatorio",
-          type: "error",
-        });
       } else if (!this.producto.extracto) {
         this.$notify({
           group: "foo",
@@ -338,7 +331,8 @@ export default {
 
       fm.append('titulo', this.producto.titulo);
       fm.append('categoria', this.producto.categoria);
-      fm.append('precio', this.producto.precio);
+  
+    //  fm.append('precio', this.producto.precio);
       fm.append('extracto', this.producto.extracto);
       fm.append('estado', this.producto.estado);
       fm.append('descuento', this.producto.descuento);

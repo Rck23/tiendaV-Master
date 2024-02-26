@@ -29,8 +29,9 @@
                                                 <a class="nav-link active"> Todos los ingresos </a>
                                             </li>
                                             <li class="nav-item">
-                                                <router-link  class="nav-link" to="/ingreso/create">    Nuevo ingreso</router-link>
-                                            
+                                                <router-link class="nav-link" to="/ingreso/create"> Nuevo
+                                                    ingreso</router-link>
+
                                             </li>
                                         </ul>
                                     </div>
@@ -252,7 +253,7 @@ export default {
             ingreso: {
                 proveedor: ''
             },
-            comprobante: undefined, 
+            comprobante: undefined,
         }
     },
 
@@ -273,7 +274,7 @@ export default {
                     documento.type == "application/pdf" ||
                     documento.type == "image/webp"
                 ) {
-                  
+
                     this.comprobante = documento;
                     this.ingreso.documento = this.comprobante;
 

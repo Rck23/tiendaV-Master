@@ -21,6 +21,7 @@ Vue.config.productionTip = false;
 // Definimos variables globales para la URL de la API y el token de autenticación
 Vue.prototype.$urlAPI = "http://localhost:4201/api";
 Vue.prototype.$token = localStorage.getItem("token");
+Vue.prototype.$ganancia = 30;
 
 // Usamos los plugins de notificaciones, paginación, BootstrapVue, IconsPlugin y ModalPlugin
 Vue.use(Notifications);

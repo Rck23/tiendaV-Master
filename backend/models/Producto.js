@@ -16,7 +16,7 @@ var ProductoEsquema = esquema({
   // Categoría del producto
   categoria: { type: String, required: true },
   // Precio del producto
-  precio: { type: Number, required: true },
+  precio: { type: Number,default:0, required: true },
   // Extracto o descripción corta del producto
   extracto: { type: String, required: true },
   // Ruta de la imagen de portada del producto
