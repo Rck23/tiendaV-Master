@@ -123,7 +123,9 @@
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-end">
                               
-                                    <router-link  class="dropdown-item" :to="{name: 'producto-edit', params:{id:item._id}}">Editar</router-link>
+                                    <router-link  class="dropdown-item" :to="{name: 'producto-edit', params:{id:item._id}}">Editar producto</router-link>
+
+                                    <router-link  class="dropdown-item" :to="{name: 'producto-galeria', params:{id:item._id}}">Galeria</router-link>
                               
                                   </div>
                                 </div>
@@ -138,10 +140,7 @@
                         <div class="row justify-content-center" v-if="productos.length == 0">
                           <div class="col-12 col-md-6 col-xl-6 my-5">
                             <div class="text-center">
-                              <!-- Preheading -->
-                              <h6 class="text-uppercase text-muted mb-4 display-2">
-                                404 error
-                              </h6>
+                        
 
                               <!-- Heading -->
                               <h1 class="display-4 mb-3">
@@ -150,7 +149,7 @@
 
                               <!-- Subheading -->
                               <p class="text-muted mb-4 display-6">
-                                vuelve más tarde
+                                Crea productos o verifica la base de datos para ver si hay un problema  
                               </p>
 
                             </div>

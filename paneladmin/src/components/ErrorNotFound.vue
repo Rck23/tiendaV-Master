@@ -20,7 +20,7 @@
 
                 <!-- Button -->
                 <!-- Enlace que redirige al usuario al inicio de la aplicación -->
-                <router-link class="btn btn-lg btn-primary text-white fw-bolder" to="/colaborador/index">Regresar al
+                <router-link class="btn btn-lg btn-primary text-white fw-bolder" to="/producto">Regresar al
                     inicio</router-link>
             </div>
         </div>

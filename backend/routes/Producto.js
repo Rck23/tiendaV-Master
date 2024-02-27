@@ -9,7 +9,8 @@ var api = express.Router();
 
 // Configuramos el middleware para manejar la subida de archivos
 var path = multipart({ uploadDir: "./uploads/productos" });
-var path2 = multipart({ uploadDir: "./uploads/facturas" });
+var path_ingresos = multipart({ uploadDir: "./uploads/facturas" });
+var path_galeria = multipart({ uploadDir: "./uploads/galeria" });
 
 // PETICIONES DE PRODUCTOS
 
@@ -95,11 +96,41 @@ api.get(
   productoController.listar_activos_productos_admin
 );
 
+// PETICIONES DE INGRESO
 
 api.post(
   "/registro_ingreso_admin",
-  [authenticate.decodeToken, path2],
+  [authenticate.decodeToken, path_ingresos],
   productoController.registro_ingreso_admin
 );
+
+// PETICIONES DE GALERIA
+
+api.post(
+  "/subir_imagen_producto_admin",
+  [authenticate.decodeToken, path_galeria],
+  productoController.subir_imagen_producto_admin
+);
+
+
+api.get(
+  "/obtener_galeria_producto/:img",
+  productoController.obtener_galeria_producto
+);
+
+api.get(
+  "/obtener_toda_galeria_producto_admin/:id",
+  authenticate.decodeToken,
+  productoController.obtener_toda_galeria_producto_admin
+);
+
+api.delete(
+  "/eliminar_galeria_producto_admin/:id",
+  authenticate.decodeToken,
+  productoController.eliminar_galeria_producto_admin
+);
+
+
+
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;

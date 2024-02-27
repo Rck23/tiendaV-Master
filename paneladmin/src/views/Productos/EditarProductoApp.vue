@@ -131,7 +131,7 @@
                     <label class="form-label"> Precio </label>
 
                     <!-- Input -->
-                    <input type="number" class="form-control" placeholder="Precio" v-model="producto.precio" readonly />
+                    <input type="number" class="form-control" placeholder="Precio"  readonly />
                   </div>
                 </div>
 

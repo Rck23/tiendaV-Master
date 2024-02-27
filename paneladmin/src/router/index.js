@@ -58,11 +58,18 @@ const routes = [
     component: () => import("@/views/Productos/CrearProductoApp.vue"),
     meta: { requiresAuth: true },
   },
-    // Ruta para editar un colaborador existente
+    // Ruta para editar un producto existente
     {
       path: "/producto/edit/:id",
       name: "producto-edit",
       component: () => import("@/views/Productos/EditarProductoApp.vue"),
+      meta: { requiresAuth: true },
+    },
+    // Ruta para la galeria de un producto existente
+    {
+      path: "/producto/galeria/:id",
+      name: "producto-galeria",
+      component: () => import("@/views/Productos/GaleriaProductoApp.vue"),
       meta: { requiresAuth: true },
     },
 

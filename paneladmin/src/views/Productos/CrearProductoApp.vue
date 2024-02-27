@@ -331,7 +331,6 @@ export default {
 
       fm.append('titulo', this.producto.titulo);
       fm.append('categoria', this.producto.categoria);
-  
     //  fm.append('precio', this.producto.precio);
       fm.append('extracto', this.producto.extracto);
       fm.append('estado', this.producto.estado);

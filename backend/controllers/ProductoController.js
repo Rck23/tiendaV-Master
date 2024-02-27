@@ -2,6 +2,7 @@
 const Producto = require("../models/Producto");
 const  Variedad = require("../models/Variedad");
 var Ingreso = require('../models/ingreso');
+var Galeria = require('../models/Galeria');
 var Ingreso_detalle = require('../models/ingreso_detalle');
 var slugify = require("slugify");
 var fs = require("fs");
@@ -334,59 +335,72 @@ const registro_ingreso_admin = async function(req,res){
 
       let data = req.body; //ingreso
       try {
-          let detalles = JSON.parse(data.detalles); //detalles ingreso
-          console.log(detalles);
+            
+        let reg_ingresos = await Ingreso.find().sort({createdAt:-1});
 
-          let reg_ingreso = await Ingreso.find().sort({createAt:-1}); 
+        if(reg_ingresos.length == 0){
+            data.serie = 1;
+        }else{
+            data.serie = reg_ingresos[0].serie + 1;
+        }
 
-          if (reg_ingreso == 0) {
-            data.serie = 1; 
-          }else{
-            data.serie = reg_ingreso[0].serie+1;
-          }
+        let detalles = JSON.parse(data.detalles); //detalles ingreso
+        console.log(detalles);
 
-          var img_path = req.files.documento.path;
-          var str_img = img_path.split('\\');
-          var str_documento = str_img[2];
+        var img_path = req.files.documento.path;
+        var str_img = img_path.split('\\');
+        var str_documento = str_img[2];
 
-          data.documento = str_documento;
-          data.usuario = req.user.sub;
-          let ingreso = await Ingreso.create(data);
+        data.documento = str_documento;
+        data.usuario = req.user.sub;
+        let ingreso = await Ingreso.create(data);
 
-          for(var item of detalles){
-              item.ingreso = ingreso._id;
-              await Ingreso_detalle.create(item);
+        for(var item of detalles){
+            item.ingreso = ingreso._id;
+            await Ingreso_detalle.create(item);
 
-              // ACTUALIZAR CANTIDADES
-              let variedad = await Variedad.findById({_id: item.variedad});
-              await Variedad.findByIdAndUpdate({_id: item.variedad},{
+            //ACTUALIZAR CANTIDADES
+            let variedad = await Variedad.findById({_id: item.variedad});
+            await Variedad.findByIdAndUpdate({_id: item.variedad},{
                 stock: parseInt(variedad.stock) + parseInt(item.cantidad)
-              });
+            });
 
-              
-              let producto = await Producto.findById({_id: item.producto});
-              await Producto.findByIdAndUpdate({_id: item.producto},{
+            let producto = await Producto.findById({_id: item.producto});
+            await Producto.findByIdAndUpdate({_id: item.producto},{
                 stock: parseInt(producto.stock) + parseInt(item.cantidad)
-              });
+            });
 
-              // CALCULAR MARGEN DE GANANCIA
-              if (producto.stock >= 1) {
+            //MARGEN DE GANANCIA
+            if(producto.stock >= 1){
                 //
-              }else{
+                let subtotal_residual = producto.precio * producto.stock; 
                 let ganancia = Math.ceil((item.precio_unidad * data.ganancia)/100);
+                let subtotal_ingreso = (parseFloat(item.precio_unidad) + parseFloat(ganancia)*item.cantidad);
+
+                let cantidades = parseInt(producto.stock) + parseInt(item.cantidad); 
+                let subtotales = parseFloat(subtotal_residual) + parseFloat(subtotal_ingreso);
+                
+                console.log(subtotales+ ' '+ cantidades);
+
+                let precio_equilibrio = Math.ceil(subtotales/cantidades);
+
+                await Producto.findByIdAndUpdate({_id: item.producto},{
+                    precio: precio_equilibrio
+                });
+
+            }else{
+
+              let ganancia = Math.ceil((item.precio_unidad * data.ganancia)/100);
                 await Producto.findByIdAndUpdate({_id: item.producto},{
                     precio: parseFloat(item.precio_unidad) + parseFloat(ganancia)
                 });
             }
-          }
-
-
-
-          res.status(200).send(ingreso);
-      } catch (error) {
-          // res.status(200).send({message: 'No se puedo registrar el ingreso'});
-          res.status(200).send(error);
-      }
+        }
+        res.status(200).send(ingreso);
+    } catch (error) {
+        console.log(error);
+        res.status(200).send({message: 'No se puedo registrar el ingreso'});
+    }
 
 
 
@@ -394,6 +408,96 @@ const registro_ingreso_admin = async function(req,res){
       res.status(500).send({data:undefined,message: 'ErrorToken'});
   }
 }
+
+
+const subir_imagen_producto_admin = async function (req, res) {
+  // VALIDAR EL TOKEN
+  if (req.user) {
+    let data = req.body;
+
+      // REGISTRO PRODUCTO
+      var img_path = req.files.imagen.path;
+      var str_img = img_path.split("\\");
+      var str_imagen = str_img[2];
+
+      // Asignar la ruta de la imagen y el slug al objeto de datos
+      data.imagen = str_imagen;
+    
+
+      try {
+        // Intentar crear el producto
+        let imagen = await Galeria.create(data);
+        // Si se crea con éxito, enviar el producto creado
+        res.status(200).send(imagen);
+      } catch (error) {
+        // Si hay un error, enviar un mensaje de error
+        res
+          .status(200)
+          .send({ data: undefined, message: "No se pudo crear el producto" });
+      }
+
+  } else {
+    // Si no hay un usuario autenticado, enviar un mensaje de error
+    res.status(500).send({ data: undefined, message: "Error token" });
+  }
+};
+
+const obtener_galeria_producto = async function (req, res) {
+  let img = req.params["img"];
+
+  // Verificar si la imagen existe
+  fs.stat("./uploads/galeria/" + img, function (err) {
+    if (err) {
+      // Si no existe, enviar una imagen predeterminada
+      let path_img = "./uploads/default.jpg";
+      res.status(200).sendFile(path.resolve(path_img));
+    } else {
+      // Si existe, enviar la imagen del producto
+      let path_img = "./uploads/galeria/" + img;
+      res.status(200).sendFile(path.resolve(path_img));
+    }
+  });
+};
+
+const obtener_toda_galeria_producto_admin = async function (req, res) {
+  // VALIDAR EL TOKEN
+  if (req.user) {
+    let id = req.params['id']; 
+
+    let galeria = await Galeria.find({producto:id}); 
+
+    res.status(200).send(galeria);
+  } else {
+    // Si no hay un usuario autenticado, enviar un mensaje de error
+    res.status(500).send({ data: undefined, message: "Error token" });
+  }
+};
+
+
+const eliminar_galeria_producto_admin = async function (req, res) {
+  // VALIDAR EL TOKEN
+  if (req.user) {
+    let id = req.params['id']; 
+
+    try {
+      let reg = await Galeria.findById({_id:id});
+      let path_img = "./uploads/galeria/" + reg.imagen;
+      fs.unlinkSync(path_img);
+
+      let galeria = await Galeria.findByIdAndDelete({_id:id}); 
+  
+      res.status(200).send(galeria);
+    } catch (error) {
+      
+      res.status(200).send({ data: undefined, message: "No se pudo eliminar la imagen" });
+    }
+
+  } else {
+    // Si no hay un usuario autenticado, enviar un mensaje de error
+    res.status(500).send({ data: undefined, message: "Error token" });
+  }
+};
+
 
 // Exportar las funciones para su uso en otros módulos
 module.exports = {
@@ -409,5 +513,12 @@ module.exports = {
   obtener_variedades_producto,
   eliminar_variedad_producto,
   listar_activos_productos_admin,
-  registro_ingreso_admin
+  registro_ingreso_admin,
+
+  //////////////////////////////////
+
+  subir_imagen_producto_admin,
+  obtener_galeria_producto,
+  obtener_toda_galeria_producto_admin,
+  eliminar_galeria_producto_admin
 };
