@@ -5,14 +5,8 @@ var clienteController = require("../controllers/ClienteController");
 // Creamos un nuevo enrutador de Express
 var api = express.Router();
 
-/**
- * Ruta de prueba para el controlador de clientes.
- *
- * @route GET /testing
- * @group Testing
- * @returns {Object} - Respuesta del controlador de clientes.
- */
-api.get("/testing", clienteController.testing);
+
+api.post("/registro_cliente_ecommerce", clienteController.registro_cliente_ecommerce);
 
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;
