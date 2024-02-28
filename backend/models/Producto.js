@@ -15,6 +15,7 @@ var ProductoEsquema = esquema({
   slug: { type: String, required: true },
   // Categoría del producto
   categoria: { type: String, required: true },
+  subcategoria: { type: String, required: true },
   // Precio del producto
   precio: { type: Number,default:0, required: true },
   // Extracto o descripción corta del producto

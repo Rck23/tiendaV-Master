@@ -85,7 +85,7 @@
               <hr class="my-5" />
 
               <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-12">
 
                   <div class="form-group">
                     <!-- Label -->
@@ -97,6 +97,7 @@
                     <input type="text" v-model="producto.titulo" class="form-control" placeholder="Título del producto" />
                   </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                   <!-- First name -->
                   <div class="form-group">
@@ -106,9 +107,23 @@
                     <!-- Input -->
                     <select name="" class="form-select" v-model="producto.categoria">
                       <option value="" disabled selected>Seleccionar</option>
-                      <option value="Categoria 1">Categoria 1</option>
-                      <option value="Categoria 2">Categoria 2</option>
-                      <option value="Categoria 3">Categoria 3</option>
+                      <option :value="item" v-for="item in $categorias">{{item}}</option>
+
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <!-- First name -->
+                  <div class="form-group">
+                    <!-- Label -->
+                    <label class=""> Subategoria </label>
+
+                    <!-- Input -->
+                    <select name="" class="form-select" v-model="producto.subcategoria">
+                      <option value="" disabled selected>Seleccionar</option>
+                      <option :value="item" v-for="item in subcategoria">{{item}}</option>
+
                     </select>
                   </div>
                 </div>
@@ -356,11 +371,13 @@ export default {
         estado: false, // <--- Estado del producto (activo o inactivo)
         descuento: false, // <--- Indica si el producto tiene descuento
         portada: undefined, // <--- Imagen de portada del producto
+        subcategoria:''
       },
       portada: undefined, // <--- Variable para almacenar la imagen de portada seleccionada
       variedad: {},
       sku: '',
       variedades: [],
+      subcategoria: ['Hombres', 'Mujeres', 'Accesorios'], // <--- Subcategoría del producto
     };
   },
   methods: {
@@ -445,6 +462,13 @@ export default {
           text: "La categoria es obligatoria",
           type: "error",
         });
+      }  else if (!this.producto.subcategoria) {
+        this.$notify({
+          group: "foo",
+          title: "ERROR",
+          text: "La subcategoria es obligatoria",
+          type: "error",
+        });
       } else if (!this.producto.extracto) {
         this.$notify({
           group: "foo",
@@ -479,6 +503,7 @@ export default {
         data = new FormData();
         data.append('titulo', this.producto.titulo);
         data.append('categoria', this.producto.categoria);
+        data.append('subcategoria', this.producto.subcategoria);
         data.append('extracto', this.producto.extracto);
         data.append('estado', this.producto.estado);
         data.append('str_variedad', this.producto.str_variedad);

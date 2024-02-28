@@ -10,7 +10,7 @@
                   <img src="/assets/icons/telephone-bl.png" style="width: 16px;">
                   020-800-456-747
                 </li>
-                <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Envios gratis desde $300</li>
+                <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Envios gratis desde $900</li>
               </ul>
             </div>
          

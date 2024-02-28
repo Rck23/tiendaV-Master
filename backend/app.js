@@ -15,6 +15,7 @@ var app = express();
 var cliente_router = require("./routes/Cliente");
 var usuario_router = require("./routes/Usuario");
 var producto_router = require("./routes/Producto");
+var public_router = require("./routes/Public");
 
 // Configuramos body-parser para parsear el cuerpo de las solicitudes HTTP
 app.use(bodyparser.urlencoded({ limit: "50mb", extended: true }));
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 app.use("/api", cliente_router);
 app.use("/api", usuario_router);
 app.use("/api", producto_router);
+app.use("/api", public_router);
 
 // Exportamos la aplicación para su uso en otros módulos
 module.exports = app;

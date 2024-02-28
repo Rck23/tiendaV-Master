@@ -22,6 +22,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$urlAPI = "http://localhost:4201/api";
 Vue.prototype.$token = localStorage.getItem("token");
 Vue.prototype.$ganancia = 30;
+Vue.prototype.$categorias = ['Ropa', 'Tecnologia', 'Hogar'];
 
 // Usamos los plugins de notificaciones, paginación, BootstrapVue, IconsPlugin y ModalPlugin
 Vue.use(Notifications);

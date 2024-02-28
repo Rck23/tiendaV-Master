@@ -1,6 +1,8 @@
 var Cliente = require('../models/Cliente');
 var bcrypt = require("bcrypt-nodejs");
 var Jwt = require("../helpers/cJwt");
+
+
 const registro_cliente_ecommerce = async function(req, res){
 
        
