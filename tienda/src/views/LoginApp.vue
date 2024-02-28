@@ -25,14 +25,19 @@
                       <form action="customer-orders.html" method="get">
                         <div class="mb-4">
                           <label class="form-label" for="email1">Correo electrónico</label>
-                          <input class="form-control" id="email1" type="text" placeholder="Correo electrónico">
+                          <input class="form-control" id="email1" type="text" placeholder="Correo electrónico" v-model="email">
                         </div>
                         <div class="mb-4">
                           <label class="form-label" for="password1">Contraseña</label>
-                          <input class="form-control" id="password1" type="password" placeholder="Contraseña">
+                          <input class="form-control" id="password1" type="password" placeholder="Contraseña" v-model="password">
                         </div>
+
+                        <div class="mb-4" v-if="msm_error_login">
+                          <small class="text-danger">{{msm_error_login}}</small>
+                        </div>
+
                         <div class="mb-4 text-center">
-                          <button class="btn btn-outline-dark" type="button"><i class="fa fa-sign-in-alt me-2"></i>Ingresar</button>
+                          <button class="btn btn-outline-dark" type="button" v-on:click="login()"><i class="fa fa-sign-in-alt me-2"></i>Ingresar</button>
                         </div>
                       </form>
                     </div>
@@ -64,6 +69,7 @@
                         <div class="mb-4" v-if="msm_error">
                           <small class="text-danger">{{msm_error}}</small>
                         </div>
+                    
 
                         <div class="mb-4 text-center">
                           <button class="btn btn-outline-dark" type="button" v-on:click="validar_registro()"><i class="far fa-user me-2"></i>Registrar</button>
@@ -86,7 +92,11 @@ export default {
     data() {
       return {
         cliente: {},
-        msm_error: ''
+        msm_error: '',
+        
+        email:'',
+        password: '',
+        msm_error_login: '',
       }
     },
 
@@ -108,15 +118,59 @@ export default {
               'Content-Type': 'application/json'
             }
           }).then((resultado) => {
-            console.log(resultado);
+
+            if (resultado.data.message) {
+              this.msm_error = resultado.data.message; 
+            } else {
+              this.msm_error = ''; 
+              console.log(resultado);
+            }
             
           }).catch((error) => {
             console.log(error);
           });;
         }
 
+      },
 
+      login(){
+        if (!this.email) {
+        this.msm_error_login = "Ingrese un correo electrónico";
+      } else if (!this.password) {
+        this.msm_error_login = "Ingrese una contraseña valida";
+      } else {
+        this.msm_error_login = "";
+
+        let data = {
+        email: this.email,
+        password: this.password
       }
+      // Realizamos una solicitud POST al endpoint de inicio de sesión
+      axios.post(this.$urlAPI+'/login_cliente',data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((resultado)=>{
+        // Verificamos si hay un mensaje de error o un token en la respuesta
+        console.log(resultado);
+        if(resultado.data.message){
+          this.msm_error_login = resultado.data.message;  
+        }else{
+          // Si hay un token, lo guardamos en el store de Vuex y redirigimos ala pagina inicial
+          this.$store.dispatch('saveToken', resultado.data.token);
+          this.$router.push({name: 'home'})
+
+        }
+
+       
+      }).catch((error)=>{
+        // Manejamos cualquier error que ocurra durante la solicitud
+        console.log(error);
+      });
+        
+      }
+      },
+
     },
 }
 </script>
