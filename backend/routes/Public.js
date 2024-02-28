@@ -7,6 +7,7 @@ var api = express.Router();
 
 
 api.get("/obtener_nuevos_productos", publicController.obtener_nuevos_productos);
+api.get("/obtener_productos_recomendados", publicController.obtener_productos_recomendados);
 
 
 // Exportamos el enrutador para su uso en la aplicación
