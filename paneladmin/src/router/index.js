@@ -89,6 +89,13 @@ const routes = [
       component: () => import("@/views/Ingresos/CrearIngresoApp.vue"),
       meta: { requiresAuth: true },
     },
+
+    {
+      path: "/categorias",
+      name: "categorias",
+      component: () => import("@/views/Categorias/IndexCategoriaApp.vue"),
+      meta: { requiresAuth: true },
+    },
 ];
 
 // Creamos una nueva instancia de VueRouter con las rutas definidas

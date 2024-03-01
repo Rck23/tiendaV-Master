@@ -130,6 +130,15 @@ api.delete(
   productoController.eliminar_galeria_producto_admin
 );
 
+///////////////////////////////////////////////////
+
+
+api.post(
+  "/crear_categoria_admin",
+  authenticate.decodeToken,
+  productoController.crear_categoria_admin
+);
+
 
 
 // Exportamos el enrutador para su uso en la aplicación
