@@ -24,31 +24,34 @@
 
     <div class="container">
       <div class="row">
-        <!-- Grid -->
-        <div class="'products-grid col-xl-9 col-lg-8 order-lg-2'">
+          <!-- Grid -->
+         <div class="'products-grid col-xl-9 col-lg-8 order-lg-2'">
           <header class="product-grid-header">
+
             <div class="me-3 mb-3">
-              Showing <strong>1-12 </strong>of <strong>158 </strong>products
+              Mostrando <strong>{{currentPage}}-<span v-if="currentPage*perPage > productos.length">{{productos.length}}</span><span  v-if="currentPage*perPage <= productos.length">{{currentPage*perPage}}</span>
+                </strong> de <strong>{{productos.length}} </strong>productos
             </div>
+
             <div class="me-3 mb-3">
-              <span class="me-2">Show</span
-              ><a class="product-grid-header-show active" href="#">12 </a
-              ><a class="product-grid-header-show" href="#">24 </a
-              ><a class="product-grid-header-show" href="#">All </a>
+              <span class="me-2">Por página</span
+              ><a class="product-grid-header-show active"  v-bind:class="{'active': perPage == 10}"  style="cursor:pointer" v-on:click="setPerPage(10)">10 </a>
+              <a class="product-grid-header-show" v-bind:class="{'active': perPage == 15}" style="cursor:pointer" v-on:click="setPerPage(15)">15 </a>
             </div>
+
             <div class="mb-3 d-flex align-items-center">
-              <span class="d-inline-block me-2">Sort by</span>
-              <select class="form-select w-auto border-0">
-                <option value="orderby_0">Default</option>
-                <option value="orderby_1">Popularity</option>
-                <option value="orderby_2">Rating</option>
-                <option value="orderby_3">Newest first</option>
+              <span class="d-inline-block me-2">Ordenar por</span>
+              <select class="form-select w-auto border-0" v-model="ordenar_por" v-on:click="setOrdenarPor()"> 
+                <option value="Defecto" selected>Defecto</option>
+                <option value="Precio -+">Precio menor a mayor</option>
+                <option value="Precio +-">Precio mayor a menor</option>
+                
               </select>
             </div>
           </header>
-          <div class="row">
+          <div class="row" id="productoPag">
             <!-- product-->
-            <div class="col-xl-4 col-6" v-for="item in productos">
+            <div class="col-xl-4 col-6" v-for="item in itemPorLista">
               <div class="product">
                 <div class="product-image">
                   <div class="ribbon ribbon-danger" v-if="item.descuento">
@@ -83,39 +86,17 @@
             <!-- /product-->
           </div>
           <!-- Pagination-->
-          <nav
-            class="d-flex justify-content-center mb-5 mt-3"
-            aria-label="page navigation"
-          >
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Anterior"
-                  ><span aria-hidden="true">Ant</span
-                  ><span class="sr-only">Anterior</span></a
-                >
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1 </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2 </a></li>
-              <li class="page-item"><a class="page-link" href="#">3 </a></li>
-              <li class="page-item"><a class="page-link" href="#">4 </a></li>
-              <li class="page-item"><a class="page-link" href="#">5 </a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Siguiente"
-                  ><span aria-hidden="true">Sig</span
-                  ><span class="sr-only">Siguiente </span></a
-                >
-              </li>
-            </ul>
-          </nav>
+               <div class="d-flex justify-content-center">
+                    <b-pagination v-model="currentPage" pills  :total-rows="productos.length" :per-page="perPage"
+                      aria-controls="productoPag"></b-pagination>
+                  </div>
         </div>
         <!-- / Grid End-->
         <!-- Sidebar-->
         <div class="sidebar col-xl-3 col-lg-4 order-lg-1">
           <div class="sidebar-block px-3 px-lg-0 me-lg-4">
             <a
-              class="d-lg-none block-toggler"
+            class="d-lg-none block-toggler"
               data-bs-toggle="collapse"
               href="#categoriesMenu"
               aria-expanded="false"
@@ -481,6 +462,8 @@
           </div>
         </div>
         <!-- /Sidebar end-->
+
+      
       </div>
     </div>
   </div>
@@ -533,6 +516,18 @@ export default {
       minRange: null,
       maxRange: null,
       productos: [],
+      productos_const: [],
+      perPage: 10,
+      currentPage: 1,
+
+      get itemPorLista(){
+        return this.productos.slice(
+          (this.currentPage - 1) * this.perPage, this.currentPage * this.perPage
+        )
+      },
+
+      ordenar_por: 'Defecto', 
+
     };
   },
   mounted() {
@@ -559,6 +554,7 @@ export default {
       })
       .then((resultado) => {
         this.productos = resultado.data;
+        this.productos_const = this.productos;
         console.log(resultado);
       })
       .catch((err) => {
@@ -569,6 +565,25 @@ export default {
     convertCurrency(number) {
       return currency_formatter.format(number, { code: "USD" });
     },
+
+    setPerPage(item){
+      this.perPage = item;
+    },
+
+    setOrdenarPor(){
+
+      if (this.ordenar_por == 'Defecto') {
+         this.productos.sort((a,b)=> new Date(a.createdAt).getTime() < new Date(b.createdAt).getTime() ? 1:-1);
+      }
+
+       if (this.ordenar_por == 'Precio -+') {
+         this.productos.sort((a,b)=> a.precio > b.precio ? 1:-1);
+      }
+
+       if (this.ordenar_por == 'Precio +-') {
+        this.productos.sort((a,b)=> a.precio < b.precio ? 1:-1);
+      }
+    }
   },
 };
 </script>
