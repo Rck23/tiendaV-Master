@@ -11,22 +11,22 @@
                 </svg> -->
                 <img class="svg-icon service-icon" src="/assets/media/camion.gif" alt="">
                 <div class="service-text">
-                  <h6 class="text-uppercase">Free shipping &amp; return</h6>
-                  <p class="text-muted fw-light text-sm mb-0">Free Shipping over $300</p>
+                  <h6 class="text-uppercase">Envios gratis</h6>
+                  <p class="text-muted fw-light text-sm mb-0">Envios gratis desde $900</p>
                 </div>
               </div>
               <div class="col-lg-4 service-column">
                 <img class="svg-icon service-icon" src="/assets/media/euro.gif" alt="">
                 <div class="service-text">
-                  <h6 class="text-uppercase">Money back guarantee</h6>
-                  <p class="text-muted fw-light text-sm mb-0">30 Days Money Back Guarantee</p>
+                  <h6 class="text-uppercase">Dinero seguro</h6>
+                              <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro</p>
                 </div>
               </div>
               <div class="col-lg-4 service-column">
                 <img class="svg-icon service-icon" src="/assets/media/tailandes.gif" alt="">
                 <div class="service-text">
-                  <h6 class="text-uppercase">020-800-456-747</h6>
-                  <p class="text-muted fw-light text-sm mb-0">24/7 Available Support</p>
+                  <h6 class="text-uppercase">449-123-45-47</h6>
+                              <p class="mb-0 text-muted text-sm">24/7 disponibles</p>
                 </div>
               </div>
             </div>

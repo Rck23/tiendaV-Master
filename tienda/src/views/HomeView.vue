@@ -15,7 +15,7 @@
               <h1
                 class="display-3 mb-4 text-white fw-bold split-screen-heading letter-spacing-1"
               >
-                Gentlemen
+                Caballeros
               </h1>
               <p class="lead mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -23,9 +23,9 @@
               </p>
               <p>
                 <a class="btn btn-light mx-1 mb-1" href="category.html"
-                  >View collection </a
+                  >Ver colección </a
                 ><a class="btn btn-outline-light mx-1 mb-1" href="category.html"
-                  >See more
+                  >Ver más 
                 </a>
               </p>
             </div>
@@ -41,7 +41,7 @@
               <h1
                 class="display-3 mb-4 text-white fw-bold split-screen-heading letter-spacing-1"
               >
-                Ladies
+                Damas
               </h1>
               <p class="lead mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -49,9 +49,9 @@
               </p>
               <p>
                 <a class="btn btn-light mx-1 mb-1" href="category.html"
-                  >View collection </a
+                  >Ver colección </a
                 ><a class="btn btn-outline-light mx-1 mb-1" href="category.html"
-                  >See more
+                  >Ver más 
                 </a>
               </p>
             </div>

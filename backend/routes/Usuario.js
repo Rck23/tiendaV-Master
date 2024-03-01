@@ -16,7 +16,7 @@ var api = express.Router();
  */
 api.post(
   "/registro_usuario_admin",
-  authenticate.decodeToken,
+  //authenticate.decodeToken,
   usuarioController.registro_usuario_admin
 );
 
