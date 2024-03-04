@@ -139,6 +139,24 @@ api.post(
   productoController.crear_categoria_admin
 );
 
+api.post(
+  "/crear_subcategoria_admin",
+  authenticate.decodeToken,
+  productoController.crear_subcategoria_admin
+);
+
+api.get(
+  "/listar_categorias_admin",
+  authenticate.decodeToken,
+  productoController.listar_categorias_admin
+);
+
+api.delete(
+  "/eliminar_subcategoria_admin/:id",
+  authenticate.decodeToken,
+  productoController.eliminar_subcategoria_admin
+);
+
 
 
 // Exportamos el enrutador para su uso en la aplicación

@@ -5,7 +5,7 @@ var Ingreso = require('../models/ingreso');
 var Galeria = require('../models/Galeria');
 var Ingreso_detalle = require('../models/ingreso_detalle');
 var Categoria = require('../models/Categoria');
-var SubCatagoria = require('../models/Subcatagoria');
+var Subcategoria = require('../models/Subcategoria');
 var slugify = require("slugify");
 var fs = require("fs");
 var path = require("path");
@@ -503,27 +503,77 @@ const eliminar_galeria_producto_admin = async function (req, res) {
   }
 };
 
-const crear_categoria_admin = async function (req, res) {
-  // VALIDAR EL TOKEN
-  if (req.user) {
- 
+const crear_categoria_admin = async function(req,res){
+  if(req.user){
       let data = req.body;
+
       var reg = await Categoria.find({titulo:data.titulo});
-      
-      if (reg.length == 0) {
-        var categoria = await Categoria.create(data);
-        data.slug = slugify(data.titulo).toLowerCase();
-        res.status(200).send(categoria);
-        
-      } else {
-        res.status(200).send({ data: undefined, message: "La categoria ya existe." });
+
+      if(reg.length == 0){
+          data.slug = slugify(data.titulo).toLowerCase();
+          var categoria = await Categoria.create(data);
+          res.status(200).send(categoria);
+      }else{
+          res.status(200).send({data:undefined,message: 'La categoria ya existe.'});   
       }
-      
-  } else {
-    // Si no hay un usuario autenticado, enviar un mensaje de error
-    res.status(500).send({ data: undefined, message: "Error token" });
+  }else{
+      res.status(500).send({data:undefined,message: 'ErrorToken'});
   }
-};
+}
+
+const listar_categorias_admin = async function(req,res){
+  if(req.user){
+
+      var regs = await Categoria.find().sort({titulo:1});
+      var categorias = [];
+
+      for(var item of regs){
+        
+          var subcategorias = await Subcategoria.find({categoria:item._id});
+          var productos = await Producto.find({categoria:item.titulo});
+
+          categorias.push({
+              categoria: item,
+              subcategorias,
+              nproductos: productos.length
+          });
+      }
+
+      res.status(200).send(categorias);
+  
+  }else{
+      res.status(500).send({data:undefined,message: 'ErrorToken'});
+  }
+}
+
+const crear_subcategoria_admin = async function(req,res){
+  if(req.user){
+      let data = req.body;
+
+      var reg = await Subcategoria.find({titulo:data.titulo});
+
+      if(reg.length == 0){
+          var subcategoria = await Subcategoria.create(data);
+          res.status(200).send(subcategoria);
+      }else{
+          res.status(200).send({data:undefined,message: 'La subcategoria ya existe.'});   
+      }
+  }else{
+      res.status(500).send({data:undefined,message: 'ErrorToken'});
+  }
+}
+
+
+const eliminar_subcategoria_admin = async function(req,res){
+  if(req.user){
+      let id = req.params['id'];
+
+      var reg = await Subcategoria.findByIdAndDelete({_id:id});
+      res.status(200).send(reg);
+  }else{
+      res.status(500).send({data:undefined,message: 'ErrorToken'});
+  }
+}
 
 
 // Exportar las funciones para su uso en otros módulos
@@ -550,5 +600,8 @@ module.exports = {
   eliminar_galeria_producto_admin,
 
   //////////////////////////////////
-  crear_categoria_admin
+  crear_categoria_admin,
+  listar_categorias_admin,
+  crear_subcategoria_admin,
+  eliminar_subcategoria_admin
 };

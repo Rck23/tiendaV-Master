@@ -1,361 +1,282 @@
 <template>
   <div>
-    <Sidebar />
+        <Sidebar />
+        <div class="main-content">
 
-    <div class="main-content">
-      <TopNav />
+            <TopNav />
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-12 col-lg-10 col-xl-8">
-            <!-- Header -->
-            <div class="header mt-md-5">
-              <div class="header-body">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <!-- Pretitle -->
-                    <h6 class="header-pretitle">Categorias</h6>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8">
 
-                    <!-- Title -->
-                    <h1 class="header-title">Categorias</h1>
-                  </div>
-                </div>
-              </div>
+                        <!-- Header -->
+                        <div class="header mt-md-5">
+                            <div class="header-body">
+                                <div class="row align-items-center">
+                                <div class="col">
+
+                                    <!-- Pretitle -->
+                                    <h6 class="header-pretitle">
+                                    Categorias
+                                    </h6>
+
+                                    <!-- Title -->
+                                    <h1 class="header-title">
+                                        <b>Categorias</b>
+                                    </h1>
+
+                                </div>
+                                </div> <!-- / .row -->
+                              
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <button v-if="!section_form" class="btn btn-dark btn-sm" v-on:click="section_form = true;">Nueva categoria</button>
+                                <button v-if="section_form" class="btn btn-dark btn-sm" v-on:click="section_form = false;">Ocultar</button>
+                            </div>
+                            <div class="col-12 mt-3" v-if="section_form">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Nueva categoria" v-model="nueva_categoria">
+                                    <button class="btn btn-dark" v-on:click="crear_categoria()">Crear categoría</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush list my-n3">
+                                    <li class="list-group-item" v-for="item in categorias">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+
+                                                <!-- Avatar -->
+                                                <a href="profile-posts.html" class="avatar">
+                                                            <img src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                                                        </a>
+
+                                            </div>
+                                            <div class="col ms-n2">
+
+                                                <!-- Title -->
+                                                <h4 class="mb-1 name">
+                                                    <a href="profile-posts.html">{{item.categoria.titulo}}
+                                                        ({{item.nproductos}} Productos)
+                                                    </a>
+                                                </h4>
+
+                                                <!-- Time -->
+                                                <p class="small mb-0" v-if="item.categoria.estado">
+                                                    <span class="text-success">●</span> Publicado
+                                                </p>
+
+                                                <p class="small mb-0" v-if="!item.categoria.estado">
+                                                    <span class="text-danger">●</span> Oculto
+                                                </p>
+
+                                            </div>
+                                            <div class="col-auto">
+
+                                                <!-- Button -->
+                                                <a href="#!" class="btn btn-sm btn-danger text-white" style="margin-right: 1rem;">
+                                                    Quitar
+                                                </a>
+                                                <button v-on:click="openInputGroup(item.categoria._id)" class="btn btn-sm btn-dark text-white">
+                                                    Subcategoria
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group mt-4 hide_input content_group" :id="'content_'+item.categoria._id">
+                                            <input type="text" class="form-control" placeholder="Nueva categoria" v-model="nueva_subcategoria">
+                                            <button class="btn btn-dark" v-on:click="crear_subcategoria()">Crear subcategoría</button>
+                                        </div>
+
+                                        <!-- / .row -->
+                                        <div class="row mb-3">
+                                            <div class="col-12">
+                                                <ul class="list-group mt-3">
+                                                    
+                                                    <li v-for="subitem in item.subcategorias" class="list-group-item d-flex justify-content-between align-items-center" style="font-size: .8rem;padding: 0.5rem 1.5rem;">
+                                                        {{subitem.titulo}}
+                                                        <a style="cursor:pointer"  v-b-modal="'delete-'+subitem._id" class="btn btn-sm btn-danger text-white">
+                                                            Quitar
+                                                        </a>
+                                                     
+
+                                                        <b-modal centered :id="'delete-'+subitem._id"
+                              title-html="<h4 class='card-header-title'><b>Eliminar definitivamente</b></h4>"
+                              @ok="eliminar_subcategoria(subitem._id)">
+                              <p class="my-4">¿Quieres eliminar la subcategoria <b>{{subitem.titulo}}</b>?</p>
+                              <template #modal-footer="{ ok, cancel }">
+                      
+                                <!-- Emulate built in modal footer ok and cancel button actions -->
+                                <b-button  variant="outline-danger" @click="cancel()">
+                                  Cancelar
+                                </b-button>
+                                <b-button  variant="outline-success" @click="ok()">
+                                  Eliminar
+                                </b-button>
+                        
+                              </template>
+                            </b-modal>
+                                                    </li>
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div> <!-- / .row -->
             </div>
+            
 
-            <div class="row mb-3">
-              <div class="col-12">
-                <button v-if="!seccion_form" class="btn btn-dark btn-sm" v-on:click="seccion_form = true;">Nueva categoria</button>
-                <button v-if="seccion_form" class="btn btn-dark btn-sm" v-on:click="seccion_form = false;">Ocultar</button>
-              </div>
-
-              <div class="col-12 mt-3" v-if="seccion_form">
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Recipient's username"
-                    v-model="nueva_categoria"
-                  />
-                  <button
-                    class="btn btn-dark"
-                    type="button"
-                   v-on:click="crear_categoria()"
-                  >
-                    Crear
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <ul class="list-group list-group-flush list my-n3">
-                  <li class="list-group-item">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="profile-posts.html" class="avatar">
-                          <img
-                            src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-5.jpg"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                        </a>
-                      </div>
-                      <div class="col ms-n2">
-                        <!-- Title -->
-                        <h4 class="mb-1 name">
-                          <a href="profile-posts.html">Miyah Myles</a>
-                        </h4>
-
-                        <!-- Time -->
-                        <p class="small mb-0">
-                          <span class="text-success">●</span> Online
-                        </p>
-                      </div>
-                      <div class="col-auto">
-                        <!-- Button -->
-                        <a
-                          href="#!"
-                          class="btn btn-sm btn-danger text-white"
-                          style="margin-right: 0.5rem"
-                        >
-                          Quitar
-                        </a>
-                        <a href="#!" style="margin-right: 0.5rem" class="btn btn-sm btn-dark text-white">
-                          Subcategoria
-                        </a>
-                        <a href="#!" class="btn btn-sm btn-secondary text-white">
-                          Desactivar/Activar
-                        </a>
-
-                      </div>
-                    </div>
-                    <!-- / .row -->
-                    <div class="row mb-3">
-                      <div class="col-12">
-                        <ul class="list-group mt-4">
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="profile-posts.html" class="avatar">
-                          <img
-                            src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-5.jpg"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                        </a>
-                      </div>
-                      <div class="col ms-n2">
-                        <!-- Title -->
-                        <h4 class="mb-1 name">
-                          <a href="profile-posts.html">Ryu Duke</a>
-                        </h4>
-
-                        <!-- Time -->
-                        <p class="small mb-0">
-                          <span class="text-success">●</span> Online
-                        </p>
-                      </div>
-                      <div class="col-auto">
-                        <a
-                          href="#!"
-                          class="btn btn-sm btn-danger text-white"
-                          style="margin-right: 1rem"
-                        >
-                          Quitar
-                        </a>
-                        <a href="#!" class="btn btn-sm btn-dark text-white">
-                          Subcategoria
-                        </a>
-                      </div>
-                    </div>
-                    <!-- / .row -->
-                    <div class="row mb-3">
-                      <div class="col-12">
-                        <ul class="list-group mt-4">
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="profile-posts.html" class="avatar">
-                          <img
-                            src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-5.jpg"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                        </a>
-                      </div>
-                      <div class="col ms-n2">
-                        <!-- Title -->
-                        <h4 class="mb-1 name">
-                          <a href="profile-posts.html">Glen Rouse</a>
-                        </h4>
-
-                        <!-- Time -->
-                        <p class="small mb-0">
-                          <span class="text-warning">●</span> Busy
-                        </p>
-                      </div>
-                      <div class="col-auto">
-                        <a
-                          href="#!"
-                          class="btn btn-sm btn-danger text-white"
-                          style="margin-right: 1rem"
-                        >
-                          Quitar
-                        </a>
-                        <a href="#!" class="btn btn-sm btn-dark text-white">
-                          Subcategoria
-                        </a>
-                      </div>
-                    </div>
-                    <!-- / .row -->
-                    <div class="row mb-3">
-                      <div class="col-12">
-                        <ul class="list-group mt-4">
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                          <li
-                            class="list-group-item d-flex justify-content-between align-items-center"
-                            style="font-size: 0.8rem; padding: 0.5rem 1.5rem"
-                          >
-                            Morbi leo risus
-                            <a
-                              href="#!"
-                              class="btn btn-sm btn-danger text-white"
-                            >
-                              Quitar
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-        <!-- / .row -->
-      </div>
+        
     </div>
-  </div>
 </template>
 
+<style>
+.hide_input{
+    display: none;
+}
+.show_input{
+    display: block;
+}
+</style>
+
 <script>
-import Sidebar from "@/components/Sidebar.vue";
-import TopNav from "@/components/TopNav.vue";
+// @ is an alias to /src
+
+import Sidebar from '@/components/Sidebar.vue';
+import TopNav from '@/components/TopNav.vue';
 import axios from 'axios';
+import $ from 'jquery';
 
 export default {
-  name: "IndexCategoriaApp",
+  name: 'IndexCategoriaApp',
   data() {
     return {
-        seccion_form: false, 
-        nueva_categoria: '', 
+        section_form: false,
+        nueva_categoria: '',
+        nueva_subcategoria: '',
+        idcategoria: '',
+        categorias: []
     }
   },
-
   methods: {
     crear_categoria(){
-      console.log(this.nueva_categoria);
-      axios.post(this.$urlAPI + "/crear_categoria_admin",{titulo: this.nueva_categoria}, {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": this.$store.state.token,
-          },
-        }).then((resultado) => {
+        console.log(this.nueva_categoria);
+        axios.post(this.$urlAPI+'/crear_categoria_admin',{titulo: this.nueva_categoria},{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': this.$store.state.token,
+            }
+        }).then((result)=>{
+            if(result.data.message){
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: result.data.message,
+                    type: 'error'
+                });
+            }else{
+                this.nueva_categoria = '';
+                this.$notify({
+                    group: 'foo',
+                    title: 'SUCCESS',
+                    text: 'Se registró la categoria.',
+                    type: 'success'
+                });
+            }
+      
+        });
+    },
+    init_data(){
+        axios.get(this.$urlAPI+'/listar_categorias_admin',{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': this.$store.state.token,
+            }
+        }).then((result)=>{
+            console.log(result);
+            this.categorias = result.data;
+        });
+    },
+    openInputGroup(id){
+        setTimeout(() => {
+            this.idcategoria = id;
+            this.nueva_subcategoria = '';
+            $('.content_group').addClass('hide_input');
+            $('#content_'+id).removeClass('hide_input'); 
+        }, 50);
+    },
+    crear_subcategoria(){
+        axios.post(this.$urlAPI+'/crear_subcategoria_admin',
+        {
+            titulo: this.nueva_subcategoria,
+            categoria: this.idcategoria
+        }
+        ,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': this.$store.state.token,
+            }
+        }).then((result)=>{
+            if(result.data.message){
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: result.data.message,
+                    type: 'error'
+                });
+            }else{
+                this.nueva_subcategoria = '';
+                this.$notify({
+                    group: 'foo',
+                    title: 'SUCCESS',
+                    text: 'Se registró la subcategoria.',
+                    type: 'success'
+                });
+                this.init_data();
+            }
+      
+        });
+    },
+    eliminar_subcategoria(id){
+         axios.delete(this.$urlAPI+'/eliminar_subcategoria_admin/'+id,{
+            headers:{
+            'Content-Type': 'application/json',
+            'Authorization': this.$token
+            }
+        }).then((result )=>{
+            this.init_data();
+            this.$notify({
+                group: 'foo',
+                title: 'SUCCESS',
+                text: 'Se eliminó la subcategoria',
+                type: 'success'
+            });
 
-          if (resultado.data.message) {
-            this.$notify({
-              group: "foo",
-              title: "ERROR",
-              text: resultado.data.message,
-              type: "error",
-            });
-          }else{
-            this.nueva_categoria = ''; 
-            this.$notify({
-              group: "foo",
-              title: "EXITO",
-              text: "Categoria creada correctamente",
-              type: "success",
-            });
-          }
-          
-        }).catch((err) => {
-          
-        });;   
-        
+        });
     }
+  },
+  beforeMount() {
+    this.init_data();
   },
   components: {
     Sidebar,
-    TopNav,
-  },
-};
+    TopNav
+  }
+}
 </script>
