@@ -322,8 +322,8 @@ export default {
           type: "success",
         });
       }).catch((error) => {
-
-      });;
+        console.log(error);
+      });
     }
   },
   components: {

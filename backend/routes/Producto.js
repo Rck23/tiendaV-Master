@@ -158,6 +158,13 @@ api.delete(
 );
 
 
+api.put(
+  "/cambiar_estado_producto_admin/:id",
+  authenticate.decodeToken,
+  productoController.cambiar_estado_producto_admin
+);
+
+
 
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;
