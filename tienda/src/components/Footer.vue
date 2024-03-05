@@ -5,28 +5,26 @@
          <div class="text-dark-700 py-6">
           <div class="container">
             <div class="row">
-              <div class="col-lg-4 service-column">
-                <!-- <svg class="svg-icon service-icon">
-                  <use xlink:href="#delivery-time-1"> </use>
-                </svg> -->
+              <div class="col-lg-4 service-column" data-aos="fade-right">
+                
                 <img class="svg-icon service-icon" src="/assets/media/camion.gif" alt="">
                 <div class="service-text">
                   <h6 class="text-uppercase">Envios gratis</h6>
                   <p class="text-muted fw-light text-sm mb-0">Envios gratis desde $900</p>
                 </div>
               </div>
-              <div class="col-lg-4 service-column">
+              <div class="col-lg-4 service-column" data-aos="fade-up">
                 <img class="svg-icon service-icon" src="/assets/media/euro.gif" alt="">
                 <div class="service-text">
                   <h6 class="text-uppercase">Dinero seguro</h6>
                               <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro</p>
                 </div>
               </div>
-              <div class="col-lg-4 service-column">
+              <div class="col-lg-4 service-column" data-aos="fade-left">
                 <img class="svg-icon service-icon" src="/assets/media/tailandes.gif" alt="">
                 <div class="service-text">
                   <h6 class="text-uppercase">449-123-45-47</h6>
-                              <p class="mb-0 text-muted text-sm">24/7 disponibles</p>
+                              <p class="mb-0 text-muted text-sm">9:30am - 5:00pm disponibles</p>
                 </div>
               </div>
             </div>
@@ -37,7 +35,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="fw-bold text-uppercase text-lg text-white mb-3">Sell<span style="color:white">.</span></div>
+                <div class="fw-bold text-uppercase text-lg text-white mb-3">Ecommerce<span style="color:white">.</span></div>
                 <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                 <ul class="list-inline">
                   <li class="list-inline-item">
@@ -60,10 +58,18 @@
               <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
                 <h6 class="text-uppercase text-white mb-3">Categorías</h6>
                 <ul class="list-unstyled">
-                  <li> <a class="text-white" href="#">Mujeres</a></li>
-                  <li> <a class="text-white" href="#">Hombres</a></li>
-                  <li> <a class="text-white" href="#">Blog</a></li>
-                  <li> <a class="text-white" href="#">Tienda</a></li>
+                  <li> <a class="text-white" href="#">Semanal</a></li>
+                  <li> <a class="text-white" href="#">Mensual</a></li>
+                  <li> <a class="text-white" href="#">Kids</a></li>
+                  <li> <a class="text-white" href="#">Hábitos</a></li>
+                  <li> <a class="text-white" href="#">Work out</a></li>
+                  <li> <a class="text-white" href="#">Viajes</a></li>
+                  <li> <a class="text-white" href="#">Horarios</a></li>
+                  <li> <a class="text-white" href="#">Viveres</a></li>
+                  <li> <a class="text-white" href="#">Kanban</a></li>
+                  <li> <a class="text-white" href="#">Metas</a></li>
+                  <li> <a class="text-white" href="#">Gastos</a></li>
+                
                 </ul>
               </div>
               <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">

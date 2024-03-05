@@ -1,22 +1,14 @@
 <template>
     <div>
-        <section class="hero" style="margin-top: 12rem;">
-            <div class="container">
-       
-              <!-- Hero Content-->
-              <div class="hero-content pb-5 text-center">
-                <h1 class="hero-heading mb-0">Zona cliente</h1>
-              </div>
-            </div>
-          </section>
+
           <!-- customer login-->
-          <section>
+          <section style="margin-top: 12rem;">
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-5">
                   <div class="block">
                     <div class="block-header">
-                      <h6 class="text-uppercase mb-0">Iniciar sesión</h6>
+                      <h6 class="text-uppercase mb-0">INICIAR SESIÓN</h6>
                     </div>
                     <div class="block-body">
                     
@@ -29,7 +21,7 @@
                         </div>
                         <div class="mb-4">
                           <label class="form-label" for="password1">Contraseña</label>
-                          <input class="form-control" id="password1" type="password" placeholder="Contraseña" v-model="password">
+                          <input  class="form-control " id="password1" type="password" placeholder="Contraseña" v-model="password">
                         </div>
 
                         <div class="mb-4" v-if="msm_error_login">
@@ -37,7 +29,7 @@
                         </div>
 
                         <div class="mb-4 text-center">
-                          <button class="btn btn-outline-dark" type="button" v-on:click="login()"><i class="fa fa-sign-in-alt me-2"></i>Ingresar</button>
+                          <button class="btn btn-outline-primary rounded-pill" type="button" v-on:click="login()">INICIAR SESIÓN</button>
                         </div>
                       </form>
                     </div>
@@ -46,11 +38,11 @@
                 <div class="col-lg-5">
                   <div class="block">
                     <div class="block-header">
-                      <h6 class="text-uppercase mb-0">Nueva cuenta</h6>
+                      <h6 class="text-uppercase mb-0">CREAR UNA NUEVA CUENTA</h6>
                     </div>
                     <div class="block-body"> 
                     
-                      <p class="text-muted">Inicia por crear una cuenta y compra ya nuestros productos</p>
+                      <p class="text-muted">Crea una cuenta y compra ya nuestros productos</p>
                   
                       <form action="customer-orders.html" method="get">
                         <div class="mb-4">
@@ -72,7 +64,7 @@
                     
 
                         <div class="mb-4 text-center">
-                          <button class="btn btn-outline-dark" type="button" v-on:click="validar_registro()"><i class="far fa-user me-2"></i>Registrar</button>
+                          <button class="btn btn-outline-primary rounded" type="button" v-on:click="validar_registro()">REGISTRARME</button>
                         </div>
                       </form>
                     </div>

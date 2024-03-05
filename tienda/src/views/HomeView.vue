@@ -2,8 +2,9 @@
   <div class="home">
     <!-- Split-screen Homepage-->
     <section>
+      <SwiperIndex/>
       <div class="container-fluid">
-        <div class="row">
+        <!-- <div class="row">
           <div
             class="col-lg-6 dark-overlay split-screen-column align-items-center align-items-lg-end"
             style="
@@ -56,14 +57,14 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <section class="pt-6 pb-5">
       <div class="container">
         <div class="row">
-          <div class="col-xl-8 mx-auto text-center mb-5">
+          <div class="col-xl-8 mx-auto text-center mb-5" data-aos="fade-down">
             <h2 class="text-uppercase">Nuevos productos</h2>
             <p class="lead text-muted">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -75,12 +76,13 @@
           <!-- product-->
           <div class="col-lg-3 col-md-4 col-6" v-for="item in nuevos_productos">
             <div class="product">
-              <div class="product-image">
+              <div class="product-image" >
                 <div class="ribbon ribbon-danger" v-if="item.descuento">
                   Oferta
                 </div>
                 <img
                   class="img-fluid"
+                  data-aos="zoom-in"
                   :src="$urlAPI + '/obtener_portada_producto/' + item.portada"
                   alt="producto"
                 />
@@ -89,7 +91,7 @@
                   <a class="product-hover-overlay-link" href="detail.html"></a>
                 </div>
               </div>
-              <div class="py-2">
+              <div class="py-2" data-aos="fade-right">
                 <p class="text-muted text-sm mb-1">{{ item.categoria }}</p>
                 <h3 class="h6 text-uppercase mb-1">
                   <a class="text-dark" href="detail.html">{{ item.titulo }}</a>
@@ -107,7 +109,7 @@
     <section class="py-6 bg-gray-100">
       <div class="container">
         <div class="row">
-          <div class="col-xl-8 mx-auto text-center mb-5">
+          <div class="col-xl-8 mx-auto text-center mb-5" data-aos="fade-down">
             <h2>Colecciones</h2>
             <p class="lead text-muted">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -116,47 +118,61 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 d-flex align-items-md-stretch mb-4 mb-md-0">
-            <div
-              class="d-flex align-items-center text-white dark-overlay w-100 text-center py-6 py-md-0"
-              style="
-                background: center center
-                  url(https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/nordwood-themes-481980-unsplash-square.jpg)
-                  no-repeat;
-                background-size: cover;
-              "
-            >
-              <a class="tile-link" href="category.html"> </a>
-              <div class="card-img-overlay w-100 overlay-content">
-                <h2 class="display-2 fw-bold text-uppercase mb-0">Hombres</h2>
-              </div>
-            </div>
-          </div>
           <div class="col-md-6">
-            <div class="card border-0 text-white text-center mb-4 dark-overlay">
+            <div class="card border-0 text-white text-center mb-4 dark-overlay" data-aos="zoom-in">
               <img
                 class="card-img"
-                src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/malvestida-magazine-458585-unsplash.jpg"
+                src="https://parade.com/.image/t_share/MTkwNTgxMjkxNjkzNzc4ODEy/125-things-to-do-with-kids-during-coronavirus-pandemic-jpg.jpg"
                 alt="Ladies"
               /><a class="tile-link" href="category.html"> </a>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
-                    Mujeres
+                    Niños
                   </h2>
                 </div>
               </div>
             </div>
-            <div class="card border-0 text-white text-center dark-overlay">
+            <div class="card border-0 text-white text-center dark-overlay" data-aos="zoom-in">
               <img
                 class="card-img"
-                src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/heather-schwartz-528936-unsplash.jpg"
+                src="https://www.esan.edu.pe/images/blog/2019/11/11/1500x844-kanban.jpg" 
                 alt="Accessories"
               /><a class="tile-link" href="category.html"> </a>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
-                    Accesorios
+                    Kanban
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-0 text-white text-center mb-4 dark-overlay" data-aos="zoom-in">
+              <img
+                class="card-img"
+                src="https://gourmetdemexico.com.mx/wp-content/uploads/2023/12/tendencias-viajes-2024-2-1024x683.jpg"
+                alt="Ladies"
+              /><a class="tile-link" href="category.html"> </a>
+              <div class="card-img-overlay d-flex align-items-center">
+                <div class="text-center w-100 overlay-content">
+                  <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
+                    Viajes
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card border-0 text-white text-center dark-overlay" data-aos="zoom-in">
+              <img
+                class="card-img"
+                src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/libreta.jpg.webp?itok=yW1RE9-1" 
+                alt="Accessories"
+              /><a class="tile-link" href="category.html"> </a>
+              <div class="card-img-overlay d-flex align-items-center">
+                <div class="text-center w-100 overlay-content">
+                  <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
+                    Metas
                   </h2>
                 </div>
               </div>
@@ -166,91 +182,73 @@
       </div>
     </section>
 
-    <section class="pt-6 pb-5">
+    <section class="pt-3 pb-5">
       <div class="container">
         <div class="row">
-          <div class="col-xl-8 mx-auto text-center mb-5">
-            <h2 class="text-uppercase">Productos recomendados</h2>
-            <p class="lead text-muted">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
+   
 
           <div class="container-fluid bg-gray-100">
-            <div class="row">
-              <div class="col-lg-6 about-text-column">
-                <div class="about-text">
+            <div class="row" data-aos="fade-left">
+              <div class="col-lg-6 about-text-column" >
+                <div class="about-text" >
                   <h6 class="text-uppercase text-muted letter-spacing-5 mb-1">
-                    Humble beginnings
+                    Dia con dia 
                   </h6>
-                  <h2 class="mb-4">We started as little</h2>
+                  <h2 class="mb-4">Planifica</h2>
                   <p class="text-lg text-muted">
-                    The bedding was hardly able to cover it and seemed ready to
-                    slide off any moment. His many legs, pitifully thin compared
-                    with the size of the rest of him, waved about helplessly as
-                    he looked. "What's happened to me?" he thought. It wasn't a
-                    dream.
+                    bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                   </p>
                 </div>
               </div>
               <div class="col-lg-6 p-lg-0 about-image-column">
                 <img
                   class="bg-image"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/ian-dooley-347942-unsplash.jpg"
+                 
+                  src="https://suprabrokers.com/wp-content/uploads/2021/02/Fotos-planifica.png"
                   alt=""
                 />
               </div>
             </div>
-            <div class="row">
+            <div class="row" data-aos="fade-right">
               <div class="col-lg-6 about-text-column order-lg-2">
                 <div class="about-text">
                   <h6 class="text-uppercase text-muted letter-spacing-5 mb-1">
-                    Sell today
+                    Hoy
                   </h6>
-                  <h2 class="mb-4">And then we grew a bit</h2>
+                  <h2 class="mb-4">Toma el control</h2>
                   <p class="text-lg text-muted">
-                    The bedding was hardly able to cover it and seemed ready to
-                    slide off any moment. His many legs, pitifully thin compared
-                    with the size of the rest of him, waved about helplessly as
-                    he looked. "What's happened to me?" he thought. It wasn't a
-                    dream.
+                    bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                   </p>
                 </div>
               </div>
               <div class="col-lg-6 p-lg-0 about-image-column order-lg-1">
                 <img
                   class="bg-image"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/ian-dooley-347962-unsplash.jpg"
+                  src="https://s1.ppllstatics.com/elcomercio/www/multimedia/2023/10/24/material-oficina-de-calidad-k31E-U2105188288171d-1200x840@El%20Comercio.jpg"
                   alt=""
                 />
               </div>
             </div>
-            <div class="row">
+            <div class="row" data-aos="fade-left">
               <div class="col-lg-6 about-text-column bg-gray-100">
                 <div class="p-5">
                   <blockquote class="mb-5">
                     <p class="text-xl text-serif mb-4">
-                      Samsa was a travelling salesman - and above it there hung
-                      a picture that he had recently cut out of an illustrated
-                      magazine and housed in a nice, gilded frame.
+                      Cumple tus metas y todo lo que te propongas.
                     </p>
-                    <h6 class="text-lg text-uppercase text-primary">
+                    <!-- <h6 class="text-lg text-uppercase text-primary">
                       — Franz Kafka, Founder
-                    </h6>
+                    </h6> -->
                   </blockquote>
                   <p class="text-lg text-muted">
-                    He must have tried it a hundred times, shut his eyes so that
-                    he wouldn't have to look at the floundering legs, and only
-                    stopped when he began to feel a mild, dull pain there that
-                    he had never felt before.
+                    bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                   </p>
                 </div>
               </div>
               <div class="col-lg-6 p-lg-0 about-image-column">
                 <img
                   class="bg-image"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/photo/marco-xu-496929-unsplash.jpg"
+                  src="https://tempusquality.es/wp-content/uploads/2023/07/planificacion-cumplimiento-objetivos.jpg"
                   alt=""
                 />
               </div>
@@ -278,11 +276,17 @@
 <script>
 import axios from "axios";
 import currency_formatter from "currency-formatter";
+import SwiperIndex from '../components/SwiperIndex.vue';
 import { init_carrusel } from "../../public/assets/js/theme.d7b4a888";
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    SwiperIndex
+  },
 
   data() {
     return {
@@ -341,6 +345,13 @@ export default {
     this.init_nuevo_producto();
     this.init_productos_recomendados();
     init_carrusel.init();
+  },
+  
+  mounted() {
+    AOS.init({
+     duration: 1500, // Duración de la animación en milisegundos
+    });
+    
   },
 };
 </script>
