@@ -278,7 +278,7 @@
               </div>
             </div>
           </div>
-          <div class="sidebar-block px-3 px-lg-0 me-lg-4">
+          <!-- <div class="sidebar-block px-3 px-lg-0 me-lg-4">
             <a
               class="d-lg-none block-toggler"
               data-bs-toggle="collapse"
@@ -287,7 +287,7 @@
               aria-controls="brandFilterMenu"
               >Filter by brand</a
             >
-            <!-- Brand filter menu - this menu has .show class, so is expanded by default-->
+            
             <div class="expand-lg collapse show" id="brandFilterMenu">
               <h6 class="sidebar-heading d-none d-lg-block">Brands</h6>
               <form class="mt-4 mt-lg-0" action="#">
@@ -360,7 +360,7 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div> -->
           <div class="sidebar-block px-3 px-lg-0 me-lg-4">
             <a
               class="d-lg-none block-toggler"
@@ -368,11 +368,11 @@
               href="#sizeFilterMenu"
               aria-expanded="false"
               aria-controls="sizeFilterMenu"
-              >Filter by size</a
+              >Filtro por Tamaño</a
             >
             <!-- Size filter menu-->
             <div class="expand-lg collapse" id="sizeFilterMenu">
-              <h6 class="sidebar-heading d-none d-lg-block">Size</h6>
+              <h6 class="sidebar-heading d-none d-lg-block">Tamaño</h6>
               <form class="mt-4 mt-lg-0" action="#">
                 <div class="mb-1">
                   <div class="form-check">
@@ -383,7 +383,7 @@
                       name="size"
                       checked
                     />
-                    <label class="form-check-label" for="size0">Small</label>
+                    <label class="form-check-label" for="size0">Carta</label>
                   </div>
                 </div>
                 <div class="mb-1">
@@ -394,7 +394,7 @@
                       type="radio"
                       name="size"
                     />
-                    <label class="form-check-label" for="size1">Medium</label>
+                    <label class="form-check-label" for="size1">Tabloide</label>
                   </div>
                 </div>
                 <div class="mb-1">
@@ -405,7 +405,7 @@
                       type="radio"
                       name="size"
                     />
-                    <label class="form-check-label" for="size2">Large</label>
+                    <label class="form-check-label" for="size2">Poster</label>
                   </div>
                 </div>
                 <div class="mb-1">
@@ -429,11 +429,11 @@
               href="#colourFilterMenu"
               aria-expanded="false"
               aria-controls="colourFilterMenu"
-              >Filter by colour</a
+              >Filtro por color</a
             >
             <!-- Size filter menu-->
             <div class="expand-lg collapse" id="colourFilterMenu">
-              <h6 class="sidebar-heading d-none d-lg-block">Colour</h6>
+              <h6 class="sidebar-heading d-none d-lg-block">Color</h6>
               <div class="mt-4 mt-lg-0">
                 <ul class="list-inline mb-0 colours-wrapper">
                   <li class="list-inline-item">
