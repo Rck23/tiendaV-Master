@@ -114,7 +114,7 @@ const obtener_producto_admin = async function (req, res) {
 
     try {
       // Buscar el producto por su ID
-      let producto = await Producto.findById({ _id: id });
+      let producto = await Producto.findById({ _id: id }).sort({createAt:-1});
 
       // Enviar la información del producto
       res.status(200).send(producto);

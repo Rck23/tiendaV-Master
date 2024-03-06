@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <Sidebar />
@@ -28,16 +26,16 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
-
-                        <router-link to="/producto" class="nav-link ">
-                          Todos los productos</router-link>
+                        <router-link to="/producto" class="nav-link">
+                          Todos los productos</router-link
+                        >
                       </li>
                       <li class="nav-item">
-
-                        <router-link to="/producto/create" class="nav-link ">
-                          Nuevo producto</router-link>
+                        <router-link to="/producto/create" class="nav-link">
+                          Nuevo producto</router-link
+                        >
                       </li>
-                      <li class="nav-item ">
+                      <li class="nav-item">
                         <a class="nav-link active">Editar producto </a>
                       </li>
                     </ul>
@@ -53,7 +51,11 @@
                     <div class="col-auto">
                       <!-- Avatar -->
                       <div class="avatar">
-                        <img class="avatar-img rounded" :src="str_imagen" alt="Imagen portada" />
+                        <img
+                          class="avatar-img rounded"
+                          :src="str_imagen"
+                          alt="Imagen portada"
+                        />
                       </div>
                     </div>
                     <div class="col ms-n2">
@@ -76,7 +78,12 @@
                   <label for="file-upload" class="btn btn-sm btn-primary">
                     Subir imagen
                   </label>
-                  <input style="display: none" id="file-upload" type="file" v-on:change="uploadImage($event)" />
+                  <input
+                    style="display: none"
+                    id="file-upload"
+                    type="file"
+                    v-on:change="uploadImage($event)"
+                  />
                 </div>
               </div>
               <!-- / .row -->
@@ -86,15 +93,17 @@
 
               <div class="row">
                 <div class="col-12 col-md-12">
-
                   <div class="form-group">
                     <!-- Label -->
                     <label class="mb-1"> Título del producto </label>
 
-
-
                     <!-- Input -->
-                    <input type="text" v-model="producto.titulo" class="form-control" placeholder="Título del producto" />
+                    <input
+                      type="text"
+                      v-model="producto.titulo"
+                      class="form-control"
+                      placeholder="Título del producto"
+                    />
                   </div>
                 </div>
 
@@ -105,10 +114,19 @@
                     <label class=""> Categoria </label>
 
                     <!-- Input -->
-                    <select name="" class="form-select" v-model="producto.categoria" v-on:change="ObtenerSubcategorias($event)">
+                    <select
+                      name=""
+                      class="form-select"
+                      v-model="producto.categoria"
+                      v-on:change="ObtenerSubcategorias($event)"
+                    >
                       <option value="" disabled selected>Seleccionar</option>
-                      <option :value="item.categoria.titulo" v-for="item in categorias">{{item.categoria.titulo}}</option>
-                      
+                      <option
+                        :value="item.categoria.titulo"
+                        v-for="item in categorias"
+                      >
+                        {{ item.categoria.titulo }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -120,10 +138,18 @@
                     <label class=""> Subcategoria </label>
 
                     <!-- Input -->
-                    <select name="" class="form-select" v-model="producto.subcategoria">
+                    <select
+                      name=""
+                      class="form-select"
+                      v-model="producto.subcategoria"
+                    >
                       <option value="" disabled selected>Seleccionar</option>
-                      <option :value="item.titulo" v-for="item in subcategorias">{{item.titulo}}</option>
-                      
+                      <option
+                        :value="item.titulo"
+                        v-for="item in subcategorias"
+                      >
+                        {{ item.titulo }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -135,7 +161,12 @@
                     <label class="form-label"> Variedad </label>
 
                     <!-- Input -->
-                    <input type="text" class="form-control" placeholder="Variedades..." v-model="producto.str_variedad" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Variedades..."
+                      v-model="producto.str_variedad"
+                    />
                   </div>
                 </div>
 
@@ -146,7 +177,12 @@
                     <label class="form-label"> Precio </label>
 
                     <!-- Input -->
-                    <input type="number" class="form-control" placeholder="Precio"  readonly />
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Precio"
+                      readonly
+                    />
                   </div>
                 </div>
 
@@ -157,8 +193,13 @@
                     <label class="form-label"> Descripción </label>
 
                     <!-- Input -->
-                    <textarea class="form-control" id="" rows="3" placeholder="Descripción del producto..."
-                      v-model="producto.extracto"></textarea>
+                    <textarea
+                      class="form-control"
+                      id=""
+                      rows="3"
+                      placeholder="Descripción del producto..."
+                      v-model="producto.extracto"
+                    ></textarea>
                   </div>
                 </div>
               </div>
@@ -173,21 +214,32 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      Si esta activado el producto aparece en la página principal el ecommerce, caso contrario no aparece
-                      entre los productos.
+                      Si esta activado el producto aparece en la página
+                      principal el ecommerce, caso contrario no aparece entre
+                      los productos.
                     </small>
 
                     <div class="row">
                       <div class="col-auto">
                         <!-- Switch -->
                         <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" id="switchOne" v-model="producto.estado" />
-                          <label class="form-check-label" for="switchOne"></label>
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="switchOne"
+                            v-model="producto.estado"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="switchOne"
+                          ></label>
                         </div>
                       </div>
                       <div class="col ms-n2">
                         <!-- Help text -->
-                        <small class="text-muted"> No disponible o Disponible </small>
+                        <small class="text-muted">
+                          No disponible o Disponible
+                        </small>
                       </div>
                     </div>
                     <!-- / .row -->
@@ -201,15 +253,24 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      Si esta activado el producto aparece en la sección de descuentos.
+                      Si esta activado el producto aparece en la sección de
+                      descuentos.
                     </small>
 
                     <div class="row">
                       <div class="col-auto">
                         <!-- Switch -->
                         <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" id="switchTwo" v-model="producto.descuento" />
-                          <label class="form-check-label" for="switchTwo"></label>
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="switchTwo"
+                            v-model="producto.descuento"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="switchTwo"
+                          ></label>
                         </div>
                       </div>
                       <div class="col ms-n2">
@@ -232,56 +293,57 @@
               <!-- Divider -->
               <hr class="mt-4 mb-5" />
 
-
               <div class="row justify-content-between align-items-center mb-5">
                 <div class="col-12">
-
                   <!-- Heading -->
-                  <h2 class="mb-2">
-                    Variedades de producto
-                  </h2>
+                  <h2 class="mb-2">Variedades de producto</h2>
 
                   <!-- Text -->
                   <p class="text-muted mb-xl-0">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolore aspernatur, beatae id quod
-                    consequuntur.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsa dolore aspernatur, beatae id quod consequuntur.
                   </p>
                 </div>
-
               </div>
 
               <div class="row mb-5">
                 <div class="col-lg-5">
-                  <small class="text-muted">
-                    Proveedor
-                  </small>
-                  <input type="text" class="form-control" placeholder="Empresa proveedora" v-model="variedad.proveedor">
+                  <small class="text-muted"> Proveedor </small>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Empresa proveedora"
+                    v-model="variedad.proveedor"
+                  />
                 </div>
                 <div class="col-lg-5">
-                  <small class="text-muted">
-                    Variedad
-                  </small>
-                  <input type="text" class="form-control" placeholder="Tallas, colores..." v-model="variedad.variedad">
+                  <small class="text-muted"> Variedad </small>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tallas, colores..."
+                    v-model="variedad.variedad"
+                  />
                 </div>
                 <div class="col">
-                  <small class="text-muted">
-                    Acción*
-                  </small> <br>
-                  <button class="btn btn-primary btn-block" style="width: 100% !important;"
-                    v-on:click="validar_variedad()">Agregar</button>
+                  <small class="text-muted"> Acción* </small> <br />
+                  <button
+                    class="btn btn-primary btn-block"
+                    style="width: 100% !important"
+                    v-on:click="validar_variedad()"
+                  >
+                    Agregar
+                  </button>
                 </div>
               </div>
 
               <div class="card">
                 <div class="card-body">
-
                   <!-- List group -->
                   <div class="list-group list-group-flush my-n3">
-
                     <div class="list-group-item" v-for="item in variedades">
                       <div class="row align-i tems-center">
                         <div class="col">
-
                           <!-- Heading -->
                           <h4 class="mb-1">
                             {{ item.variedad.toUpperCase() }}
@@ -291,7 +353,6 @@
                           <small class="text-muted">
                             <b>SKU:</b> {{ item.sku.toUpperCase() }}
                           </small>
-
                         </div>
                         <div class="col">
                           <!-- Heading -->
@@ -300,44 +361,57 @@
                           </h4>
 
                           <!-- Text -->
-                          <small class="text-muted">
-                            Unidades
-                          </small>
+                          <small class="text-muted"> Unidades </small>
                         </div>
                         <div class="col-auto">
-
                           <!-- Button -->
-                          <button v-if="item.stock == 0" class="btn btn-sm btn-danger" v-b-modal="'delete-' + item._id" type="button">
+                          <button
+                            v-if="item.stock == 0"
+                            class="btn btn-sm btn-danger"
+                            v-b-modal="'delete-' + item._id"
+                            type="button"
+                          >
                             Eliminar
                           </button>
 
-                          <button v-if="item.stock >= 1" disabled class="btn btn-sm btn-danger" type="button">
+                          <button
+                            v-if="item.stock >= 1"
+                            disabled
+                            class="btn btn-sm btn-danger"
+                            type="button"
+                          >
                             Eliminar
                           </button>
 
-                          <b-modal centered :id="'delete-' + item._id"
-                          title-html="<h4 class='card-header-title'><b>Borrar variedad</b></h4>"
-                          @ok="eliminar(item._id)">
-                          <p class="my-4">¿Estas seguro de borrar <b>{{ item.variedad.toUpperCase() }}</b>  de las variedades?</p>
-                          <template #modal-footer="{ ok, cancel }">
-                      
-                            <!-- Emulate built in modal footer ok and cancel button actions -->
-                            <b-button  variant="outline-danger" @click="cancel()">
-                              Cancelar
-                            </b-button>
-                            <b-button  variant="outline-success" @click="ok()">
-                              Eliminar
-                            </b-button>
-                    
-                          </template>
-                        </b-modal>
-
+                          <b-modal
+                            centered
+                            :id="'delete-' + item._id"
+                            title-html="<h4 class='card-header-title'><b>Borrar variedad</b></h4>"
+                            @ok="eliminar(item._id)"
+                          >
+                            <p class="my-4">
+                              ¿Estas seguro de borrar
+                              <b>{{ item.variedad.toUpperCase() }}</b> de las
+                              variedades?
+                            </p>
+                            <template #modal-footer="{ ok, cancel }">
+                              <!-- Emulate built in modal footer ok and cancel button actions -->
+                              <b-button
+                                variant="outline-danger"
+                                @click="cancel()"
+                              >
+                                Cancelar
+                              </b-button>
+                              <b-button variant="outline-success" @click="ok()">
+                                Eliminar
+                              </b-button>
+                            </template>
+                          </b-modal>
                         </div>
-                      </div> <!-- / .row -->
+                      </div>
+                      <!-- / .row -->
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -348,7 +422,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 // Importamos los componentes Sidebar y TopNav, así como axios para realizar solicitudes HTTP
@@ -371,16 +444,14 @@ export default {
         estado: false, // <--- Estado del producto (activo o inactivo)
         descuento: false, // <--- Indica si el producto tiene descuento
         portada: undefined, // <--- Imagen de portada del producto
-        
       },
-      
-      subcategorias:[],
+
+      subcategorias: [],
       portada: undefined, // <--- Variable para almacenar la imagen de portada seleccionada
       variedad: {},
-      sku: '',
+      sku: "",
       variedades: [],
-      categorias:[],
-      
+      categorias: [],
     };
   },
   methods: {
@@ -388,12 +459,15 @@ export default {
     init_data() {
       // Realizamos una solicitud GET al endpoint de obtención de datos del producto
       axios
-        .get(this.$urlAPI + "/obtener_producto_admin/" + this.$route.params.id, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: this.$store.state.token,
-          },
-        })
+        .get(
+          this.$urlAPI + "/obtener_producto_admin/" + this.$route.params.id,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: this.$store.state.token,
+            },
+          }
+        )
         .then((result) => {
           // Actualizamos los datos del producto con los obtenidos
           if (result.data == "") {
@@ -401,9 +475,11 @@ export default {
           } else {
             this.data = true;
             this.producto = result.data;
-            this.str_imagen = this.$urlAPI + '/obtener_portada_producto/' + this.producto.portada;
+            this.str_imagen =
+              this.$urlAPI +
+              "/obtener_portada_producto/" +
+              this.producto.portada;
           }
-
         })
         .catch((error) => {
           // Manejamos cualquier error que ocurra durante la solicitud
@@ -450,7 +526,6 @@ export default {
     },
     // Método para validar los campos del formulario antes de enviar la solicitud de actualizar
     validar() {
-
       if (!this.producto.titulo) {
         this.$notify({
           group: "foo",
@@ -465,7 +540,7 @@ export default {
           text: "La categoria es obligatoria",
           type: "error",
         });
-      }  else if (!this.producto.subcategoria) {
+      } else if (!this.producto.subcategoria) {
         this.$notify({
           group: "foo",
           title: "ERROR",
@@ -500,56 +575,59 @@ export default {
     // Método para realizar el actualizar del producto
     actualizar() {
       var data;
-      var content = '';
+      var content = "";
       if (this.portada != undefined) {
-        content = 'multipart/form-data';
+        content = "multipart/form-data";
         data = new FormData();
-        data.append('titulo', this.producto.titulo);
-        data.append('categoria', this.producto.categoria);
-        data.append('subcategoria', this.producto.subcategoria);
-        data.append('extracto', this.producto.extracto);
-        data.append('estado', this.producto.estado);
-        data.append('str_variedad', this.producto.str_variedad);
-        data.append('descuento', this.producto.descuento);
-        data.append('portada', this.producto.portada); //IMAGEN
+        data.append("titulo", this.producto.titulo);
+        data.append("categoria", this.producto.categoria);
+        data.append("subcategoria", this.producto.subcategoria);
+        data.append("extracto", this.producto.extracto);
+        data.append("estado", this.producto.estado);
+        data.append("str_variedad", this.producto.str_variedad);
+        data.append("descuento", this.producto.descuento);
+        data.append("portada", this.producto.portada); //IMAGEN
       } else {
-        content = 'application/json';
+        content = "application/json";
         data = this.producto;
-
       }
 
-      axios.put(this.$urlAPI + '/actualizar_producto_admin/' + this.$route.params.id, data, {
-        headers: {
-          'Content-Type': content,
-          'Authorization': this.$store.state.token
-        },
-      }).then((resultado) => {
-        console.log(resultado);
+      axios
+        .put(
+          this.$urlAPI + "/actualizar_producto_admin/" + this.$route.params.id,
+          data,
+          {
+            headers: {
+              "Content-Type": content,
+              Authorization: this.$store.state.token,
+            },
+          }
+        )
+        .then((resultado) => {
+          console.log(resultado);
 
-        if (resultado.data.message) {
-          this.$notify({
-            group: "foo",
-            title: "ERROR",
-            text: resultado.data.message,
-            type: "error",
-          });
-
-        } else {
-          this.$notify({
-            group: "foo",
-            title: "Exito!",
-            text: 'Producto actualizado',
-            type: "success",
-          });
-        }
-
-      }).catch((error) => {
-        console.log(error);
-      });
+          if (resultado.data.message) {
+            this.$notify({
+              group: "foo",
+              title: "ERROR",
+              text: resultado.data.message,
+              type: "error",
+            });
+          } else {
+            this.$notify({
+              group: "foo",
+              title: "Exito!",
+              text: "Producto actualizado",
+              type: "success",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
     validar_variedad() {
-
       if (!this.variedad.proveedor) {
         this.$notify({
           group: "foo",
@@ -570,73 +648,86 @@ export default {
 
         this.registro_variedad();
       }
-
     },
 
     registro_variedad() {
-      axios.post(this.$urlAPI + '/registro_variedad_producto', this.variedad, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': this.$store.state.token
-        }
-      }).then((result) => {
-        this.variedad = {};
-        this.$notify({
-          group: 'foo',
-          title: 'SUCCESS',
-          text: 'Se agrego la nueva variedad.',
-          type: 'success'
+      axios
+        .post(this.$urlAPI + "/registro_variedad_producto", this.variedad, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: this.$store.state.token,
+          },
+        })
+        .then((result) => {
+          this.variedad = {};
+          this.$notify({
+            group: "foo",
+            title: "SUCCESS",
+            text: "Se agrego la nueva variedad.",
+            type: "success",
+          });
+          this.init_variedades();
         });
-        this.init_variedades();
-      });
     },
 
     generar_sku() {
-      let sku = this.producto.titulo.substr(0, 3) + '' + this.producto.str_variedad.substr(0, 3) + '' + this.variedad.variedad.substr(0, 3) + '' + this.variedad.proveedor.substr(0, 3);
+      let sku =
+        this.producto.titulo.substr(0, 3) +
+        "" +
+        this.producto.str_variedad.substr(0, 3) +
+        "" +
+        this.variedad.variedad.substr(0, 3) +
+        "" +
+        this.variedad.proveedor.substr(0, 3);
       return sku.toUpperCase();
       //XIACOLROJREA  <-- ejemplo
     },
 
     init_variedades() {
-      axios.get(this.$urlAPI + '/obtener_variedades_producto/' + this.$route.params.id, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': this.$store.state.token
-        }
-      }).then((result) => {
-        this.variedades = result.data;
-
-      });
+      axios
+        .get(
+          this.$urlAPI +
+            "/obtener_variedades_producto/" +
+            this.$route.params.id,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: this.$store.state.token,
+            },
+          }
+        )
+        .then((result) => {
+          this.variedades = result.data;
+        });
     },
 
-    eliminar(id){
-      axios.delete(this.$urlAPI + '/eliminar_variedad_producto/'+id, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': this.$store.state.token
-        }
-      }).then((resultado) => {
-       
-        if (resultado.data.message) {
-          this.$notify({
-              group: 'foo',
-              title: 'ERROR',
+    eliminar(id) {
+      axios
+        .delete(this.$urlAPI + "/eliminar_variedad_producto/" + id, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: this.$store.state.token,
+          },
+        })
+        .then((resultado) => {
+          if (resultado.data.message) {
+            this.$notify({
+              group: "foo",
+              title: "ERROR",
               text: result.data.message,
-              type: 'error'
-          });
-        }else{
+              type: "error",
+            });
+          } else {
+            this.$notify({
+              group: "foo",
+              title: "SUCCESS",
+              text: "Se elimino la variedad.",
+              type: "success",
+            });
 
-          this.$notify({
-                group: 'foo',
-                title: 'SUCCESS',
-                text: 'Se elimino la variedad.',
-                type: 'success'
-            }); 
-  
             this.init_variedades();
-        }
-      });
-
+          }
+        });
     },
 
     init_categorias() {
@@ -648,23 +739,24 @@ export default {
           },
         })
         .then((result) => {
-          
           this.categorias = result.data;
-        //  this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == this.producto.categoria)[0].subcategorias; 
-          
-        for (var item in this.categorias) {
-  if (this.categorias[item].categoria && this.categorias[item].categoria.titulo == this.producto.categoria) {
-    this.subcategorias = this.categorias[item].subcategorias;
-  }
-}
+          //  this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == this.producto.categoria)[0].subcategorias;
 
+          for (var item in this.categorias) {
+            if (
+              this.categorias[item].categoria &&
+              this.categorias[item].categoria.titulo == this.producto.categoria
+            ) {
+              this.subcategorias = this.categorias[item].subcategorias;
+            }
+          }
         });
     },
 
-    ObtenerSubcategorias(event){
-      //this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == event.target.value)[0].subcategorias; 
+    ObtenerSubcategorias(event) {
+      //this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == event.target.value)[0].subcategorias;
 
-      for(var item in this.categorias){
+      for (var item in this.categorias) {
         if (item.categoria.titulo == event.target.value) {
           this.subcategorias = item.subcategorias;
         }
@@ -672,14 +764,11 @@ export default {
     },
   },
 
-
-
   beforeMount() {
     // Assuming init_data is defined elsewhere in your component
     this.init_data();
     this.init_variedades();
     this.init_categorias();
   },
-}
+};
 </script>
-  
