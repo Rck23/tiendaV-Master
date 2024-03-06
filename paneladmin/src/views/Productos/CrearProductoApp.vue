@@ -98,9 +98,9 @@
                     <label class=""> Categoria </label>
 
                     <!-- Input -->
-                    <select name="" class="form-select" v-model="producto.categoria">
+                    <select name="" class="form-select" v-model="producto.categoria" v-on:change="ObtenerSubCategorias($event)">
                       <option value="" disabled selected>Seleccionar</option>
-                      <option :value="item" v-for="item in $categorias">{{item}}</option>
+                      <option :value="item.categoria.titulo" v-for="item in categorias">{{item.categoria.titulo}}</option>
                       
                     </select>
                   </div>
@@ -115,7 +115,7 @@
                     <!-- Input -->
                     <select name="" class="form-select" v-model="producto.subcategoria">
                       <option value="" disabled selected>Seleccionar</option>
-                       <option :value="item" v-for="item in subcategoria">{{item}}</option>
+                       <option :value="item.titulo" v-for="item in subcategorias">{{item.titulo}}</option>
                       
                     </select>
                   </div>
@@ -257,8 +257,9 @@ export default {
         portada: undefined, // <--- Imagen de portada del producto
         subcategoria:"",
       },
+      categorias: [],
       portada: undefined, // <--- Variable para almacenar la imagen de portada seleccionada
-      subcategoria: ['Hombres', 'Mujeres', 'Accesorios'], // <--- Subcategoría del producto
+      subcategorias: [], // <--- Subcategoría del producto
     };
   },
   methods: {
@@ -392,7 +393,30 @@ export default {
         console.log(error);
 
       });;
-    }
+    },
+
+    init_categorias() {
+      axios
+        .get(this.$urlAPI + "/listar_categorias_admin", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: this.$store.state.token,
+          },
+        })
+        .then((result) => {
+          
+          this.categorias = result.data;
+        });
+    },
+
+    ObtenerSubCategorias(event){
+      this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == event.target.value)[0].subcategorias; 
+
+    },
+  },
+
+  beforeMount() {
+    this.init_categorias();
   },
 };
 </script>

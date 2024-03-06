@@ -105,10 +105,10 @@
                     <label class=""> Categoria </label>
 
                     <!-- Input -->
-                    <select name="" class="form-select" v-model="producto.categoria">
+                    <select name="" class="form-select" v-model="producto.categoria" v-on:change="ObtenerSubcategorias($event)">
                       <option value="" disabled selected>Seleccionar</option>
-                      <option :value="item" v-for="item in $categorias">{{item}}</option>
-
+                      <option :value="item.categoria.titulo" v-for="item in categorias">{{item.categoria.titulo}}</option>
+                      
                     </select>
                   </div>
                 </div>
@@ -117,13 +117,13 @@
                   <!-- First name -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class=""> Subategoria </label>
+                    <label class=""> Subcategoria </label>
 
                     <!-- Input -->
                     <select name="" class="form-select" v-model="producto.subcategoria">
                       <option value="" disabled selected>Seleccionar</option>
-                      <option :value="item" v-for="item in subcategoria">{{item}}</option>
-
+                      <option :value="item.titulo" v-for="item in subcategorias">{{item.titulo}}</option>
+                      
                     </select>
                   </div>
                 </div>
@@ -371,13 +371,16 @@ export default {
         estado: false, // <--- Estado del producto (activo o inactivo)
         descuento: false, // <--- Indica si el producto tiene descuento
         portada: undefined, // <--- Imagen de portada del producto
-        subcategoria:''
+        
       },
+      
+      subcategorias:[],
       portada: undefined, // <--- Variable para almacenar la imagen de portada seleccionada
       variedad: {},
       sku: '',
       variedades: [],
-      subcategoria: ['Hombres', 'Mujeres', 'Accesorios'], // <--- Subcategoría del producto
+      categorias:[],
+      
     };
   },
   methods: {
@@ -634,7 +637,39 @@ export default {
         }
       });
 
-    }
+    },
+
+    init_categorias() {
+      axios
+        .get(this.$urlAPI + "/listar_categorias_admin", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: this.$store.state.token,
+          },
+        })
+        .then((result) => {
+          
+          this.categorias = result.data;
+        //  this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == this.producto.categoria)[0].subcategorias; 
+          
+        for (var item in this.categorias) {
+  if (this.categorias[item].categoria && this.categorias[item].categoria.titulo == this.producto.categoria) {
+    this.subcategorias = this.categorias[item].subcategorias;
+  }
+}
+
+        });
+    },
+
+    ObtenerSubcategorias(event){
+      //this.subcategorias = this.categorias.filter(item=>item.categoria.titulo == event.target.value)[0].subcategorias; 
+
+      for(var item in this.categorias){
+        if (item.categoria.titulo == event.target.value) {
+          this.subcategorias = item.subcategorias;
+        }
+      }
+    },
   },
 
 
@@ -643,6 +678,7 @@ export default {
     // Assuming init_data is defined elsewhere in your component
     this.init_data();
     this.init_variedades();
+    this.init_categorias();
   },
 }
 </script>
