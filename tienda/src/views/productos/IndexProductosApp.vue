@@ -243,10 +243,10 @@
               href="#priceFilterMenu"
               aria-expanded="false"
               aria-controls="priceFilterMenu"
-              >Filter by price</a
+              >Precio</a
             >
             <div class="expand-lg collapse" id="priceFilterMenu">
-              <h6 class="sidebar-heading d-none d-lg-block">Price</h6>
+              <h6 class="sidebar-heading d-none d-lg-block">Precio</h6>
               <div class="mt-4 mt-lg-0" id="slider-snap" ref="slider"></div>
               <div class="nouislider-values">
                 <div class="min">
@@ -368,7 +368,7 @@
               href="#sizeFilterMenu"
               aria-expanded="false"
               aria-controls="sizeFilterMenu"
-              >Filtro por Tamaño</a
+              >Tamaño</a
             >
             <!-- Size filter menu-->
             <div class="expand-lg collapse" id="sizeFilterMenu">
@@ -382,6 +382,8 @@
                       type="radio"
                       name="size"
                       checked
+                      value="Carta"
+                      v-on:change="selectedTamaño($event)"
                     />
                     <label class="form-check-label" for="size0">Carta</label>
                   </div>
@@ -393,6 +395,8 @@
                       id="size1"
                       type="radio"
                       name="size"
+                      value="Tabloide"
+                      v-on:change="selectedTamaño($event)"
                     />
                     <label class="form-check-label" for="size1">Tabloide</label>
                   </div>
@@ -404,21 +408,13 @@
                       id="size2"
                       type="radio"
                       name="size"
+                      value="Poster"
+                      v-on:change="selectedTamaño($event)"
                     />
                     <label class="form-check-label" for="size2">Poster</label>
                   </div>
                 </div>
-                <div class="mb-1">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      id="size3"
-                      type="radio"
-                      name="size"
-                    />
-                    <label class="form-check-label" for="size3">X-Large</label>
-                  </div>
-                </div>
+               
               </form>
             </div>
           </div>
@@ -429,75 +425,79 @@
               href="#colourFilterMenu"
               aria-expanded="false"
               aria-controls="colourFilterMenu"
-              >Filtro por color</a
+              >Colores</a
             >
             <!-- Size filter menu-->
             <div class="expand-lg collapse" id="colourFilterMenu">
-              <h6 class="sidebar-heading d-none d-lg-block">Color</h6>
+              <h6 class="sidebar-heading d-none d-lg-block">Colores</h6>
               <div class="mt-4 mt-lg-0">
                 <ul class="list-inline mb-0 colours-wrapper">
                   <li class="list-inline-item">
                     <label
                       class="btn-colour"
-                      for="colour_sidebar_Blue"
-                      style="background-color: #668cb9"
-                      data-allow-multiple
+                      for="Negro"
+                      style="background-color: #000"
+                      v-on:click="selectedColor('Negro')"
+                      
                     >
                     </label>
                     <input
                       class="input-invisible"
                       type="checkbox"
                       name="colour"
-                      value="value_sidebar_Blue"
-                      id="colour_sidebar_Blue"
+                      value="Negro"
+                      id="Negro"
                     />
                   </li>
                   <li class="list-inline-item">
                     <label
                       class="btn-colour"
-                      for="colour_sidebar_White"
+                      for="Blanco"
                       style="background-color: #fff"
-                      data-allow-multiple
+                      v-on:click="selectedColor('Blanco')"
+                      
                     >
                     </label>
                     <input
                       class="input-invisible"
                       type="checkbox"
                       name="colour"
-                      value="value_sidebar_White"
-                      id="colour_sidebar_White"
+                      value="Blanco"
+                      id="Blanco"
                     />
                   </li>
                   <li class="list-inline-item">
                     <label
                       class="btn-colour"
-                      for="colour_sidebar_Violet"
-                      style="background-color: #8b6ea4"
-                      data-allow-multiple
+                      for="Rojo"
+                      style="background-color: #FF0000"
+                      v-on:click="selectedColor('Rojo')"
+                      
                     >
                     </label>
                     <input
                       class="input-invisible"
                       type="checkbox"
                       name="colour"
-                      value="value_sidebar_Violet"
-                      id="colour_sidebar_Violet"
+                      value="Rojo"
+                      id="Rojo"
                     />
                   </li>
                   <li class="list-inline-item">
                     <label
                       class="btn-colour"
-                      for="colour_sidebar_Red"
-                      style="background-color: #dd6265"
-                      data-allow-multiple
+                      for="Verde"
+                      style="background-color: #008000"
+                      v-on:click="selectedColor('Verde')"
+                      
                     >
                     </label>
                     <input
                       class="input-invisible"
                       type="checkbox"
                       name="colour"
-                      value="value_sidebar_Red"
-                      id="colour_sidebar_Red"
+                      value="Verde"
+                      id="Verde"
                     />
                   </li>
                 </ul>
@@ -651,6 +651,14 @@ export default {
         (item) => item.categoria == this.$route.query.categoria
       );
     },
+
+    selectedColor(value){
+      this.productos = this.productos_const.filter(item=> item.variedades.some(subitem=>subitem.variedad == value));
+    },
+
+    selectedTamaño(event){
+      this.productos = this.productos_const.filter(item=> item.variedades.some(subitem=>subitem.variedad == event.target.value));
+    }
   },
   
   watch: {
