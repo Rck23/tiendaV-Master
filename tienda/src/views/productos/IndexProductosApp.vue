@@ -65,30 +65,31 @@
               </select>
             </div>
           </header>
-          <div class="row" id="my-table">
+          <div class="row" id="my-table" >
             <!-- product-->
-            <div class="col-xl-4 col-6" v-for="item in itemsForList">
-              <div class="product">
+            <div class="col-lg-3 col-md-4 col-6"  v-for="item in ListaProductos">
+              <div class="product" >
                 <div class="product-image">
                   <div class="ribbon ribbon-danger" v-if="item.descuento">
                     Oferta
                   </div>
                   <img
                     class="img-fluid"
+                   
                     :src="$urlAPI + '/obtener_portada_producto/' + item.portada"
-                    alt="product"
+                    alt="producto"
                   />
+
+                  <div class="product-hover-overlay">
+                    <a
+                      class="product-hover-overlay-link"
+                      href="detail.html"
+                    ></a>
+                  </div>
                 </div>
-                <div class="py-2">
+                <div class="py-2" >
                   <p class="text-muted text-sm mb-1">{{ item.categoria }}</p>
-                  <h3
-                    class="h6 text-uppercase mb-1"
-                    style="
-                      text-overflow: ellipsis;
-                      overflow: hidden;
-                      white-space: nowrap;
-                    "
-                  >
+                  <h3 class="h6 text-uppercase mb-1">
                     <a class="text-dark" href="detail.html">{{
                       item.titulo
                     }}</a>
@@ -134,13 +135,15 @@
                           class="sidebar-menu-item mb-2 active"
                           data-bs-toggle="collapse"
                           :data-bs-target="'#subcategories_' + index"
-                      aria-expanded="true"
-                      :aria-controls="'subcategories_' + index"
+                          aria-expanded="true"
+                          :aria-controls="'subcategories_' + index"
                           role="menuitem"
                         >
                           <a class="nav-link active" href="#!">
                             <div class="row">
-                              <div class="col"><span>{{ item.categoria.titulo }}</span></div>
+                              <div class="col">
+                                <span>{{ item.categoria.titulo }}</span>
+                              </div>
                               <div
                                 class="col"
                                 style="text-align: right !important"
@@ -154,82 +157,95 @@
                             </div>
                           </a>
                         </div>
-                        <div class="collapse show" :id="'subcategories_' + index">
+                        <div
+                          class="collapse show"
+                          :id="'subcategories_' + index"
+                        >
                           <div class="nav nav-pills flex-column ms-3">
                             <a
-                          style="cursor: pointer"
-                          class="nav-link mb-2"
-                          v-on:click="redirectCategoria(item.categoria.titulo)"
-                          >Ver todos</a
-                        >
+                              style="cursor: pointer"
+                              class="nav-link mb-2"
+                              v-on:click="
+                                redirectCategoria(item.categoria.titulo)
+                              "
+                              >Ver todos</a
+                            >
 
-                        <a
-                          style="cursor: pointer"
-                          class="nav-link mb-2"
-                          v-bind:class="{'bg_subcat_activa': subitem.titulo == subcategoria_activa}"
-                          v-for="subitem in item.subcategorias"
-                          v-on:click="
-                            redirectSubcategoria(
-                              subitem.titulo,
-                              item.categoria._id
-                            )
-                          "
-                          >{{ subitem.titulo }}</a
-                        >
+                            <a
+                              style="cursor: pointer"
+                              class="nav-link mb-2"
+                              v-bind:class="{
+                                bg_subcat_activa:
+                                  subitem.titulo == subcategoria_activa,
+                              }"
+                              v-for="subitem in item.subcategorias"
+                              v-on:click="
+                                redirectSubcategoria(
+                                  subitem.titulo,
+                                  item.categoria._id
+                                )
+                              "
+                              >{{ subitem.titulo }}</a
+                            >
                           </div>
                         </div>
                       </div>
                     </template>
 
                     <template v-if="item.categoria._id != categoria_activa">
-                        <div>
-                            <div
-                      class="sidebar-menu-item mb-2"
-                      data-bs-toggle="collapse"
-                      :data-bs-target="'#subcategories_' + index"
-                      aria-expanded="false"
-                      :aria-controls="'subcategories_' + index"
-                      role="menuitem"
-                    >
-                      <a class="nav-link" href="#!">
-                        <div class="row">
-                          <div class="col">
-                            <span>{{ item.categoria.titulo }}</span>
-                          </div>
-                          <div class="col" style="text-align: right !important">
-                            <img
-                              src="/assets/media/hacia-abajo-dark.png"
-                              style="width: 10px"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="collapse" :id="'subcategories_' + index">
-                      <div class="nav nav-pills flex-column ms-3">
-                        <a
-                          style="cursor: pointer"
-                          class="nav-link mb-2"
-                          v-on:click="redirectCategoria(item.categoria.titulo)"
-                          >Ver todos</a
+                      <div>
+                        <div
+                          class="sidebar-menu-item mb-2"
+                          data-bs-toggle="collapse"
+                          :data-bs-target="'#subcategories_' + index"
+                          aria-expanded="false"
+                          :aria-controls="'subcategories_' + index"
+                          role="menuitem"
                         >
+                          <a class="nav-link" href="#!">
+                            <div class="row">
+                              <div class="col">
+                                <span>{{ item.categoria.titulo }}</span>
+                              </div>
+                              <div
+                                class="col"
+                                style="text-align: right !important"
+                              >
+                                <img
+                                  src="/assets/media/hacia-abajo-dark.png"
+                                  style="width: 10px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="collapse" :id="'subcategories_' + index">
+                          <div class="nav nav-pills flex-column ms-3">
+                            <a
+                              style="cursor: pointer"
+                              class="nav-link mb-2"
+                              v-on:click="
+                                redirectCategoria(item.categoria.titulo)
+                              "
+                              >Ver todos</a
+                            >
 
-                        <a
-                          style="cursor: pointer"
-                          class="nav-link mb-2"
-                          v-for="subitem in item.subcategorias"
-                          v-on:click="
-                            redirectSubcategoria(
-                              subitem.titulo,
-                              item.categoria._id
-                            )
-                          "
-                          >{{ subitem.titulo }}</a
-                        >
-                      </div>
-                    </div>
+                            <a
+                              style="cursor: pointer"
+                              class="nav-link mb-2"
+                              v-for="subitem in item.subcategorias"
+                              v-on:click="
+                                redirectSubcategoria(
+                                  subitem.titulo,
+                                  item.categoria._id
+                                )
+                              "
+                              >{{ subitem.titulo }}</a
+                            >
+                          </div>
                         </div>
+                      </div>
                     </template>
                   </div>
                 </template>
@@ -361,7 +377,7 @@
               </form>
             </div>
           </div> -->
-          <div class="sidebar-block px-3 px-lg-0 me-lg-4">
+          <!-- <div class="sidebar-block px-3 px-lg-0 me-lg-4">
             <a
               class="d-lg-none block-toggler"
               data-bs-toggle="collapse"
@@ -370,7 +386,7 @@
               aria-controls="sizeFilterMenu"
               >Tamaño</a
             >
-            <!-- Size filter menu-->
+            
             <div class="expand-lg collapse" id="sizeFilterMenu">
               <h6 class="sidebar-heading d-none d-lg-block">Tamaño</h6>
               <form class="mt-4 mt-lg-0" action="#">
@@ -414,7 +430,6 @@
                     <label class="form-check-label" for="size2">Poster</label>
                   </div>
                 </div>
-               
               </form>
             </div>
           </div>
@@ -427,7 +442,7 @@
               aria-controls="colourFilterMenu"
               >Colores</a
             >
-            <!-- Size filter menu-->
+          
             <div class="expand-lg collapse" id="colourFilterMenu">
               <h6 class="sidebar-heading d-none d-lg-block">Colores</h6>
               <div class="mt-4 mt-lg-0">
@@ -438,7 +453,6 @@
                       for="Negro"
                       style="background-color: #000"
                       v-on:click="selectedColor('Negro')"
-                      
                     >
                     </label>
                     <input
@@ -455,7 +469,6 @@
                       for="Blanco"
                       style="background-color: #fff"
                       v-on:click="selectedColor('Blanco')"
-                      
                     >
                     </label>
                     <input
@@ -470,9 +483,8 @@
                     <label
                       class="btn-colour"
                       for="Rojo"
-                      style="background-color: #FF0000"
+                      style="background-color: #ff0000"
                       v-on:click="selectedColor('Rojo')"
-                      
                     >
                     </label>
                     <input
@@ -489,7 +501,6 @@
                       for="Verde"
                       style="background-color: #008000"
                       v-on:click="selectedColor('Verde')"
-                      
                     >
                     </label>
                     <input
@@ -503,7 +514,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- /Sidebar end-->
       </div>
@@ -539,10 +550,11 @@ export default {
       subcategoria_activa: "",
       currentPage: 1,
       perPage: 12,
-      get itemsForList() {
+      get ListaProductos() {
         return this.productos.slice(
           (this.currentPage - 1) * this.perPage,
           this.currentPage * this.perPage
+          
         );
       },
       sort_by: "Defecto",
@@ -620,10 +632,14 @@ export default {
         .then((result) => {
           this.categorias = result.data;
           if (this.$route.query.subcategoria) {
-          this.categoria_activa = this.categorias.filter(item=>item.subcategorias.some(subcat => subcat.titulo == this.$route.query.subcategoria))[0].categoria._id;
+            this.categoria_activa = this.categorias.filter((item) =>
+              item.subcategorias.some(
+                (subcat) => subcat.titulo == this.$route.query.subcategoria
+              )
+            )[0].categoria._id;
 
-          this.subcategoria_activa = this.$route.query.subcategoria; 
-        }
+            this.subcategoria_activa = this.$route.query.subcategoria;
+          }
         });
     },
 
@@ -652,39 +668,46 @@ export default {
       );
     },
 
-    selectedColor(value){
-      this.productos = this.productos_const.filter(item=> item.variedades.some(subitem=>subitem.variedad == value));
+    selectedColor(value) {
+      this.productos = this.productos_const.filter((item) =>
+        item.variedades.some((subitem) => subitem.variedad == value)
+      );
     },
 
-    selectedTamaño(event){
-      this.productos = this.productos_const.filter(item=> item.variedades.some(subitem=>subitem.variedad == event.target.value));
-    }
+    selectedTamaño(event) {
+      this.productos = this.productos_const.filter((item) =>
+        item.variedades.some(
+          (subitem) => subitem.variedad == event.target.value
+        )
+      );
+    },
   },
-  
+
   watch: {
-    $route(to, from){
-        
-        if (!this.$route.query.subcategoria && !this.$route.query.categoria) {
-          this.productos = this.productos_const;
-        }
+    $route(to, from) {
+      if (!this.$route.query.subcategoria && !this.$route.query.categoria) {
+        this.productos = this.productos_const;
+      }
     },
 
-    minRange: function(value){
-
-        this.productos = this.productos_const.filter(item => item.precio >= value);
+    minRange: function (value) {
+      this.productos = this.productos_const.filter(
+        (item) => item.precio >= value
+      );
     },
 
-    maxRange: function(value){
-        this.productos = this.productos_const.filter(item => item.precio <= value);
-    }
+    maxRange: function (value) {
+      this.productos = this.productos_const.filter(
+        (item) => item.precio <= value
+      );
+    },
   },
 };
 </script>
 
 <style>
-
-.bg_subcat_activa{
-    background: #e5e5e5;
+.bg_subcat_activa {
+  background: #005f96;
 }
 
 .noUi-horizontal .noUi-handle {
