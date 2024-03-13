@@ -68,7 +68,9 @@
           <div class="row" id="my-table" >
             <!-- product-->
             <div class="col-lg-3 col-md-4 col-6"  v-for="item in ListaProductos">
-              <div class="product" >
+                <router-link :to="{name: 'show-producto', params:{slug: item.slug}}">
+
+                  <div class="product" >
                 <div class="product-image">
                   <div class="ribbon ribbon-danger" v-if="item.descuento">
                     Oferta
@@ -99,6 +101,7 @@
                   }}</span>
                 </div>
               </div>
+                </router-link>
             </div>
             <!-- /product-->
           </div>

@@ -12,5 +12,8 @@ api.get("/obtener_productos_shop", publicController.obtener_productos_shop);
 api.get("/listar_categorias_publico", publicController.listar_categorias_publico);
 
 
+api.get("/obtener_producto_slug/:slug", publicController.obtener_producto_slug);
+
+
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;
