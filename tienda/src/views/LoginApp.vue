@@ -92,6 +92,11 @@ export default {
       }
     },
 
+    beforeMount() {
+      if (this.$store.state.token) {
+        this.$route.push({name: 'home'});
+      }
+    },
     methods: {
       validar_registro(){
 
@@ -150,7 +155,8 @@ export default {
         }else{
           // Si hay un token, lo guardamos en el store de Vuex y redirigimos ala pagina inicial
           this.$store.dispatch('saveToken', resultado.data.token);
-          this.$router.push({name: 'home'})
+          this.$store.dispatch('saveUsuario', JSON.stringify(resultado.data.cliente));
+          this.$router.push({name: 'home'}) 
 
         }
 

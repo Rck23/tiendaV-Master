@@ -73,7 +73,7 @@
                 <del>$90.00</del>
               </li>
             </ul>
-            <div class="d-flex align-items-center">
+            <!-- <div class="d-flex align-items-center">
               <ul class="list-inline me-2 mb-0">
                 <li class="list-inline-item me-0">
                   <img src="/assets/icons/estrella.png" style="width:15px" alt="">
@@ -83,7 +83,7 @@
                 <li class="list-inline-item me-0"><img src="/assets/icons/estrella.png" style="width:15px" alt=""></li>
                 <li class="list-inline-item me-0"><img src="/assets/icons/estrella.png" style="width:15px" alt=""></li>
               </ul><span class="text-muted text-uppercase text-sm">25 reviews</span>
-            </div>
+            </div> -->
           </div>
           <p class="mb-4 text-muted">{{producto.extracto}}</p>
           <form action="#">
@@ -124,7 +124,7 @@
             </div>
             <ul class="list-inline">
               <li class="list-inline-item">
-                <button class="btn btn-dark btn-lg mb-1" type="submit">Agregar al carrito</button>
+                <button class="btn btn-dark btn-lg mb-1 " type="submit">Agregar al carrito</button>
               </li>
               <!-- <li class="list-inline-item"><a class="btn btn-outline-secondary mb-1" href="#"> <i class="far fa-heart me-2"></i>Add to wishlist</a></li> -->
             </ul>
@@ -138,7 +138,6 @@
       <ul class="nav nav-tabs flex-column flex-sm-row" role="tablist">
 
         <li class="nav-item"><a class="nav-link detail-nav-link active" data-bs-toggle="tab" href="#additional-information" role="tab">Información adicional</a></li>
-        <li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#reviews" role="tab">Reviews</a></li>
       </ul>
       <div class="tab-content py-4">
       
@@ -185,7 +184,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="reviews" role="tabpanel">
+        <!-- <div class="tab-pane" id="reviews" role="tabpanel">
           <div class="row mb-5">
             <div class="col-lg-10 col-xl-9">
               <div class="review d-flex">
@@ -260,34 +259,36 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
   <section class="my-5">
     <div class="container">
       <header class="text-center">
-        <h6 class="text-uppercase mb-5">You might also like</h6>
+        <h6 class="text-uppercase mb-5">Productos que te podrian interesar</h6>
       </header>
       <div class="row">
         <!-- product-->
         <div class="col-lg-2 col-md-4 col-6" v-for="item in productos_relaciones">
-          <div class="product">
-            <div class="product-image">
-              <div class="ribbon ribbon-danger" v-if="item.descuento">Oferta</div>
-              <img class="img-fluid" :src="$urlAPI+'/obtener_portada_producto/'+item.portada" alt="product"/>
-              <div class="product-hover-overlay">
-                <a class="product-hover-overlay-link" href="detail.html"></a>
+          <router-link :to="{name: 'show-producto', params:{slug: item.slug}}">
+            <div class="product">
+              <div class="product-image">
+                <div class="ribbon ribbon-danger" v-if="item.descuento">Oferta</div>
+                <img class="img-fluid" :src="$urlAPI+'/obtener_portada_producto/'+item.portada" alt="product"/>
+                <div class="product-hover-overlay">
+                  <a class="product-hover-overlay-link" href="detail.html"></a>
+                </div>
+              </div>
+              <div class="py-2">
+                <p class="text-muted text-sm mb-1">{{item.categoria}}</p>
+                <h3 class="h6 text-uppercase mb-1" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :title="item.titulo">
+                  <a class="text-dark" href="detail.html">{{item.titulo}}</a>
+                </h3>
+                <span class="text-muted">{{convertCurrency(item.precio)}}</span>
               </div>
             </div>
-            <div class="py-2">
-              <p class="text-muted text-sm mb-1">{{item.categoria}}</p>
-              <h3 class="h6 text-uppercase mb-1" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :title="item.titulo">
-                <a class="text-dark" href="detail.html">{{item.titulo}}</a>
-              </h3>
-              <span class="text-muted">{{convertCurrency(item.precio)}}</span>
-            </div>
-          </div>
+          </router-link>
         </div>
       
       </div>
@@ -302,17 +303,18 @@
   border-color: #fff #fff #343a40 !important;
   background: #005f96 !important;
 }
+
 </style>
 
 <script>
-import { init_carrusel } from '../../../public/assets/js/theme.d7b4a888'; 
+import { init_carrusel } from '../../../public/assets/js/theme.d7b4a888.js'; 
 import currency_formatter from 'currency-formatter';
 import axios from 'axios';
 import moment from 'moment';
 
 
 export default {
-  name: 'MostrarProductoApp',
+  name: 'ShowProductoApp',
   data() {
     return {
       galeria : [],
@@ -348,7 +350,7 @@ export default {
       });
     },
     convertDate(date){
-      return moment(date).format('YYYY-MM-DD');
+      return moment(date).format('DD-MM-YYYY');
     }
   },
   beforeMount() {

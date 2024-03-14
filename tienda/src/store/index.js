@@ -7,6 +7,7 @@ export default new Vuex.Store({
   // Estado global de la aplicación, que incluye el token de autenticación almacenado en localStorage
   state: {
     token: localStorage.getItem("token"), // <--- Obtiene el token del almacenamiento local
+    usuario: localStorage.getItem("usuario_data"), // <--- Obtiene el usuario del almacenamiento local
   },
   // Getters son funciones que se utilizan para acceder al estado de manera reactiva
   getters: {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     setToken(state, token) {
       state.token = token; // <--- Actualiza el token en el estado
     },
+    setUsuario(state, usuario) {
+      state.usuario = usuario; // <--- Actualiza el usuario en el estado
+    },
   },
   // Acciones son funciones que pueden ser asíncronas y que llaman a mutaciones para cambiar el estado
   actions: {
@@ -25,6 +29,10 @@ export default new Vuex.Store({
     saveToken({ commit }, token) {
       commit("setToken", token); // <--- Llama a la mutación para actualizar el token
       localStorage.setItem("token", token); // <--- Guarda el token en el almacenamiento local
+    },
+    saveUsuario({ commit }, usuario) {
+      commit("setUsuario", usuario); // <--- Llama a la mutación para actualizar el token
+      localStorage.setItem("usuario_data", usuario); // <--- Guarda el token en el almacenamiento local
     },
   },
   // Los módulos permiten dividir el store en partes más pequeñas y manejables

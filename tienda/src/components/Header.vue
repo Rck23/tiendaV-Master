@@ -2,23 +2,29 @@
   <header class="header header-absolute">
       <!-- Top Bar-->
       <div class="top-bar">
-        <div class="container-fluid">
-          <div class="row d-flex align-items-center">
-            <div class="col-sm-7 d-none d-sm-block">
-              <ul class="list-inline topbar-text mb-0">
-                <li class="list-inline-item pe-3 me-0">
-                  <img src="/assets/icons/telephone-bl.png" style="width: 16px;">
-                  449-123-45-47
-                </li>
-                <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Envios gratis desde $900</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+ <div class="container-fluid">
+    <div class="row d-flex align-items-center">
+      <div class="col-sm-7 d-none d-sm-block">
+        <ul class="list-inline topbar-text mb-0">
+          <li class="list-inline-item pe-3 me-0">
+            <img src="/assets/icons/telephone-bl.png" style="width: 16px;">
+            449-123-45-47
+          </li>
+          <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Envios gratis desde $900</li>
+        </ul>
       </div>
+      <div class="col-sm-5 d-flex justify-content-end">
+        <a style="cursor: pointer;" v-if="$store.state.token">
+          <span><b>Cerrar sesión</b></span>
+        </a>
+      </div>
+    </div>
+ </div>
+</div>
+
       <!-- Top Bar End-->
       <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-fixed-white navbar-fixed-light" style="background: #005f96 !important;">
+      <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-fixed-white navbar-fixed-dark" style="background: #005f96 !important;">
         <div class="container-fluid">  
           <!-- Navbar Header  -->
           <router-link to="/" class="navbar-brand text-lg text-white fw-bold text-uppercase" >Planify</router-link>
@@ -168,12 +174,16 @@
                     <img src="/assets/icons/search.png" style="width: 25px;" />
                 </div>
                 <!-- User Not Logged - link to login page-->
-                <div class="nav-item">
-                 
-                    
-                    <router-link class="navbar-icon-link" to="/login">
+                <div class="nav-item">   
+                    <router-link class="navbar-icon-link" to="/login" v-if="!$store.state.token">
                       <img src="/assets/icons/user.png" style="width: 25px;" />
                       <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Inicio de sesión </span>
+
+                    </router-link>
+
+                    <router-link class="navbar-icon-link" to="/login" v-if="$store.state.token">
+                      <img src="/assets/icons/user.png" style="width: 25px;" />
+                      <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline">&nbsp; {{ usuario.nombres.split(' ')[0] }} </span>
 
                     </router-link>
                 </div>
@@ -272,5 +282,17 @@
 <script>
 export default {
   name: 'Header',
+
+  data() {
+    return {
+      usuario: JSON.parse(this.$store.state.usuario)
+    }
+  },
 }
 </script>
+
+<style >
+.navbar-light .navbar-nav .navbar-link, .navbar-hover-light:hover .navbar-nav .navbar-link, .navbar-fixed-light.fixed-top .navbar-nav .navbar-link{
+  color: rgb(255, 255, 255);
+}
+</style>

@@ -75,32 +75,35 @@
         <div class="row">
           <!-- product-->
           <div class="col-lg-3 col-md-4 col-6" v-for="item in nuevos_productos">
-            <div class="product">
-              <div class="product-image" >
-                <div class="ribbon ribbon-danger" v-if="item.descuento">
-                  Oferta
+            <router-link :to="{name: 'show-producto', params:{slug: item.slug}}">
+              <div class="product">
+                <div class="product-image" >
+                  <div class="ribbon ribbon-danger" v-if="item.descuento">
+                    Oferta
+                  </div>
+                  <img
+                    class="img-fluid"
+                    data-aos="zoom-in"
+                    :src="$urlAPI + '/obtener_portada_producto/' + item.portada"
+                    alt="producto"
+                  />
+  
+                  <div class="product-hover-overlay">
+                    <a class="product-hover-overlay-link" href="detail.html"></a>
+                  </div>
                 </div>
-                <img
-                  class="img-fluid"
-                  data-aos="zoom-in"
-                  :src="$urlAPI + '/obtener_portada_producto/' + item.portada"
-                  alt="producto"
-                />
-
-                <div class="product-hover-overlay">
-                  <a class="product-hover-overlay-link" href="detail.html"></a>
+                <div class="py-2" data-aos="fade-right">
+                  <p class="text-muted text-sm mb-1">{{ item.categoria }}</p>
+                  <h3 class="h6 text-uppercase mb-1">
+                    <a class="text-dark" href="detail.html">{{ item.titulo }}</a>
+                  </h3>
+                  <span class="text-muted">{{
+                    convertCurrency(item.precio)
+                  }}</span>
                 </div>
               </div>
-              <div class="py-2" data-aos="fade-right">
-                <p class="text-muted text-sm mb-1">{{ item.categoria }}</p>
-                <h3 class="h6 text-uppercase mb-1">
-                  <a class="text-dark" href="detail.html">{{ item.titulo }}</a>
-                </h3>
-                <span class="text-muted">{{
-                  convertCurrency(item.precio)
-                }}</span>
-              </div>
-            </div>
+            
+            </router-link>
           </div>
         </div>
       </div>
@@ -349,7 +352,8 @@ export default {
   
   mounted() {
     AOS.init({
-     duration: 1500, // Duración de la animación en milisegundos
+     duration: 1000, // Duración de la animación en milisegundos
+     once:true
     });
     
   },

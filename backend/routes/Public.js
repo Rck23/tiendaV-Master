@@ -13,6 +13,7 @@ api.get("/listar_categorias_publico", publicController.listar_categorias_publico
 
 
 api.get("/obtener_producto_slug/:slug", publicController.obtener_producto_slug);
+api.get("/obtener_producto_categoria/:categoria", publicController.obtener_producto_categoria);
 
 
 // Exportamos el enrutador para su uso en la aplicación

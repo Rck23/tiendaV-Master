@@ -142,7 +142,7 @@
                           :aria-controls="'subcategories_' + index"
                           role="menuitem"
                         >
-                          <a class="nav-link active" href="#!">
+                          <a class="nav-link active" >
                             <div class="row">
                               <div class="col">
                                 <span>{{ item.categoria.titulo }}</span>
@@ -152,7 +152,7 @@
                                 style="text-align: right !important"
                               >
                                 <img
-                                  src="/assets/media/arrow-down.png"
+                                  src="/assets/media/hacia-abajo.png"
                                   style="width: 10px"
                                   alt=""
                                 />
