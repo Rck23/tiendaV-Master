@@ -647,11 +647,21 @@ export default {
     },
 
     redirectSubcategoria(item, categoria) {
-      this.categoria_activa = categoria;
-      this.subcategoria_activa = item;
-      this.$router.push({ name: "shop", query: { subcategoria: item } });
+      // Obtén la ruta actual
+      const currentRoute = this.$router.currentRoute;
+    // Construye la ruta a la que intentas navegar
+    const targetRoute = {
+      name: 'shop',
+      query: { subcategoria: item }
+    };
 
-      this.initProductosSubcategoria();
+    // Comprueba si la ruta actual es diferente de la ruta objetivo
+    if (currentRoute.name !== targetRoute.name || currentRoute.query.subcategoria !== targetRoute.query.subcategoria) {
+      // Si son diferentes, navega a la ruta objetivo
+      this.$router.push(targetRoute);
+    }
+
+    this.initProductosSubcategoria();
     },
 
     initProductosSubcategoria() {
@@ -661,7 +671,19 @@ export default {
     },
 
     redirectCategoria(item) {
-      this.$router.push({ name: "shop", query: { categoria: item } });
+          // Obtén la ruta actual
+    const currentRoute = this.$router.currentRoute;
+    // Construye la ruta a la que intentas navegar
+    const targetRoute = {
+      name: 'shop',
+      query: { categoria: item }
+    };
+
+    // Comprueba si la ruta actual es diferente de la ruta objetivo
+    if (currentRoute.name !== targetRoute.name || currentRoute.query.categoria !== targetRoute.query.categoria) {
+      // Si son diferentes, navega a la ruta objetivo
+      this.$router.push(targetRoute);
+    }
       this.initProductosCategoria();
     },
 
