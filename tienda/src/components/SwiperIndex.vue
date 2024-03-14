@@ -9,7 +9,7 @@
         background="#ababab"
         img-width="1024"
         img-height="480"
-        style="text-shadow: 1px 1px 2px #333;"
+        style="text-shadow: 1px 1px 2px #333; "
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
@@ -38,6 +38,7 @@
               height="480"
               src="https://picsum.photos/1024/480/?image=55"
               alt="image slot"
+              style="height: 200px;"
             >
           </template>
         </b-carousel-slide>
@@ -73,3 +74,4 @@
       }
     }
   </script>
+

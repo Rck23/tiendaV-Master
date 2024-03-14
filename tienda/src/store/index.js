@@ -34,6 +34,10 @@ export default new Vuex.Store({
       commit("setUsuario", usuario); // <--- Llama a la mutación para actualizar el token
       localStorage.setItem("usuario_data", usuario); // <--- Guarda el token en el almacenamiento local
     },
+    logout({commit}){
+      commit("setToken", null);
+      localStorage.clear();
+    }
   },
   // Los módulos permiten dividir el store en partes más pequeñas y manejables
   modules: {

@@ -1,6 +1,5 @@
 <template>
     <div>
-
           <!-- customer login-->
           <section style="margin-top: 12rem;">
             <div class="container">
@@ -168,6 +167,8 @@ export default {
         
       }
       },
+
+   
 
     },
 }

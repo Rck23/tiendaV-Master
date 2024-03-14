@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="col-sm-5 d-flex justify-content-end">
-        <a style="cursor: pointer;" v-if="$store.state.token">
+        <a style="cursor: pointer;" v-if="$store.state.token" v-on:click="logout()">
           <span><b>Cerrar sesión</b></span>
         </a>
       </div>
@@ -30,8 +30,8 @@
           <router-link to="/" class="navbar-brand text-lg text-white fw-bold text-uppercase" >Planify</router-link>
          
           <a class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                                              <img src="/assets/icons/menu-hamburguesa.png" style="width: 20px;" />
-                                            </a>
+            <img src="/assets/icons/menu-hamburguesa.png" style="width: 20px;" />
+          </a>
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mx-auto">
@@ -52,7 +52,7 @@
                           <!-- Megamenu list-->
                           <h6 class="text-uppercase">Semanal</h6>
                           <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores semanaless</a></li>
+                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores semanales</a></li>
                            </ul>
                           <!-- Megamenu list-->
                           <h6 class="text-uppercase">Mensual</h6>
@@ -287,6 +287,15 @@ export default {
     return {
       usuario: JSON.parse(this.$store.state.usuario)
     }
+  },
+  
+  methods: {
+    logout(){
+        this.$store.dispatch('logout'); 
+        if (this.$route.name !== 'home') {
+      this.$router.push({ name: 'home' });
+    }
+      }
   },
 }
 </script>

@@ -70,7 +70,7 @@
             <ul class="list-inline mb-2 mb-sm-0">
               <li class="list-inline-item h4 fw-light mb-0">{{convertCurrency(producto.precio)}}</li>
               <li class="list-inline-item text-muted fw-light" v-if="producto.descuento"> 
-                <del>$90.00</del>
+                <!-- <del>$90.00</del> -->
               </li>
             </ul>
             <!-- <div class="d-flex align-items-center">
