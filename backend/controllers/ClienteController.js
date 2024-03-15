@@ -4,8 +4,6 @@ var Jwt = require("../helpers/cJwt");
 
 
 const registro_cliente_ecommerce = async function(req, res){
-
-       
         let data = req.body; 
 
         let reg = await Cliente.find({email: data.email});

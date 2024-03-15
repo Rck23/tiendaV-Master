@@ -201,41 +201,24 @@
                         <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                             <div class="navbar-cart-product-wrapper">
                                 <!-- cart item-->
-                                <div class="navbar-cart-product">
+                                  <div class="navbar-cart-product" v-for="item in carrito">
                                     <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..." /></a>
+                                        <a href="detail.html">
+                                          <img class="img-fluid navbar-cart-product-image" :src="$urlAPI+'/obtener_portada_producto/'+item.producto.portada" alt="..." /></a>
                                         <div class="w-100">
                                             <a class="navbar-cart-product-close" href="#">
                                               <img src="/assets/icons/close.png" style="width: 15px;" />
                                             </a>
-                                            <div class="ps-3"><a class="navbar-cart-product-link" href="detail.html">Skull Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
+                                            <div class="ps-3">
+                                              <router-link :to="{name: 'show-producto',params:{slug: item.producto.slug}}" class="navbar-cart-product-link"  style="text-overflow:ellipsis;overflow: hidden;white-space: nowrap;">{{item.producto.titulo}}</router-link>
+                                              <small class="d-block text-muted">{{item.producto.str_variedad}}: {{item.variedad.variedad}} </small>
+                                              <small class="d-block text-muted">Cantidad: {{item.cantidad}} </small>
+                                              <strong class="d-block text-sm">{{convertCurrency(item.producto.precio)}} </strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- cart item-->
-                                <div class="navbar-cart-product">
-                                    <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..." /></a>
-                                        <div class="w-100">
-                                            <a class="navbar-cart-product-close" href="#">
-                                              <img src="/assets/icons/close.png" style="width: 15px;" />
-                                            </a>
-                                            <div class="ps-3"><a class="navbar-cart-product-link" href="detail.html">Transparent Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- cart item-->
-                                <div class="navbar-cart-product">
-                                    <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..." /></a>
-                                        <div class="w-100">
-                                            <a class="navbar-cart-product-close" href="#">
-                                              <img src="/assets/icons/close.png" style="width: 15px;" />
-                                            </a>
-                                            <div class="ps-3"><a class="navbar-cart-product-link" href="detail.html">White Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                                        </div>
-                                    </div>
-                                </div>
+                              
                             </div>
                             <!-- total price-->
                             <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase">$75.00</strong></div>
@@ -280,12 +263,16 @@
 </template>
 
 <script>
+import axios from 'axios';
+import currency_formatter from 'currency-formatter';
+
 export default {
   name: 'Header',
 
   data() {
     return {
-      usuario: JSON.parse(this.$store.state.usuario)
+      usuario: JSON.parse(this.$store.state.usuario),
+      carrito: []
     }
   },
   
@@ -294,8 +281,32 @@ export default {
         this.$store.dispatch('logout'); 
         if (this.$route.name !== 'home') {
       this.$router.push({ name: 'home' });
-    }
       }
+    },
+
+    init_carrito(){
+        axios.get(this.$urlAPI + '/obtener_carrito_cliente',{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': this.$store.state.token,
+          }
+        }).then((result) => {
+          this.carrito = result.data;
+          console.log(result);
+        }).catch((error) => {
+          console.error('Error al agregar al carrito:', error);
+          this.msm_error = 'Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.';
+        });
+    },
+
+       convertCurrency(number){
+        return currency_formatter.format(number, { code: 'USD' });
+    },
+
+  },
+
+  beforeMount() {
+    this.init_carrito();
   },
 }
 </script>

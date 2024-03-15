@@ -204,7 +204,7 @@
                           aria-expanded="false"
                           :aria-controls="'subcategories_' + index"
                           role="menuitem"
-                        >
+                        > 
                           <a class="nav-link" href="#!">
                             <div class="row">
                               <div class="col">

@@ -1,0 +1,44 @@
+var Carrito = require("../models/Carrito");
+const Variedad = require("../models/Variedad");
+
+const crear_producto_carrito = async function(req,res){
+    if(req.user){
+        let data = req.body;
+
+        var variedad = await Variedad.findById({_id:data.variedad}).populate('producto');
+
+        try {
+            if(data.cantidad <= variedad.stock){
+                //
+                if(variedad.producto.precio >= 1){
+                    //
+                    let carrito = await Carrito.create(data);
+                    res.status(200).send(carrito);
+                }else{
+                    res.status(200).send({data:undefined,message: 'El producto tiene precio en 0'});
+                }
+            }else{
+                res.status(200).send({data:undefined,message: 'Se supero el stock del producto'});
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
+const obtener_carrito_cliente = async function(req,res){
+    if(req.user){
+        let carrito = await Carrito.find({cliente: req.user.sub}).populate('producto').populate('variedad').sort({createAt:-1}).limit(8);
+        res.status(200).send(carrito);
+
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
+module.exports = {
+  crear_producto_carrito,
+  obtener_carrito_cliente
+};

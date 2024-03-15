@@ -26,8 +26,7 @@
               </div>
             </div>
             <div class="col-12 col-md-10 detail-carousel">
-              <div class="ribbon ribbon-info">Fresh</div>
-              <div class="ribbon ribbon-primary">Sale</div>
+            
               <div class="owl-carousel detail-slider owl-theme owl-dots-modern" data-slider-id="1">
                 <div class="item" v-if="galeria[0]">
                   <a class="glightbox" :href="$urlAPI+'/obtener_galeria_producto/'+galeria[0].imagen" data-title="Modern Jacket 1 - Caption text" data-gallery="product-gallery">
@@ -86,12 +85,11 @@
             </div> -->
           </div>
           <p class="mb-4 text-muted">{{producto.extracto}}</p>
-          <form action="#">
             <div class="row">
               <div class="col-sm-6 col-lg-12 detail-option mb-3">
                 <h6 class="detail-option-heading">{{producto.str_variedad}}</h6>
-                <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" :for="'variedad_'+item._id" v-for="item in variedades"> {{item.variedad}}
-                  <input class="input-invisible" type="radio" name="size" value="value_0" :id="'variedad_'+item._id" required>
+                <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" :id="'variedad_'+item._id" :for="'variedad_'+item._id" v-for="item in variedades" v-on:click="getVariedades(item._id)"> {{item.variedad}}
+                  <input class="input-invisible" type="radio" name="size" :value="item._id" :id="'variedad_'+item._id" required>
                 </label>
                 
               </div>
@@ -119,16 +117,17 @@
               </div> -->
               <div class="col-12 col-lg-6 detail-option mb-5">
                 <label class="detail-option-heading fw-bold">Cantidad</label>
-                <input class="form-control detail-quantity" name="items" type="number" value="1">
+                <input class="form-control detail-quantity" name="items" type="number" v-model="obj_carrito.cantidad">
               </div>
             </div>
             <ul class="list-inline">
               <li class="list-inline-item">
-                <button class="btn btn-dark btn-lg mb-1 " type="submit">Agregar al carrito</button>
+                <button class="btn btn-dark btn-lg mb-1 " type="button" v-on:click="add_carrito()">Agregar al carrito</button>
               </li>
               <!-- <li class="list-inline-item"><a class="btn btn-outline-secondary mb-1" href="#"> <i class="far fa-heart me-2"></i>Add to wishlist</a></li> -->
             </ul>
-          </form>
+
+            <span class="text-danger" v-if="msm_error">{{msm_error}}</span>
         </div>
       </div>
     </div>
@@ -304,6 +303,12 @@
   background: #005f96 !important;
 }
 
+.bg_variedad{
+  background: #005f96 !important;
+  color: white;  
+  border: none ;
+}
+
 </style>
 
 <script>
@@ -311,6 +316,7 @@ import { init_carrusel } from '../../../public/assets/js/theme.d7b4a888.js';
 import currency_formatter from 'currency-formatter';
 import axios from 'axios';
 import moment from 'moment';
+import $ from 'jquery';
 
 
 export default {
@@ -321,6 +327,11 @@ export default {
       variedades: [],
       producto: {},
       productos_relaciones: [],
+      obj_carrito: {
+        cantidad:1 
+      },
+      usuario_data: JSON.parse(this.$store.state.usuario),
+      msm_error: '',
     }
   },
   methods: {
@@ -335,6 +346,10 @@ export default {
       }).then((result)=>{
         this.producto = result.data.producto;
         this.variedades = result.data.variedades;
+
+        this.obj_carrito.producto = this.producto._id;
+        this.obj_carrito.cliente = this.usuario_data._id;
+        
         this.galeria = result.data.galeria;
         this.init_productos_relacionados(this.producto.categoria);
         console.log(this.galeria);
@@ -351,6 +366,38 @@ export default {
     },
     convertDate(date){
       return moment(date).format('DD-MM-YYYY');
+    },
+
+    getVariedades(value){
+      this.obj_carrito.variedad = value;
+
+      setTimeout(() => {
+        $('.detail-option-btn-label').removeClass('bg_variedad');
+        $('#variedad_'+value).addClass('bg_variedad');
+      }, 50);
+    },
+
+    add_carrito(){
+    if (!this.obj_carrito.variedad) {
+      this.msm_error = 'ingrese variedad'
+    } else if(!this.obj_carrito.cantidad){
+      this.msm_error = 'Ingrese una cantidad'
+    }else if(this.obj_carrito.cantidad <= 0){
+      this.msm_error = 'Ingrese una cantidad mayor a cero'
+    }else{
+          this.msm_error = '';
+        axios.post(this.$urlAPI + '/crear_producto_carrito', this.obj_carrito, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': this.$store.state.token,
+          }
+        }).then((result) => {
+          console.log(result);
+        }).catch((error) => {
+          console.error('Error al agregar al carrito:', error);
+          this.msm_error = 'Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.';
+        });
+        }
     }
   },
   beforeMount() {

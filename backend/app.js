@@ -3,6 +3,7 @@ var express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 
+
 // ...
 
 // Definimos el puerto en el que se ejecutará la aplicación
@@ -16,6 +17,7 @@ var cliente_router = require("./routes/Cliente");
 var usuario_router = require("./routes/Usuario");
 var producto_router = require("./routes/Producto");
 var public_router = require("./routes/Public");
+var customer_router = require("./routes/Customer");
 
 // Configuramos body-parser para parsear el cuerpo de las solicitudes HTTP
 app.use(bodyparser.urlencoded({ limit: "50mb", extended: true }));
@@ -35,19 +37,21 @@ mongoose
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
-    "Access-Control-Allow-Headers",
-    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Access-Control-Allow-Request-Method"
+     "Access-Control-Allow-Headers",
+     "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Access-Control-Request-Method"
   );
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
   res.header("Allow", "GET, PUT, POST, DELETE, OPTIONS");
   next();
-});
+ });
+ 
 
 // Utilizamos los enrutadores importados para manejar las rutas de la API
 app.use("/api", cliente_router);
 app.use("/api", usuario_router);
 app.use("/api", producto_router);
 app.use("/api", public_router);
+app.use("/api", customer_router);
 
 // Exportamos la aplicación para su uso en otros módulos
 module.exports = app;
