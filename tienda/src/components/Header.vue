@@ -1,90 +1,177 @@
 <template>
   <header class="header header-absolute">
-      <!-- Top Bar-->
-      <div class="top-bar">
- <div class="container-fluid">
-    <div class="row d-flex align-items-center">
-      <div class="col-sm-7 d-none d-sm-block">
-        <ul class="list-inline topbar-text mb-0">
-          <li class="list-inline-item pe-3 me-0">
-            <img src="/assets/icons/telephone-bl.png" style="width: 16px;">
-            449-123-45-47
-          </li>
-          <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Envios gratis desde $900</li>
-        </ul>
-      </div>
-      <div class="col-sm-5 d-flex justify-content-end">
-        <a style="cursor: pointer;" v-if="$store.state.token" v-on:click="logout()">
-          <span><b>Cerrar sesión</b></span>
-        </a>
-      </div>
-    </div>
- </div>
-</div>
 
-      <!-- Top Bar End-->
-      <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-fixed-white navbar-fixed-dark" style="background: #005f96 !important;">
-        <div class="container-fluid">  
-          <!-- Navbar Header  -->
-          <router-link to="/" class="navbar-brand text-lg text-white fw-bold text-uppercase" >Planify</router-link>
-         
-          <a class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/assets/icons/menu-hamburguesa.png" style="width: 20px;" />
-          </a>
-          <!-- Navbar Collapse -->
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <router-link class="nav-link text-white" to="/">Inicio</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link text-white" to='/shop'>Tienda</router-link>
-              </li>
-           
-              <!-- Megamenu-->
+    <!-- Navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-fixed-white navbar-fixed-dark"
+      style="background: #fff !important; height: 80px"
+    >
+      <div class="container-fluid">
+        <!-- Navbar Header  -->
+        <router-link
+          to="/"
+          class="navbar-brand text-lg text-white fw-bold text-uppercase"
+        >
+          <img
+            style="width: 180px; height: auto"
+            class="img-fluid"
+            src="https://res.cloudinary.com/dh80ed02z/image/upload/v1710875319/Imgs%20Planify/ryncjarleq0wptfpmpsg.png"
+            alt="Logo"
+          />
+        </router-link>
+
+        <a
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img src="/assets/icons/menu-hamburguesa.png" style="width: 20px" />
+        </a>
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <router-link
+                style="color: #1f49b6"
+                class="nav-link fw-bold text-uppercase"
+                to="/"
+                >¿Por que planify?</router-link
+              >
+            </li>
+            <!-- <li class="nav-item">
+              <router-link
+                style="color: #1f49b6"
+                class="nav-link fw-bold text-uppercase"
+                to="/shop"
+                >Planners</router-link
+              >
+            </li> -->
+
+             <!-- <li class="nav-item">
+              <router-link
+                style="color: #1f49b6"
+                class="nav-link fw-bold text-uppercase"
+                to="/especial"
+                >to do list</router-link
+              >
+            </li> -->
+
+        
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                style="color: #1f49b6"
+                id="navbarDarkDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Planners
+              </a>
+              <ul
+                class="dropdown-menu dropdown"
+                aria-labelledby="navbarDarkDropdownMenuLink"
+              >
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Semanal</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Mensual</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Work Out</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Horarios</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Kanban</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item fw-bold"
+                    style="color: #ed8808"
+                    href="#"
+                    >Gastos</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Megamenu
+
               <li class="nav-item dropdown position-static text-white"><a class="nav-link dropdown-toggle text-white " href="#" data-bs-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu dropdown-menu-animated megamenu py-lg-0 ">
                   <div class="row">
                     <div class="col-lg-9">
                       <div class="row p-3 pe-lg-0 ps-lg-5 pt-lg-5">
                         <div class="col-lg-3">
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Semanal</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores semanales</a></li>
                            </ul>
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Mensual</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores mensuales  </a></li>
                            </ul>
                         </div>
                         <div class="col-lg-3">
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Kids</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Lista To do   </a></li>
                           </ul>
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Habitos</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Lista To do   </a></li>
                     
                           </ul>
-                            <!-- Megamenu list-->
+                           
                             <h6 class="text-uppercase">Work Out</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de trabajo   </a></li>
                           </ul>
                         </div>
                         <div class="col-lg-3">
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Horarios</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de horario   </a></li>
                           </ul>
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Viajes</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
@@ -92,22 +179,22 @@
                           </ul>
                         </div>
                         <div class="col-lg-3">
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Viveres</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
                           </ul>
-                          <!-- Megamenu list-->
+                         
                           <h6 class="text-uppercase">Kanban</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores  Kanban </a></li>
                            </ul>
-                              <!-- Megamenu list-->
+                             
                               <h6 class="text-uppercase">Metas</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
                           </ul>
-                              <!-- Megamenu list-->
+                             
                               <h6 class="text-uppercase">Gastos</h6>
                           <ul class="megamenu-list list-unstyled">
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de gastos   </a></li>
@@ -164,155 +251,347 @@
                     <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="https://cdn.getmidnight.com/4721dc6a803c213861d569b31f3c121f/2021/05/La-importancia-de-la-Orden-de-Compra.jpg" alt=""></div>
                   </div>
                 </div>
+              </li> -->
+              
+              
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  style="color: #1f49b6"
+                  id="navbarDarkDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  to do list
+                </a>
+                <ul
+                  class="dropdown-menu dropdown"
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item fw-bold"
+                      style="color: #ed8808"
+                      href="#"
+                      >Metas</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item fw-bold"
+                      style="color: #ed8808"
+                      href="#"
+                      >Viveres</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item fw-bold"
+                      style="color: #ed8808"
+                      href="#"
+                      >Viajes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item fw-bold"
+                      style="color: #ed8808"
+                      href="#"
+                      >Hábitos</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item fw-bold"
+                      style="color: #ed8808"
+                      href="#"
+                      >Kids</a
+                    >
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item"><a class="nav-link text-white" href="">Especiales</a>
-              </li>
-            </ul>
-            <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-2 mb-2 my-lg-0">
-                <!-- Search Button-->
-                <div class="nav-item navbar-icon-link" data-bs-toggle="search">
-                    <img src="/assets/icons/search.png" style="width: 25px;" />
-                </div>
-                <!-- User Not Logged - link to login page-->
-                <div class="nav-item">   
-                    <router-link class="navbar-icon-link" to="/login" v-if="!$store.state.token">
-                      <img src="/assets/icons/user.png" style="width: 25px;" />
-                      <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Inicio de sesión </span>
 
-                    </router-link>
 
-                    <router-link class="navbar-icon-link" to="/login" v-if="$store.state.token">
-                      <img src="/assets/icons/user.png" style="width: 25px;" />
-                      <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline">&nbsp; {{ usuario.nombres.split(' ')[0] }} </span>
 
-                    </router-link>
-                </div>
-                <!-- Cart Dropdown-->
-                <div class="nav-item dropdown">
-                    <a class="navbar-icon-link d-lg-none" href="cart.html">
-                        <img src="/assets/icons/cart.png" style="width: 25px;" />
-                        <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Carrito</span>
-                    </a>
-                    <div class="d-none d-lg-block">
-                        <a class="navbar-icon-link" id="cartdetails" href="cart.html" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="/assets/icons/cart.png" style="width: 25px;" />
-                            <div class="navbar-icon-link-badge">3</div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
-                            <div class="navbar-cart-product-wrapper">
-                                <!-- cart item-->
-                                  <div class="navbar-cart-product" v-for="item in carrito">
-                                    <div class="d-flex align-items-center">
-                                        <a href="detail.html">
-                                          <img class="img-fluid navbar-cart-product-image" :src="$urlAPI+'/obtener_portada_producto/'+item.producto.portada" alt="..." /></a>
-                                        <div class="w-100">
-                                            <a class="navbar-cart-product-close" href="#">
-                                              <img src="/assets/icons/close.png" style="width: 15px;" />
-                                            </a>
-                                            <div class="ps-3">
-                                              <router-link :to="{name: 'show-producto',params:{slug: item.producto.slug}}" class="navbar-cart-product-link"  style="text-overflow:ellipsis;overflow: hidden;white-space: nowrap;">{{item.producto.titulo}}</router-link>
-                                              <small class="d-block text-muted">{{item.producto.str_variedad}}: {{item.variedad.variedad}} </small>
-                                              <small class="d-block text-muted">Cantidad: {{item.cantidad}} </small>
-                                              <strong class="d-block text-sm">{{convertCurrency(item.producto.precio)}} </strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                              
-                            </div>
-                            <!-- total price-->
-                            <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase">$75.00</strong></div>
-                            <!-- buttons-->
-                            <div class="d-flex justify-content-between">
-                                <a class="btn btn-link text-dark me-3" href="cart.html">Carrito
-                                  <img src="/assets/icons/shopping-bag.png" style="width: 15px;">
-                                </a>
-                                <a class="btn btn-outline-dark" href="checkout1.html">Ir a pago</a>
-                            </div>
+            <li class="nav-item">
+              <router-link
+                style="color: #1f49b6"
+                class="nav-link fw-bold text-uppercase"
+                to="/especial"
+                >personalizalo</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link
+                style="color: #1f49b6"
+                class="nav-link fw-bold text-uppercase"
+                to="/especial"
+                >contactanos</router-link
+              >
+            </li>
+          </ul>
+          <div
+            class="d-flex align-items-center justify-content-between justify-content-lg-end mt-2 mb-2 my-lg-0"
+          >
+            <!-- Search Button-->
+            <div class="nav-item navbar-icon-link" data-bs-toggle="search">
+              <img src="/assets/icons/search.png" style="width: 25px" />
+            </div>
+
+         
+            <!-- User Not Logged - link to login page-->
+
+            <div class="nav-item">
+              <router-link
+                class="navbar-icon-link"
+                to="/login"
+                v-if="!$store.state.token"
+              >
+                <img src="/assets/icons/user.png" style="width: 25px" />
+                <span
+                  class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"
+                  >Inicio de sesión
+                </span>
+              </router-link>
+
+              <a v-if="$store.state.token" class="navbar-icon-link dropdown" >
+                        <img src="/assets/icons/user.png" style="width: 25px;" />
+                        <span class="text-sm ms-2 ms-lg-0 text-uppercase fw-bold d-none d-sm-inline dropdown-toggle "  style="color: #1f49b6;" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> &nbsp; {{ usuario.nombres.split(" ")[0] }}</span>
+                        
+                        <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink" style="left: -50px !important;">  
+
+                          <a class="dropdown-item fw-bold" style="color: #ed8808"><img src="/assets/icons/pedidos.png" style="width: 25px"/>  Pedidos</a>
+                          <a class="dropdown-item fw-bold" style="color: #ed8808" v-on:click="logout()">  <img src="/assets/icons/salida.png" style="width: 25px" /> Cerrar sesión   </a>
+                          
                         </div>
+              </a>
+              
+            </div>
+            <!-- Cart Dropdown-->
+            <div class="nav-item dropdown">
+              <a class="navbar-icon-link d-lg-none" href="cart.html">
+                <img src="/assets/icons/cart.png" style="width: 25px" />
+                <span
+                  class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"
+                  >Carrito</span
+                >
+              </a>
+              <div class="d-none d-lg-block">
+                <a
+                  class="navbar-icon-link"
+                  id="cartdetails"
+                  href="cart.html"
+                  data-bs-target="#"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img src="/assets/icons/cart.png" style="width: 25px" />
+                  <div
+                    class="navbar-icon-link-badge fw-bold"
+                    style="color: #fff; background-color: #f19000"
+                  >
+                    {{carrito_length}}
+                  </div>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4"
+                  aria-labelledby="cartdetails"
+                >
+                  <div class="navbar-cart-product-wrapper">
+                    <!-- cart item-->
+                    <div class="navbar-cart-product" v-for="item in carrito">
+                      <div class="d-flex align-items-center">
+                        <router-link :to="{name: 'show-producto', params:{slug: item.producto.slug}}">
+                          <img
+                            class="img-fluid navbar-cart-product-image"
+                            :src="
+                              $urlAPI +
+                              '/obtener_portada_producto/' +
+                              item.producto.portada
+                            "
+                            alt="..."
+                        /></router-link>
+                        <div class="w-100">
+                          <a class="navbar-cart-product-close" href="#">
+                            <img
+                              src="/assets/icons/close.png"
+                              style="width: 15px"
+                            />
+                          </a>
+                          <div class="ps-3">
+                            <router-link
+                              :to="{
+                                name: 'show-producto',
+                                params: { slug: item.producto.slug },
+                              }"
+                              class="navbar-cart-product-link"
+                              style="
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                              "
+                              >{{ item.producto.titulo }}</router-link
+                            >
+                            <small class="d-block text-muted"
+                              >{{ item.producto.str_variedad }}:
+                              {{ item.variedad.variedad }}
+                            </small>
+                            <small class="d-block text-muted"
+                              >Cantidad: {{ item.cantidad }}
+                            </small>
+                            <strong class="d-block text-sm"
+                              >{{ convertCurrency(item.producto.precio*item.cantidad ) }}
+                            </strong>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <!-- total price-->
+                  <div class="navbar-cart-total">
+                    <span class="text-uppercase text-muted">Total</span
+                    ><strong class="text-uppercase">{{convertCurrency(total)}}</strong>
+                  </div>
+                  <!-- buttons-->
+                  <div class="d-flex justify-content-between">
+                    <router-link class="btn btn-link text-dark me-1" to="/cart"
+                      >Tu carrito
+                      <img
+                        src="/assets/icons/shopping-bag.png"
+                        style="width: 15px "
+                        class="mb-2"
+                      />
+                    </router-link>
+                    <a class="btn text-center text-white mb-3" href="checkout1.html" style="background: #1f49b6; border-radius: 10px">Pagar</a>
+
+                  </div>
                 </div>
+              </div>
+            </div>
+            <!-- like Button-->
+            <div class="nav-item navbar-icon-link" data-bs-toggle="search">
+              <img src="/assets/icons/corazon.png" style="width: 25px" />
             </div>
 
-          </div>
-        </div>
-      </nav>
-      <!-- /Navbar -->
-      <!-- Fullscreen search area-->
-      <div class="search-area-wrapper">
-        <div class="search-area d-flex align-items-center justify-content-center">
-          <div class="close-btn">
-            <svg class="svg-icon svg-icon-light w-3rem h-3rem">
-              <use xlink:href="#close-1"> </use>
-            </svg>
-          </div>
-          <form class="search-area-form" action="#">
-            <div class="mb-4 position-relative">
-              <input class="search-area-input" type="search" name="search" id="search" placeholder="Ques estas buscando hoy?">
-              <button class="search-area-button" type="submit">
-                <svg class="svg-icon">
-                  <use xlink:href="#search-1"> </use>
-                </svg>
-              </button>
+            <!-- notification Button-->
+            <div class="nav-item navbar-icon-link" data-bs-toggle="search">
+              <img src="/assets/icons/notificacion.png" style="width: 25px" />
             </div>
-          </form>
+          </div>
         </div>
       </div>
-      <!-- /Fullscreen search area-->
+    </nav>
+    <!-- /Navbar -->
+    <!-- Fullscreen search area-->
+    <div class="search-area-wrapper">
+      <div class="search-area d-flex align-items-center justify-content-center">
+        <div class="close-btn">
+          <svg class="svg-icon svg-icon-light w-3rem h-3rem">
+            <use xlink:href="#close-1"></use>
+          </svg>
+        </div>
+        <form class="search-area-form" action="#">
+          <div class="mb-4 position-relative">
+            <input
+              class="search-area-input"
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Ques estas buscando hoy?"
+            />
+            <button class="search-area-button" type="submit">
+              <svg class="svg-icon">
+                <use xlink:href="#search-1"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /Fullscreen search area-->
   </header>
 </template>
 
 <script>
-import axios from 'axios';
-import currency_formatter from 'currency-formatter';
+import axios from "axios";
+import currency_formatter from "currency-formatter";
 
 export default {
-  name: 'Header',
+  name: "Header",
 
   data() {
     return {
       usuario: JSON.parse(this.$store.state.usuario),
-      carrito: []
-    }
+      carrito: [],
+      carrito_length: 0,
+      total: 0, 
+    };
   },
-  
+
   methods: {
-    logout(){
-        this.$store.dispatch('logout'); 
-        if (this.$route.name !== 'home') {
-      this.$router.push({ name: 'home' });
-      }
+    logout() {
+      this.$store.dispatch("logout");
+      if(this.$route.path !== '/') this.$router.push({name: 'home'});
+      // window.location.reload(); 
+      this.carrito = []; 
+      this.carrito_length = 0;
     },
 
-    init_carrito(){
-        axios.get(this.$urlAPI + '/obtener_carrito_cliente',{
+    init_carrito() {
+        if(this.$store.state.token != null){
+          axios.get(this.$urlAPI + "/obtener_carrito_cliente", {
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': this.$store.state.token,
+            "Content-Type": "application/json",
+            Authorization: this.$store.state.token,
+          },
+        })
+        .then((result) => {
+          this.carrito_length = result.data.carrito_general.length; 
+          this.total = 0; 
+          for(var item of result.data.carrito_general){
+            let subtotal = item.producto.precio * item.cantidad; 
+            this.total = this.total + subtotal; 
           }
-        }).then((result) => {
-          this.carrito = result.data;
+          this.carrito = result.data.carrito;
           console.log(result);
-        }).catch((error) => {
-          console.error('Error al agregar al carrito:', error);
-          this.msm_error = 'Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.';
+        })
+        .catch((error) => {
+          console.error("Error al agregar al carrito:", error);
+          this.msm_error =
+            "Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.";
         });
+        }
     },
 
-       convertCurrency(number){
-        return currency_formatter.format(number, { code: 'USD' });
+    convertCurrency(number) {
+      return currency_formatter.format(number, { code: "USD" });
     },
 
+  
   },
+
+  created() {
+    this.sockets.subscribe('listen_cart', (data) => {
+       this.init_carrito(); 
+       this.usuario = JSON.parse(this.$store.state.usuario);
+    });
+  },  
 
   beforeMount() {
     this.init_carrito();
   },
-}
+};
 </script>
 
 <style >
-.navbar-light .navbar-nav .navbar-link, .navbar-hover-light:hover .navbar-nav .navbar-link, .navbar-fixed-light.fixed-top .navbar-nav .navbar-link{
+.navbar-light .navbar-nav .navbar-link,
+.navbar-hover-light:hover .navbar-nav .navbar-link,
+.navbar-fixed-light.fixed-top .navbar-nav .navbar-link {
   color: rgb(255, 255, 255);
 }
+
+
 </style>

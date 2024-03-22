@@ -171,7 +171,7 @@ export default {
         this.$store.dispatch('saveToken', resultado.data.token);
         this.$store.dispatch('saveUsuario', JSON.stringify(resultado.data.cliente));
         this.$router.push({name: 'home'}) 
-
+        this.$socket.emit('send_cart', true);
         // Refrescar el proyecto
         location.reload();
 

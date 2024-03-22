@@ -127,7 +127,7 @@
                 class="card-img"
                 src="https://parade.com/.image/t_share/MTkwNTgxMjkxNjkzNzc4ODEy/125-things-to-do-with-kids-during-coronavirus-pandemic-jpg.jpg"
                 alt="Ladies"
-              /><a class="tile-link" href="category.html"> </a>
+              /><router-link class="tile-link" to="/shop?subcategoria=Kids"> </router-link>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
@@ -141,7 +141,7 @@
                 class="card-img"
                 src="https://www.esan.edu.pe/images/blog/2019/11/11/1500x844-kanban.jpg" 
                 alt="Accessories"
-              /><a class="tile-link" href="category.html"> </a>
+              /><router-link class="tile-link" to="/shop?subcategoria=Kanban"> </router-link>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
@@ -157,7 +157,7 @@
                 class="card-img"
                 src="https://gourmetdemexico.com.mx/wp-content/uploads/2023/12/tendencias-viajes-2024-2-1024x683.jpg"
                 alt="Ladies"
-              /><a class="tile-link" href="category.html"> </a>
+              /><router-link class="tile-link" to="/shop?subcategoria=Viajes"> </router-link>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">
@@ -171,7 +171,7 @@
                 class="card-img"
                 src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/libreta.jpg.webp?itok=yW1RE9-1" 
                 alt="Accessories"
-              /><a class="tile-link" href="category.html"> </a>
+              /><router-link class="tile-link" to="/shop?subcategoria=Metas"> </router-link>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h2 class="display-4 fw-bold text-uppercase text-center mb-0">

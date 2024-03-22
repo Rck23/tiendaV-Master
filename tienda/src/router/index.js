@@ -21,6 +21,16 @@ const routes = [
     component: () => import("@/views/productos/IndexProductosApp.vue"),
   },
   {
+    path: "/cart",
+    name: "cart",
+    component: () => import("@/views/CarritoView.vue"),
+  },
+  {
+    path: "/especial",
+    name: "especial",
+    component: () => import("@/views/productos/ProductosEspecialesApp.vue"),
+  },
+  {
     path: "/producto/:slug",
     name: "show-producto",
     component: () => import("@/views/productos/MostrarProductoApp.vue"),

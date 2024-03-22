@@ -392,6 +392,7 @@ export default {
             'Authorization': this.$store.state.token,
           }
         }).then((result) => {
+          this.$socket.emit('send_cart', true);
           console.log(result);
         }).catch((error) => {
           console.error('Error al agregar al carrito:', error);

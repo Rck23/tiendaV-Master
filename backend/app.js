@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 
 
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
 // ...
 
 // Definimos el puerto en el que se ejecutará la aplicación
@@ -11,6 +14,17 @@ var port = process.env.port || 4201;
 
 // Creamos una nueva aplicación de Express
 var app = express();
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors: '*' });
+
+io.on("connection", (socket) => {
+  // ...
+  socket.on('send_cart',function(data){
+    io.emit('listen_cart',data);
+  
+  });
+});
 
 // Importamos los enrutadores de clientes, usuarios y productos
 var cliente_router = require("./routes/Cliente");
@@ -27,7 +41,7 @@ app.use(bodyparser.json({ limit: "50mb", extended: true }));
 mongoose
   .connect("mongodb://127.0.0.1:27017/tienda")
   .then(() =>
-    app.listen(port, function () {
+  httpServer.listen(port, function () {
       console.log("Servidor corriendo en el puerto " + port);
     })
   )

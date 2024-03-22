@@ -1,132 +1,158 @@
 <template>
-     <!-- Footer-->
-     <footer class="main-footer">
-         <!-- Services block-->
-         <div class="text-dark-700 py-6">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 service-column" data-aos="fade-right">
-                
-                <img class="svg-icon service-icon" src="/assets/media/camion.gif" alt="">
-                <div class="service-text">
-                  <h6 class="text-uppercase">Envios gratis</h6>
-                  <p class="text-muted fw-light text-sm mb-0">Envios gratis desde $900</p>
-                </div>
-              </div>
-              <div class="col-lg-4 service-column" data-aos="fade-up">
-                <img class="svg-icon service-icon" src="/assets/media/euro.gif" alt="">
-                <div class="service-text">
-                  <h6 class="text-uppercase">Dinero seguro</h6>
-                              <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro</p>
-                </div>
-              </div>
-              <div class="col-lg-4 service-column" data-aos="fade-left">
-                <img class="svg-icon service-icon" src="/assets/media/tailandes.gif" alt="">
-                <div class="service-text">
-                  <h6 class="text-uppercase">449-123-45-47</h6>
-                              <p class="mb-0 text-muted text-sm">9:30am - 5:00pm disponibles</p>
-                </div>
-              </div>
+  <!-- Footer-->
+  <footer class="main-footer">
+    <!-- Services block-->
+    <div class="text-dark-700 py-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 service-column" data-aos="fade-right">
+            <img
+              class="svg-icon service-icon"
+              src="/assets/media/camion.gif"
+              alt=""
+            />
+            <div class="service-text">
+              <h6 class="text-uppercase">Envios gratis</h6>
+              <p class="text-muted fw-light text-sm mb-0">
+                Envios gratis desde $900
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column" data-aos="fade-up">
+            <img
+              class="svg-icon service-icon"
+              src="/assets/media/euro.gif"
+              alt=""
+            />
+            <div class="service-text">
+              <h6 class="text-uppercase">Dinero seguro</h6>
+              <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro</p>
+            </div>
+          </div>
+          <div class="col-lg-4 service-column" data-aos="fade-left">
+            <img
+              class="svg-icon service-icon"
+              src="/assets/media/tailandes.gif"
+              alt=""
+            />
+            <div class="service-text">
+              <h6 class="text-uppercase">449-123-45-47</h6>
+              <p class="mb-0 text-muted text-sm">9:30am - 5:00pm disponibles</p>
             </div>
           </div>
         </div>
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-6 text-muted" style="    background-color: #005f96 !important;"> 
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="fw-bold text-uppercase text-lg text-white mb-3">Ecommerce<span style="color:white">.</span></div>
-                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <a class="text-muted text-primary-hover" href="https://www.flaticon.es/uicons?word=facebook" target="_blank" title="Facebook">
-                      <img src="/assets/media/facebook.png" style="width:20px">
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="text-muted text-primary-hover" href="https://www.flaticon.es/uicons?word=facebook" target="_blank" title="Twitter">
-                      <img src="/assets/media/twitter.png" style="width:20px">
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="text-muted text-primary-hover" href="https://www.flaticon.es/uicons?word=facebook" target="_blank" title="Instagram">
-                      <img src="/assets/media/instagram.png" style="width:20px">
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                <h6 class="text-uppercase text-white mb-3">Categorías</h6>
-                <ul class="list-unstyled">
-                  <li> <a class="text-white" href="#">Semanal</a></li>
-                  <li> <a class="text-white" href="#">Mensual</a></li>
-                  <li> <a class="text-white" href="#">Kids</a></li>
-                  <li> <a class="text-white" href="#">Hábitos</a></li>
-                  <li> <a class="text-white" href="#">Work out</a></li>
-                  <li> <a class="text-white" href="#">Viajes</a></li>
-                  <li> <a class="text-white" href="#">Horarios</a></li>
-                  <li> <a class="text-white" href="#">Viveres</a></li>
-                  <li> <a class="text-white" href="#">Kanban</a></li>
-                  <li> <a class="text-white" href="#">Metas</a></li>
-                  <li> <a class="text-white" href="#">Gastos</a></li>
-                
-                </ul>
-              </div>
-              <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                <h6 class="text-uppercase text-white mb-3">Soporte</h6>
-                <ul class="list-unstyled">
-                  <li> <a class="text-white" href="#">Inicio de sesión</a></li>
-                  <li> <a class="text-white" href="#">Registro </a></li>
-                  <li> <a class="text-white" href="#">Nuestro Productos </a></li>
-       
-                </ul>
-              </div>
-              <div class="col-lg-4">
-                <h6 class="text-uppercase text-white mb-3">Boletín informatico</h6>
-                <p class="mb-3 text-white"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-                <form action="#" id="newsletter-form">
-                  <div class="input-group mb-3">
-                    <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address" style="    border-color: #ffffff !important;color:white !important">
-                    <div class="input-group-append" >
-                      <button class="btn border-start-0" type="submit" style="    border-color: #ffffff !important;">
-                        <img src="/assets/media/search.png" style="width: 18px" alt="">
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+      </div>
+    </div>
+    <!-- Main block - menus, subscribe form-->
+<div
+ class="py-6 text-muted d-flex flex-column justify-content-center align-items-center"
+ style="background-color: #fbdcb3 !important; height: 300px"
+>
+ <div class="container">
+    <div class="row">
+      <!-- Contacto a la izquierda -->
+      <div class="col-lg-4 mt-7 mb-lg-0">
+        <div
+          class="fw-bold text-uppercase text-lg mb-3"
+          style="color: #0047ba"
+        >
+          Contacto
+        </div>
+        <ul class="list-unstyled">
+          <li>
+            <a class="fw-bold" style="color: #0047ba" href="#">Ventas</a>
+          </li>
+          <li>
+            <a class="fw-bold" style="color: #0047ba" href="#">Soporte</a>
+          </li>
+          <li>
+            <a class="fw-bold" style="color: #0047ba" href="#">Facturación</a>
+          </li>
+          <li>
+            <a class="fw-bold" style="color: #0047ba" href="#">Términos y condiciones</a>
+          </li>
+          <li>
+            <a class="fw-bold" style="color: #0047ba" href="#">FAQ's</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Imagen centrada en el medio -->
+      <div
+        class="col-lg-4 d-flex justify-content-center align-items-center"
+      >
+        <img
+          style="max-width: 500px; height: auto"
+          class="img-fluid"
+          src="https://res.cloudinary.com/dh80ed02z/image/upload/v1710875319/Imgs%20Planify/jouairfx9uu8ywpe1tug.png"
+          alt="Logo"
+        />
+      </div>
+    
+    </div>
+ </div>
+</div>
+
+
+    <!-- Copyright section of the footer-->
+    <div
+      class="py-4 "
+      
+      style="background-color: #fbdcb3 !important;"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-md-0 fw-bold"  style="color: #0047ba">
+              &copy; {{ year }} Mi tienda. Todos los derechos reservados.
+            </p>
+          </div>
+          <div class="col-md-6" >
+            <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end" >
+              <li class="list-inline-item" >
+                <img
+                  class="w-2rem"
+                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/visa.svg"
+                  alt="..."
+                  
+                />
+              </li>
+              <li class="list-inline-item" >
+                <img
+                  class="w-2rem"
+                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/mastercard.svg"
+                  alt="..."
+                />
+              </li>
+              <li class="list-inline-item">
+                <img
+                  class="w-2rem"
+                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/paypal.svg"
+                  alt="..."
+                />
+              </li>
+              <li class="list-inline-item">
+                <img
+                  class="w-2rem"
+                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/western-union.svg"
+                  alt="..."
+                />
+              </li>
+            </ul>
           </div>
         </div>
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light text-gray-300" style="background-color: #1e1e1e !important;">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-md-6 text-center text-md-start">
-                <p class="mb-md-0">&copy; {{year}} Mi tienda.  Todos los derechos reservados.</p>
-              </div>
-              <div class="col-md-6">
-                <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                  <li class="list-inline-item"><img class="w-2rem" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/visa.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/mastercard.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/paypal.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/western-union.svg" alt="..."></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-  </template>
+      </div>
+    </div>
+  </footer>
+</template>
   
   <script>
-  export default {
-    name: 'Footer',
-    data() {
+export default {
+  name: "Footer",
+  data() {
     return {
       year: new Date().getFullYear(),
-    }
+    };
   },
-  }
-  </script>
+};
+</script>
   
