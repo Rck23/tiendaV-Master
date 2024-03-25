@@ -11,6 +11,10 @@ api.post("/crear_producto_carrito", cauthenticate.decodeToken  ,customerControll
 api.get("/obtener_carrito_cliente", cauthenticate.decodeToken  ,customerController.obtener_carrito_cliente);
 api.delete("/eliminar_producto_carrito/:id", cauthenticate.decodeToken  ,customerController.eliminar_producto_carrito);
 
+api.post("/crear_direccion_cliente", cauthenticate.decodeToken  ,customerController.crear_direccion_cliente);
+api.get("/obtener_direcciones_cliente", cauthenticate.decodeToken  ,customerController.obtener_direcciones_cliente);
+api.delete("/eliminar_direccion_cliente/:id", cauthenticate.decodeToken  ,customerController.eliminar_direccion_cliente);
+
 
 // Exportamos el enrutador para su uso en la aplicación
 module.exports = api;

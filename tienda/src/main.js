@@ -16,6 +16,7 @@ Vue.config.productionTip = false
 Vue.prototype.$urlAPI = "http://localhost:4201/api";
 Vue.prototype.$token = localStorage.getItem("token");
 Vue.prototype.$envio = 109;
+Vue.prototype.$paises = ['México'];
 
 Vue.use(BootstrapVue)
 

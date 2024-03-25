@@ -363,6 +363,7 @@
                         <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink" style="left: -50px !important;">  
 
                           <a class="dropdown-item fw-bold" style="color: #ed8808"><img src="/assets/icons/pedidos.png" style="width: 25px"/>  Pedidos</a>
+                          <router-link class="dropdown-item fw-bold" style="color: #ed8808" to="/cuenta/direcciones"><img src="/assets/icons/direccion.png"  style="width: 25px"/> Direcciones</router-link>
                           <a class="dropdown-item fw-bold" style="color: #ed8808" v-on:click="logout()">  <img src="/assets/icons/salida.png" style="width: 25px" /> Cerrar sesión   </a>
                           
                         </div>
@@ -415,12 +416,7 @@
                             alt="..."
                         /></router-link>
                         <div class="w-100">
-                          <a class="navbar-cart-product-close" href="#">
-                            <img
-                              src="/assets/icons/close.png"
-                              style="width: 15px"
-                            />
-                          </a>
+                          
                           <div class="ps-3">
                             <router-link
                               :to="{

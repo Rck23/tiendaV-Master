@@ -35,6 +35,13 @@ const routes = [
     name: "show-producto",
     component: () => import("@/views/productos/MostrarProductoApp.vue"),
   },
+  
+  
+  {
+    path: "/cuenta/direcciones",
+    name: "direcciones",
+    component: () => import("@/views/cuenta/DireccionesApp.vue"),
+  },
 ];
 
 const router = new VueRouter({
