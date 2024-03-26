@@ -304,8 +304,7 @@ export default {
   methods: {
     init_nuevo_producto() {
       this.load_nuevos_productos = true;
-      axios
-        .get(this.$urlAPI + "/obtener_nuevos_productos", {
+      axios.get(this.$urlAPI + "/obtener_nuevos_productos", {
           headers: {
             "Content-Type": "application/json",
           },
@@ -313,7 +312,7 @@ export default {
         .then((resultado) => {
           this.nuevos_productos = resultado.data;
           this.load_nuevos_productos = false;
-          console.log(this.nuevos_productos);
+   
         })
         .catch((err) => {
           console.log(err);

@@ -125,7 +125,7 @@
                 class="btn text-white"
                 to="/checkout"
                 style="background: #1f49b6; border-radius: 10px"
-                >Pagar<img
+                >CHECKOUT<img
                   class="mb-1"
                   src="/assets/media/checkout.png"
                   alt="Checkout"
@@ -187,6 +187,7 @@ export default {
     convertCurrency(number) {
       return currency_formatter.format(number, { code: "USD" });
     },
+    
     init_carrito() {
       if (this.$store.state.token != null) {
         this.load_data = true;

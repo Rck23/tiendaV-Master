@@ -47,6 +47,11 @@ const routes = [
     name: "checkout",
     component: () => import("@/views/CheckoutView.vue"),
   },
+  {
+    path: "/verificacion/:estado/:direccion?",
+    name: "verificacion",
+    component: () => import("@/views/VerificacionView.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -8,9 +8,7 @@ var esquema = mongoose.Schema;
  * Esquema de Mongoose para el modelo de variedad.
  * Define la estructura de los datos de un variedad en la base de datos.
  */
-var Venta_detalleEsquema = esquema({
-  
-  proveedor: { type: String, required: true },
+var Venta_detalleEsquema = esquema({  
   
   año: { type: Number, required: true },
   mes: { type: Number, required: true },

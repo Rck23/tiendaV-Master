@@ -1,6 +1,8 @@
 var Carrito = require("../models/Carrito");
 const Variedad = require("../models/Variedad");
 const Direccion = require("../models/Direccion");
+const Venta = require("../models/venta");
+const Venta_detalle = require("../models/venta_detalle");
 
 const crear_producto_carrito = async function(req,res){
     if(req.user){
@@ -85,6 +87,57 @@ const eliminar_direccion_cliente = async function(req,res){
     }
 }
 
+const validar_payment_id_venta = async function(req,res){
+    if(req.user){
+        
+        let payment_id = req.params['payment_id'];
+        let venta = await Venta.find({transaccion:payment_id});
+        res.status(200).send(venta);
+
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
+
+const crear_venta_cliente = async function(req,res){
+    if(req.user){
+        let data = req.body;
+
+        data.año = new Date().getFullYear();
+        data.mes = new Date().getMonth()+1;
+        data.dia = new Date().getDate();
+        data.estado = 'Pagado'; 
+        
+
+        let ventas = await Venta.find().sort({createAt:-1}); 
+        
+        if (ventas.length == 0) {
+            data.serie = 1; 
+        }else{
+            data.serie = ventas[0].serie + 1;
+        }
+
+        let venta = await Venta.create(data);
+
+        for(var item of data.detalles){
+            item.año = new Date().getFullYear();
+            item.mes = new Date().getMonth()+1;
+            item.dia = new Date().getDate();
+            item.venta = venta._id; 
+
+            await Venta_detalle.create(data); 
+        }
+        
+        await Carrito.deleteMany({cliente: data.cliente}); 
+
+        res.status(200).send(venta);
+
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
 module.exports = {
   crear_producto_carrito,
   obtener_carrito_cliente,
@@ -92,5 +145,8 @@ module.exports = {
 
   crear_direccion_cliente,
   obtener_direcciones_cliente,
-  eliminar_direccion_cliente
+  eliminar_direccion_cliente,
+
+  validar_payment_id_venta,
+  crear_venta_cliente
 };

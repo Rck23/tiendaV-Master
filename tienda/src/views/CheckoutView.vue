@@ -88,9 +88,9 @@
               <router-link class="btn btn-link text-muted" to="/cart"> 
                 Regresar al carrito
               </router-link>
-              <a class="btn text-white"  style="background: #1f49b6; border-radius: 10px" href="checkout5.html">
+              <!-- <a class="btn text-white"  style="background: #1f49b6; border-radius: 10px" href="checkout5.html">
                 Hacer pedido <img src="/assets/media/pedido.png" alt="pedido" style="width: 18px; margin-bottom: 6px;">
-              </a>
+              </a> -->
             </div>
           </div>
           <div class="col-lg-4 ">
@@ -145,7 +145,7 @@
   
               </div>
               <div class="block-footer">
-                <a  class="btn text-white"   id="btnBuy" style="cursor: pointer; width: 100%; background: #1f49b6; border-radius: 10px;">
+                <a v-on:click="crearPreferencia()" class="btn text-white"   id="btnBuy" style="cursor: pointer; width: 100%; background: #1f49b6; border-radius: 10px;">
                   PAGAR <img src="/assets/media/pagar.png" alt="pedido" style="width: 18px; margin-bottom: 3px;">
                 </a>
                <!--  <button class="btn btn-dark btnBuy" style="cursor: pointer" disabled>Procesando...</button> -->
@@ -180,6 +180,7 @@ export default {
         productos: [],
         total:0, 
         load_data: true, 
+        items: [],
       }
     },
 
@@ -221,7 +222,7 @@ export default {
               .get(this.$urlAPI + "/obtener_carrito_cliente", {
                 headers: {
                   "Content-Type": "application/json",
-                  Authorization: this.$store.state.token,
+                  "Authorization": this.$store.state.token,
                 },
               })
               .then((result) => {
@@ -231,7 +232,24 @@ export default {
                 for (var item of result.data.carrito_general) {
                   let subtotal = item.producto.precio * item.cantidad;
                   this.total = this.total + subtotal;
+
+                  this.items.push({
+                    title: item.producto.titulo,
+                    quantity: item.cantidad, 
+                    unit_price: item.producto.precio,
+                    currency_id: 'MXN'
+                  });
+
                 }
+
+                this.items.push({
+                    title: 'Envio',
+                    quantity: 1, 
+                    unit_price: this.$envio,
+                    currency_id: 'MXN'
+                  });
+
+
                 this.productos = result.data.carrito_general;
                 this.load_data = false;
               })
@@ -241,6 +259,31 @@ export default {
                   "Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.";
               });
           }
+        },
+
+        crearPreferencia(){
+          let data ={
+            back_urls:{
+              success: 'http://localhost:8080/verificacion/success/'+this.venta.direccion,
+              pending: 'http://localhost:8080/verificacion/pending',
+              failure: 'http://localhost:8080/verificacion/failure'
+            },
+
+            items: this.items,
+            auto_return: 'approved',
+          }
+
+          axios.post('https://api.mercadopago.com/checkout/preferences',data,{
+            headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer TEST-7901365576620586-021417-b1b5a07a3c64b2182186fe17b8fbb734-1673996244'
+                },
+          }).then((result) => {
+            console.log(result);
+            window.location.href = result.data.sandbox_init_point; 
+          }).catch((err) => {
+            
+          });
         },
 
     },
