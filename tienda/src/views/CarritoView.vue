@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="pb-5">
     <!-- Hero Section-->
-    <section class="hero">
+    <section class="hero" style="margin-top: 7rem;">
       <div class="container">
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Carrito</h1>
+          <h1 class="hero-heading"> Tu Carrito</h1>
           <div class="row">
             <div class="col-xl-8 offset-xl-2">
               <p class="lead text-muted">Tienes  {{carrito_length}} elementos en tu carrito</p>
@@ -75,9 +75,7 @@
                               {{ item.variedad.variedad }}</span
                             >
                             <br />
-                            <span class="text-muted text-sm"
-                              >Colour: Green</span
-                            >
+                           
                           </div>
                         </div>
                       </div>
@@ -123,15 +121,16 @@
               <router-link class="btn btn-link text-muted" to="/shop"
                 >Continuar comprando</router-link
               >
-              <a
+              <router-link
                 class="btn text-white"
+                to="/checkout"
                 style="background: #1f49b6; border-radius: 10px"
-                >Checkout<img
+                >Pagar<img
                   class="mb-1"
                   src="/assets/media/checkout.png"
                   alt="Checkout"
                   style="width: 20px"
-              /></a>
+              /></router-link>
             </div>
           </div>
           <div class="col-lg-4 " >

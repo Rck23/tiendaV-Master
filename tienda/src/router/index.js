@@ -42,6 +42,11 @@ const routes = [
     name: "direcciones",
     component: () => import("@/views/cuenta/DireccionesApp.vue"),
   },
+  {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("@/views/CheckoutView.vue"),
+  },
 ];
 
 const router = new VueRouter({

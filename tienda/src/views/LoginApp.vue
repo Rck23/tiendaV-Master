@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div  class="pb-5">
           <!-- customer login-->
 
-            <section style="margin-top: 12rem;">
+            <section style="margin-top: 8rem;">
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-lg-5">

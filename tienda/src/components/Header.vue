@@ -461,7 +461,7 @@
                         class="mb-2"
                       />
                     </router-link>
-                    <a class="btn text-center text-white mb-3" href="checkout1.html" style="background: #1f49b6; border-radius: 10px">Pagar</a>
+                    <router-link class="btn text-center text-white mb-3" to="/checkout" style="background: #1f49b6; border-radius: 10px">Pagar</router-link>
 
                   </div>
                 </div>

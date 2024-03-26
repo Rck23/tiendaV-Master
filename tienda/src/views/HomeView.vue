@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home pb-5">
     <!-- Split-screen Homepage-->
     <section>
       <SwiperIndex/>
