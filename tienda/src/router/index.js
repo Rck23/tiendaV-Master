@@ -37,6 +37,7 @@ const routes = [
   },
   
   
+  
   {
     path: "/cuenta/direcciones",
     name: "direcciones",
@@ -52,6 +53,16 @@ const routes = [
     name: "verificacion",
     component: () => import("@/views/VerificacionView.vue"),
   },
+  {
+    path: "/cuenta/venta/:id",
+    name: "venta",
+    component: () => import("@/views/cuenta/ventas/VentaDetalleApp.vue"),
+  }, 
+  {
+    path: "/cuenta/venta",
+    name: "venta-index",
+    component: () => import("@/views/cuenta/ventas/VentaIndexApp.vue"),
+  }, 
 ];
 
 const router = new VueRouter({

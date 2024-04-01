@@ -22,7 +22,7 @@ var UsuarioEsquema = esquema({
   // Estado del usuario (activo o inactivo)
   estado: { type: Boolean, default: true, required: true },
   // Fecha de creación del usuario
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 });
 
 // Exportamos el modelo de Usuario basado en el esquema definido

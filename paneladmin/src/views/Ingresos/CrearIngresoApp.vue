@@ -66,9 +66,9 @@
                                   <!-- Input -->
                                   <select class="form-select mb-3" v-model="Ingreso.proveedor">
                                       <option value="" selected disabled>Seleccionar</option>
-                                      <option>My first option</option>
-                                      <option>Another option</option>
-                                      <option>Third option is here</option>
+                                      <option>Hola</option>
+                                      <option>Melón</option>
+                                      <option>Limón</option>
                                   </select>
   
                               </div>

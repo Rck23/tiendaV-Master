@@ -38,7 +38,7 @@
               <router-link
                 style="color: #1f49b6"
                 class="nav-link fw-bold text-uppercase"
-                to="/"
+                to="/shop"
                 >¿Por que planify?</router-link
               >
             </li>
@@ -60,6 +60,7 @@
               >
             </li> -->
 
+            
         
             <li class="nav-item dropdown">
               <a
@@ -127,133 +128,7 @@
                 </li>
               </ul>
             </li>
-
-            <!-- Megamenu
-
-              <li class="nav-item dropdown position-static text-white"><a class="nav-link dropdown-toggle text-white " href="#" data-bs-toggle="dropdown">Categorias</a>
-                <div class="dropdown-menu dropdown-menu-animated megamenu py-lg-0 ">
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <div class="row p-3 pe-lg-0 ps-lg-5 pt-lg-5">
-                        <div class="col-lg-3">
-                         
-                          <h6 class="text-uppercase">Semanal</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores semanales</a></li>
-                           </ul>
-                         
-                          <h6 class="text-uppercase">Mensual</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores mensuales  </a></li>
-                           </ul>
-                        </div>
-                        <div class="col-lg-3">
-                         
-                          <h6 class="text-uppercase">Kids</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Lista To do   </a></li>
-                          </ul>
-                         
-                          <h6 class="text-uppercase">Habitos</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Lista To do   </a></li>
-                    
-                          </ul>
-                           
-                            <h6 class="text-uppercase">Work Out</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de trabajo   </a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3">
-                         
-                          <h6 class="text-uppercase">Horarios</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de horario   </a></li>
-                          </ul>
-                         
-                          <h6 class="text-uppercase">Viajes</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
-
-                          </ul>
-                        </div>
-                        <div class="col-lg-3">
-                         
-                          <h6 class="text-uppercase">Viveres</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
-                          </ul>
-                         
-                          <h6 class="text-uppercase">Kanban</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores  Kanban </a></li>
-                           </ul>
-                             
-                              <h6 class="text-uppercase">Metas</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Listas To do   </a></li>  
-                          </ul>
-                             
-                              <h6 class="text-uppercase">Gastos</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Planeadores de gastos   </a></li>
-                           </ul>
-                        </div>
-                      </div>
-                      <div class="row megamenu-services d-none d-lg-flex">
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#delivery-time-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Envios gratis</h6>
-                              <p class="mb-0 text-muted text-sm">Envios gratis desde $900</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#money-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Dinero seguro</h6>
-                              <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro gracias a mercado pago</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#customer-support-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">449-123-45-47</h6>
-                              <p class="mb-0 text-muted text-sm">24/7 disponibles</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#secure-payment-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Pago seguro</h6>
-                              <p class="mb-0 text-muted text-sm">Pago seguro</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="https://cdn.getmidnight.com/4721dc6a803c213861d569b31f3c121f/2021/05/La-importancia-de-la-Orden-de-Compra.jpg" alt=""></div>
-                  </div>
-                </div>
-              </li> -->
-              
-              
+      
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -362,7 +237,7 @@
                         
                         <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink" style="left: -50px !important;">  
 
-                          <a class="dropdown-item fw-bold" style="color: #ed8808"><img src="/assets/icons/pedidos.png" style="width: 25px"/>  Pedidos</a>
+                          <router-link class="dropdown-item fw-bold" style="color: #ed8808" to="/cuenta/venta"><img src="/assets/icons/pedidos.png" style="width: 25px"/>  Mis pedidos</router-link>
                           <router-link class="dropdown-item fw-bold" style="color: #ed8808" to="/cuenta/direcciones"><img src="/assets/icons/direccion.png"  style="width: 25px"/> Direcciones</router-link>
                           <a class="dropdown-item fw-bold" style="color: #ed8808" v-on:click="logout()">  <img src="/assets/icons/salida.png" style="width: 25px" /> Cerrar sesión   </a>
                           

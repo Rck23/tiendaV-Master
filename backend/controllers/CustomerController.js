@@ -33,8 +33,8 @@ const crear_producto_carrito = async function(req,res){
 
 const obtener_carrito_cliente = async function(req,res){
     if(req.user){
-        let carrito = await Carrito.find({cliente: req.user.sub}).populate('producto').populate('variedad').sort({createAt:-1}).limit(8);
-        let carrito_general = await Carrito.find({cliente: req.user.sub}).populate('producto').populate('variedad').sort({createAt:-1});
+        let carrito = await Carrito.find({cliente: req.user.sub}).populate('producto').populate('variedad').sort({createdAt:-1}).limit(8);
+        let carrito_general = await Carrito.find({cliente: req.user.sub}).populate('producto').populate('variedad').sort({createdAt:-1});
         res.status(200).send({carrito, carrito_general});
 
     }else{
@@ -107,31 +107,64 @@ const crear_venta_cliente = async function(req,res){
         data.año = new Date().getFullYear();
         data.mes = new Date().getMonth()+1;
         data.dia = new Date().getDate();
-        data.estado = 'Pagado'; 
-        
+        data.estado = "Pagado";
 
-        let ventas = await Venta.find().sort({createAt:-1}); 
-        
-        if (ventas.length == 0) {
-            data.serie = 1; 
+        let ventas = await Venta.find().sort({createdAt:-1});
+
+        if(ventas.length == 0){
+            data.serie = 1;
         }else{
             data.serie = ventas[0].serie + 1;
         }
-
+        
         let venta = await Venta.create(data);
 
         for(var item of data.detalles){
+
             item.año = new Date().getFullYear();
             item.mes = new Date().getMonth()+1;
             item.dia = new Date().getDate();
-            item.venta = venta._id; 
+            item.venta = venta._id;
 
-            await Venta_detalle.create(data); 
-        }
+            await Venta_detalle.create(item);
         
-        await Carrito.deleteMany({cliente: data.cliente}); 
+        }
+
+        await Carrito.deleteMany({cliente:data.cliente});
 
         res.status(200).send(venta);
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
+const obtener_informacion_venta = async function(req,res){
+    if(req.user){
+        
+        let id = req.params['id'];
+        let venta = await Venta.findById({_id:id}).populate('cliente').populate('direccion');
+        let detalles = await Venta_detalle.find({venta:id}).populate('producto').populate('variedad'); 
+
+        if (req.user.sub == venta.cliente._id) {
+            res.status(200).send({venta,detalles});
+            
+        }else{
+            res.status(200).send({data:undefined,message: 'No tienes acceso a esta venta'});
+
+        }
+
+    }else{
+        res.status(500).send({data:undefined,message: 'ErrorToken'});
+    }
+}
+
+
+const obtener_ventas_cliente = async function(req,res){
+    if(req.user){
+        
+        let ventas = await Venta.find({cliente:req.user.sub}).populate('cliente').populate('direccion');
+       
+        res.status(200).send(ventas);
 
     }else{
         res.status(500).send({data:undefined,message: 'ErrorToken'});
@@ -148,5 +181,7 @@ module.exports = {
   eliminar_direccion_cliente,
 
   validar_payment_id_venta,
-  crear_venta_cliente
+  crear_venta_cliente,
+  obtener_informacion_venta,
+  obtener_ventas_cliente
 };

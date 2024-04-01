@@ -75,7 +75,7 @@ const listar_producto_admin = async function (req, res) {
         { titulo: new RegExp(filtro, "i") },
         { categorias: new RegExp(filtro, "i") },
       ],
-    }).sort({ createAt: -1 });
+    }).sort({ createdAt: -1 });
     // Enviar la lista de productos
     res.status(200).send(productos);
   } else {
@@ -115,7 +115,7 @@ const obtener_producto_admin = async function (req, res) {
     try {
       // Buscar el producto por su ID
       let producto = await Producto.findById({ _id: id }).sort({
-        createAt: -1,
+        createdAt: -1,
       });
 
       // Enviar la información del producto

@@ -21,7 +21,7 @@ var DireccionEsquema = esquema({
   cliente: { type: esquema.ObjectId, ref: 'cliente', required: true },
 
   // Fecha de creación de variedad
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
 });
 

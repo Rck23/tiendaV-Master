@@ -22,7 +22,7 @@ var VariedadEsquema = esquema({
   stock: { type: Number, default: 0, required: true },
     
   // Fecha de creación de variedad
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
 });
 

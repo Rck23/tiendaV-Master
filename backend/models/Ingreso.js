@@ -20,7 +20,7 @@ var IngresoEsquema = esquema({
      serie: { type: Number, required: true },// No Formulario
      usuario: { type: esquema.ObjectId, ref: 'usuario', required: true },// No Formulario
   // Fecha de creación del ingreso
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 });
 
 // Exportamos el modelo de ingreso basado en el esquema definido

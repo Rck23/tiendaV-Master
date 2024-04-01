@@ -132,6 +132,7 @@
       </div>
     </div>
   </section>
+  
   <section class="mt-5">
     <div class="container">
       <ul class="nav nav-tabs flex-column flex-sm-row" role="tablist">
@@ -393,10 +394,10 @@ export default {
           }
         }).then((result) => {
           this.$socket.emit('send_cart', true);
-          console.log(result);
+          
         }).catch((error) => {
-          console.error('Error al agregar al carrito:', error);
-          this.msm_error = 'Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.';
+        
+          this.msm_error = 'Debes iniciar sesión para agregar al carrito. Por favor, vuelve a inténtarlo.';
         });
         }
     }

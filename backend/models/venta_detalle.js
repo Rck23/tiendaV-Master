@@ -18,7 +18,7 @@ var Venta_detalleEsquema = esquema({
   precio_unidad: { type: Number, required: true },
   cantidad: { type: Number, required: true },
 
-  estado: { type: String, required: true },
+  // estado: { type: String, required: true },
 
     // Referencias
   cliente: { type: esquema.ObjectId, ref: 'cliente', required: true },
@@ -28,7 +28,7 @@ var Venta_detalleEsquema = esquema({
 
     
   // Fecha de creación
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
 });
 

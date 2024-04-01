@@ -1,7 +1,5 @@
 <template>
     <div  class="pb-5">
-          <!-- customer login-->
-
             <section style="margin-top: 8rem;">
               <div class="container">
                 <div class="row justify-content-center">
@@ -29,7 +27,7 @@
                           </div>
 
                           <div class="mb-4 text-center">
-                            <button class="btn btn-outline-primary rounded-pill" type="button" v-on:click="login()">INICIAR SESIÓN</button>
+                            <button class="btn btn-primary rounded-pill" type="button" v-on:click="login()">INICIAR SESIÓN</button>
                           </div>
                         </form>
                       </div>
@@ -64,7 +62,7 @@
                       
 
                           <div class="mb-4 text-center">
-                            <button class="btn btn-outline-primary rounded" type="button" v-on:click="validar_registro()">REGISTRARME</button>
+                            <button class="btn btn-primary rounded-pill" type="button" v-on:click="validar_registro()">REGISTRARME</button>
                           </div>
                         </form>
                       </div>
@@ -73,12 +71,9 @@
                 </div>
               </div>
             </section>
-
-
-
-         
-
     </div>
+
+    
 </template>
 
 <script>

@@ -28,7 +28,7 @@ var VentaEsquema = esquema({
 
     
   // Fecha de creación
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
 });
 

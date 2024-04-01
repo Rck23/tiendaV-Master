@@ -31,7 +31,7 @@ var ProductoEsquema = esquema({
 
   stock: { type: Number, default: 0, required: true },
   // Fecha de creación del producto
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
   // Fecha de actualización del producto (opcional)
   updateAt: { type: Date, required: false },
 });

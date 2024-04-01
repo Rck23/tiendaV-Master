@@ -80,26 +80,32 @@ export default {
     },
 
     beforeMount() {
-        this.estado = this.$route.params.estado; 
-        this.payment_id = this.$route.query.payment_id; 
+
+        this.estado = this.$route.params.estado;
+        this.payment_id = this.$route.query.payment_id;
 
         this.init_carrito();
+
         let usuario_data = JSON.parse(this.$store.state.usuario);
+   
+        this.venta.transaccion = this.payment_id;
+        this.venta.envio = this.$envio;
+        this.venta.cliente = usuario_data._id;
 
-        this.venta.transaccion = this.payment_id; 
-        this.venta.envio = this.$envio; 
-        this.venta.cliente = usuario_data._id; 
-
-        if (this.$route.params.direccion) {
+        if(this.$route.params.direccion){
             this.direccion = this.$route.params.direccion;
             this.venta.direccion = this.direccion;
         }else{
-            this.msm_error = 'No se obtuvo el código de la dirección'; 
+            this.msm_error = 'No se obtuvo el código de la dirección';
         }
+
         this.init_payment(this.payment_id);
 
         console.log(this.venta);
         console.log(this.detalles);
+
+
+        
     },
 
     methods: {
@@ -109,34 +115,27 @@ export default {
               "Content-Type": "application/json",
               "Authorization": this.$store.state.token,
             },
-          })
-          .then((result) => {
+          }).then((result) => {
             this.total = 0; 
             this.carrito_length = result.data.carrito_general.length; 
 
             for (var item of result.data.carrito_general) {
-                let subtotal = item.producto.precio * item.cantidad;
-                this.total = this.total + subtotal;
-
-                this.detalles.push({
-                    subtotal: subtotal, 
-                    precio_unidad: item.producto.precio, 
-                    cantidad: item.cantidad, 
-                    cliente: this.venta.cliente, 
-                    producto: item.producto._id,
-                    variedad: item.variedad._id
-                })
+              let subtotal = item.producto.precio * item.cantidad;
+                    this.total = this.total+ subtotal;
+                    this.detalles.push({
+                        subtotal: subtotal,
+                        precio_unidad: item.producto.precio,
+                        cantidad: item.cantidad,
+                        cliente: this.venta.cliente,
+                        producto: item.producto._id,
+                        variedad: item.variedad._id
+                    });
             }
-            this.venta.total = this.total; 
-
+            this.venta.total = this.total;
             this.carrito = result.data.carrito_general;
             
           })
-          .catch((error) => {
-            console.error("Error al agregar al carrito:", error);
-            this.msm_error =
-              "Error al agregar al carrito. Por favor, inténtalo de nuevo más tarde.";
-          });
+          
     },
 
         init_payment(payment_id){
@@ -165,8 +164,7 @@ export default {
                     "Content-Type": "application/json",
                     'Authorization': this.$store.state.token,
                 },
-                })
-                .then((resultado) => {  
+                }).then((resultado) => {  
 
                     if (resultado.data.length >= 1) {
                         // NO SE HACE LA VENTA
@@ -177,9 +175,8 @@ export default {
                         this.crear_venta();
                     }
           
-                })
-                .catch((err) => {
-                console.log(err);
+                }).catch((err) => {
+                  console.log(err);
                 });
         },
 
@@ -191,14 +188,14 @@ export default {
                     "Content-Type": "application/json",
                     'Authorization': this.$store.state.token,
                 },
-                })
-                .then((resultado) => {  
+                }).then((resultado) => {  
                     console.log(resultado);
                     //REDIRECCION
-                    this.$socket.emit('send_cart', true);
-                })
-                .catch((err) => {
-                console.log(err);
+                    this.$router.push({name:'venta', params: {id: resultado.data._id}}); 
+                    this.$socket.emit('send_cart',true);
+
+                }).catch((err) => {
+                  console.log(err);
                 });
         }
     },

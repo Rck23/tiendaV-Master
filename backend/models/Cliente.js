@@ -21,7 +21,7 @@ var ClienteEsquema = esquema({
   // Estado del cleinte (activo o inactivo)
   estado: { type: Boolean, default: true },
   // Fecha de creación del cleinte
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
   pais: { type: String, required: false },
   recovery: { type: String, required: false },  

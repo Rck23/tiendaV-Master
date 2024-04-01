@@ -20,7 +20,7 @@ var CategoriaEsquema = esquema({
 
     
   // Fecha de creación de variedad
-  createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 
 });
 

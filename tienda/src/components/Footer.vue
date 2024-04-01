@@ -108,32 +108,12 @@
           </div>
           <div class="col-md-6" >
             <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end" >
-              <li class="list-inline-item" >
-                <img
-                  class="w-2rem"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/visa.svg"
-                  alt="..."
-                  
-                />
-              </li>
-              <li class="list-inline-item" >
-                <img
-                  class="w-2rem"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/mastercard.svg"
-                  alt="..."
-                />
-              </li>
+              
+            
               <li class="list-inline-item">
                 <img
-                  class="w-2rem"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/paypal.svg"
-                  alt="..."
-                />
-              </li>
-              <li class="list-inline-item">
-                <img
-                  class="w-2rem"
-                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/western-union.svg"
+                  class="w-3rem"
+                  src="/assets/media/1.webp"
                   alt="..."
                 />
               </li>
