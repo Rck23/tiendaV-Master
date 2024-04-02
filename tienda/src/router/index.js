@@ -63,6 +63,18 @@ const routes = [
     name: "venta-index",
     component: () => import("@/views/cuenta/ventas/VentaIndexApp.vue"),
   }, 
+
+
+  {
+    path: "/productos/producto/Psemanal",
+    name: "Psemanal",
+    component: () => import("@/views/productos/producto/SemanalView.vue"),
+  }, 
+  {
+    path: "/productos/producto/Pmensual",
+    name: "Pmensual",
+    component: () => import("@/views/productos/producto/MensualView.vue"),
+  }, 
 ];
 
 const router = new VueRouter({

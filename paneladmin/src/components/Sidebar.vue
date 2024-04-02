@@ -8,10 +8,10 @@
       </button>
 
       <!-- Brand -->
-      <a class="navbar-brand" href="./index.html">
+      <a class="" href="./index.html">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5SCwdWG7UUlyo6JTcnkzrHJOWvu-jN6UZm2J-pECtQKej1nTa06cfhttEFc4tffKUq5I&usqp=CAU"
-          class="navbar-brand-img mx-auto" alt="..." />
+          src="https://res.cloudinary.com/dh80ed02z/image/upload/v1710875319/Imgs%20Planify/mdghiqrv6ol0hk5qu0fn.png"
+          class=" mx-auto" style="width: 100%; " alt="..." />
       </a>
 
       <!-- User (xs) -->

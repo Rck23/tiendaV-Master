@@ -79,19 +79,19 @@
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Semanal</a
+                    :to="{name:'Psemanal'}"
+                    >Semanal</router-link
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Mensual</a
+                    :to="{name:'Pmensual'}"
+                    >Mensual</router-link
                   >
                 </li>
                 <li>

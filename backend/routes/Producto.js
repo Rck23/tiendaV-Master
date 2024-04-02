@@ -104,6 +104,18 @@ api.post(
   productoController.registro_ingreso_admin
 );
 
+api.get(
+  "/obtener_ingresos_admin/:inicio?/:hasta?",
+  authenticate.decodeToken,
+  productoController.obtener_ingresos_admin
+);
+
+api.get(
+  "/obtener_comprobante_ingreso/:nombre",
+  
+  productoController.obtener_comprobante_ingreso
+);
+
 // PETICIONES DE GALERIA
 
 api.post(

@@ -22,7 +22,7 @@
   
                                       <!-- Title -->
                                       <h1 class="header-title">
-                                          <b>Nuevo ingreso</b>
+                                          Nuevo ingreso
                                       </h1>
   
                                   </div>
@@ -33,9 +33,9 @@
                                       <!-- Nav -->
                                       <ul class="nav nav-tabs nav-overflow header-tabs">
                                       <li class="nav-item">
-                                          <a class="nav-link">
-                                          Ingresos
-                                          </a>
+                                          <router-link class="nav-link" to="/ingreso">
+                                            Todos los ingresos
+                                          </router-link>
                                       </li>
                                       <li class="nav-item">
                                           <a class="nav-link active">Nuevo ingreso</a>

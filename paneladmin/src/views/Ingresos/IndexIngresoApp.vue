@@ -39,195 +39,83 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row">
-                            <div class="col-12 col-md-6">
+                        <div class="row mb-5">
+    <div class="col-9 d-flex">
+        <input type="date" class="form-control" v-model="inicio" style="margin-right: 1rem"/>
+        <input type="date" class="form-control" v-model="hasta"/>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" style="width:100%" v-on:click="init_data()">Buscar</button>
+    </div>
+</div>
 
-                               
-                                <div class="form-group">
+<div class="card">
+    <div class="card-header">
 
-                               
-                                    <label class="form-label">
-                                        Proveedor
-                                    </label>
-                                    <small class="form-text text-muted">
-                                        Proveedor encargado del ingreso.
-                                    </small>
-                               
-                                    <select class="form-select mb-3" v-model="ingreso.proveedor">
-                                        <option value="" selected disabled>Seleccionar</option>
-                                        <option>My first option</option>
-                                        <option>Another option</option>
-                                        <option>Third option is here</option>
-                                    </select>
+        <!-- Title -->
+        <h4 class="card-header-title mb-0">
+            <b>Ingreso a inventario</b>
+        </h4>
 
-                                </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-sm table-nowrap card-table">
+        <thead>
+            <tr>
+                <th>Proveedor</th>
+                <th>Serie</th>
+                <th>Monto</th>
+                <th>Documento</th>
+            </tr>
+        </thead>
+        <tbody class="fs-base" v-if="ingresos.length >= 1">
+            <tr v-for="item in ingresos">
+                <td>
+                    <a >#{{ item.proveedor }}</a>
+                </td>
+                <td>
+                    <a >#{{ item.serie.toString().padStart(6, '000000') }}</a>
+                </td>
+                <td>
+                    {{ convertCurrency(item.monto_resultante) }}
+                </td>
+                <td>
+                    <a :href="$urlAPI+'/obtener_comprobante_ingreso/'+item.documento" target="_blank">
 
-                            </div>
+                        <button class="btn btn-primary">Abrir documento</button>
+                    </a>
+                </td>
+            </tr>
+           
+        </tbody>
 
-                            <div class="col-12 col-md-6">
-
-                            
-                                <div class="form-group">
-
-                       
-                                    <label class="form-label">
-                                        N° comprobante
-                                    </label>
-                                    <small class="form-text text-muted">
-                                        Número de la factura.
-                                    </small>
-                               
-                                    <input type="text" class="form-control" placeholder="5DSF-000154"
-                                        v-model="ingreso.ncomprobante">
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
+        <tbody v-if="ingresos.length == 0">
+            <tr>
+                <td colspan="4">
+                    <div class="row justify-content-center" >
+                          <div class="col-12 col-md-6 col-xl-6 my-5">
+                            <div class="text-center">
                         
-                                <div class="form-group">
 
-                        
-                                    <label class="form-label">
-                                        Monto total
-                                    </label>
-                                    <small class="form-text text-muted">
-                                        Monto total pagado al proveedor.
-                                    </small>
-                             
-                                    <input type="text" class="form-control" placeholder="546" v-model="ingreso.monto_total">
+                              <!-- Heading -->
+                              <h1 class="display-4 mb-3">
+                                No se encontrarón ingresos 😭
+                              </h1>
 
-                                </div>
+                              <!-- Subheading -->
+                              <p class="text-muted mb-4 display-6">
+                                Selecciona un rango de fechas para obtener resultados o verifica <br> la base de datos para ver si hay un problema  
+                              </p>
 
                             </div>
-
-                            <div class="col-12 col-md-6">
-
-                         
-                                <div class="form-group">
-
-                                    <label class="form-label">
-                                        Comprobante
-                                    </label>
-                                    <small class="form-text text-muted">
-                                        Subir comprobante del ingreso.
-                                    </small>
-                                
-                                    <input type="file" class="form-control" v-on:change="uploadComprobante($event)">
-
-                                </div>
-
-                            </div>
+                          </div>
                         </div>
-
-                        <hr class="my-5">
-
-                        <div class="row">
-
-                            <div class="col-md-12 mb-4">
-                                <h3><b>Productos del ingreso</b></h3>
-                            </div>
-
-                            <div class="col-12 col-md-4">
-
-                          
-                                <div class="form-group">
-
-                              
-                                    <label class="form-label">
-                                        Producto
-                                    </label>
-                                
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Buscar producto">
-                                        <button class="btn btn-primary">
-                                            <i class="fe fe-search"></i>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-12 col-md-3">
-
-                              
-                                <div class="form-group">
-
-                             
-                                    <label class="form-label">
-                                        Precio unidad
-                                    </label>
-                            
-                                    <input type="text" class="form-control mb-3" placeholder="0.00">
-
-                                </div>
-
-                            </div>
-                            <div class="col-12 col-md-3">
-
-                            
-                                <div class="form-group">
-
-                                 
-                                    <label class="form-label">
-                                        Cantidad total
-                                    </label>
-                                  
-                                    <input type="number" class="form-control mb-3" placeholder="0">
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-2">
-
-                                <button class="btn btn-primary" style="margin-top: 1.8rem!important;">
-                                    Agregar
-                                </button>
-                            </div>
-                        </div>
-
-                     
-                        <div class="card ">
-                            <div class="table-responsive mb-0">
-                                <table class="table table-sm table-nowrap card-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Fecha</th>
-                                            <th>Monto</th>
-                                            <th>Estatus</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fs-base">
-                                        <tr>
-                                            <td>
-                                                <a href="invoice.html"> #10395</a>
-                                            </td>
-                                            <td>
-                                                <time datetime="2020-04-24">Apr. 24, 2020</time>
-                                            </td>
-                                            <td>
-                                                $29.00
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-danger btn-sm">Eliminar</button>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary mb-7">
-                            Crear Ingreso
-                        </button> -->
-
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
                     </div>
                 </div>
                 <!-- / .row -->
@@ -240,9 +128,13 @@
 
 import Sidebar from "@/components/Sidebar.vue";
 import TopNav from "@/components/TopNav.vue";
+import currency_formatter from 'currency-formatter';
+import axios from 'axios';
 
 export default {
-    name: 'CrearIngresoApp',
+    name: 'IndexIngresoApp',
+
+    
     components: {
         Sidebar,
         TopNav
@@ -250,52 +142,44 @@ export default {
 
     data() {
         return {
-            ingreso: {
-                proveedor: ''
-            },
-            comprobante: undefined,
+            inicio:'',
+            hasta:'',
+            ingresos: [], 
         }
     },
 
     methods: {
         // Método para manejar la subida del documento como comprobante
-        uploadComprobante($event) {
-            var documento;
-
-            if ($event.target.files.length >= 1) {
-                documento = $event.target.files[0];
-            }
-
-            if (documento.size <= 10000000) {
-                if (
-                    documento.type == "image/jpg" ||
-                    documento.type == "image/jpeg" ||
-                    documento.type == "image/png" ||
-                    documento.type == "application/pdf" ||
-                    documento.type == "image/webp"
-                ) {
-
-                    this.comprobante = documento;
-                    this.ingreso.documento = this.comprobante;
-
-                } else {
-                    this.$notify({
-                        group: "foo",
-                        title: "ERROR",
-                        text: "El tipo de documento debe ser: 'pdf' 'jpeg' 'png' 'jpg' o 'webp'",
-                        type: "error",
-                    });
-                    this.comprobante = undefined;
-                }
-            } else {
+        init_data() {
+            if (!this.inicio) {
                 this.$notify({
-                    group: "foo",
-                    title: "ERROR",
-                    text: "El documento no se pudo cargar",
-                    type: "error",
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese la primera fecha',
+                    type: 'error'
                 });
-                this.comprobante = undefined;
+            } else if(!this.hasta){
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese la segunda fecha',
+                    type: 'error'
+                });
+            } else{
+                axios.get(this.$urlAPI + '/obtener_ingresos_admin/'+this.inicio+'/'+this.hasta, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': this.$store.state.token,
+                    }}).then((result) => {
+                    
+                        this.ingresos = result.data; 
+                        
+                    });
             }
+        },
+
+        convertCurrency(number) {
+            return currency_formatter.format(number, { code: 'USD' });
         },
     },
 
