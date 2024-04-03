@@ -103,6 +103,14 @@ const routes = [
       component: () => import("@/views/Categorias/IndexCategoriaApp.vue"),
       meta: { requiresAuth: true },
     },
+
+
+    {
+      path: "/ventas",
+      name: "ventas-index",
+      component: () => import("@/views/Ventas/VentasIndexApp.vue"),
+      meta: { requiresAuth: true },
+    },
 ];
 
 // Creamos una nueva instancia de VueRouter con las rutas definidas

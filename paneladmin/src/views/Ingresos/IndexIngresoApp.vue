@@ -75,7 +75,7 @@
                       <th>Serie</th>
                       <th>Monto</th>
                       <th>Documento</th>
-                      <th>Detalles</th>
+                      <th>Acción</th>
                     </tr>
                   </thead>
                   <tbody class="fs-base" v-if="ingresos.length >= 1">
@@ -148,6 +148,8 @@
         <!-- / .row -->
       </div>
     </div>
+
+    
   </div>
 </template>
   
