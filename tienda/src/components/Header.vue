@@ -246,15 +246,15 @@
               
             </div>
             <!-- Cart Dropdown-->
-            <div class="nav-item dropdown">
-              <a class="navbar-icon-link d-lg-none" href="cart.html">
+            <div class="nav-item dropdown" >
+              <a class="navbar-icon-link d-lg-none" >
                 <img src="/assets/icons/cart.png" style="width: 25px" />
                 <span
                   class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"
                   >Carrito</span
                 >
               </a>
-              <div class="d-none d-lg-block">
+              <div class="d-none d-lg-block" >
                 <a
                   class="navbar-icon-link"
                   id="cartdetails"
@@ -278,7 +278,7 @@
                 >
                   <div class="navbar-cart-product-wrapper">
                     <!-- cart item-->
-                    <div class="navbar-cart-product" v-for="item in carrito">
+                    <div class="navbar-cart-product" v-for="item in carrito" >
                       <div class="d-flex align-items-center">
                         <router-link :to="{name: 'show-producto', params:{slug: item.producto.slug}}">
                           <img
@@ -321,7 +321,9 @@
                       </div>
                     </div>
                   </div>
-                  <!-- total price-->
+                  
+                  <div v-if="$store.state.token">
+                     <!-- total price-->
                   <div class="navbar-cart-total">
                     <span class="text-uppercase text-muted">Total</span
                     ><strong class="text-uppercase">{{convertCurrency(total)}}</strong>
@@ -338,6 +340,28 @@
                     </router-link>
                     <router-link class="btn text-center text-white mb-3" to="/checkout" style="background: #1f49b6; border-radius: 10px">Pagar</router-link>
 
+                  </div>
+                  </div>
+
+                  <div v-if="!$store.state.token">
+                    <div class="row justify-content-center">
+                          <div class="">
+                            <div class="text-center">
+                              <!-- Heading -->
+                              <p class="fs-4 mb-3 fw-bold"   style="color: #1f49b6">
+                                Inicia sesión para acceder al carrito 
+                              </p>
+
+                              <!-- Subheading -->
+                              <router-link class="btn text-center text-white mb-3" to="/login" style="background: #f19000; 
+                                border-radius: 10px">
+                                Iniciar sesión 
+                                <!-- <img src="/assets/media/ojos.png" alt="" style="width: 22px; margin-bottom: 4px;"> -->
+                              </router-link>
+
+                            </div>
+                          </div>
+                        </div>
                   </div>
                 </div>
               </div>

@@ -110,8 +110,15 @@ api.get(
   productoController.obtener_ingresos_admin
 );
 
+
 api.get(
-  "/obtener_comprobante_ingreso/:nombre",
+  "/obtener_detalles_ingresos_admin/:id",
+  authenticate.decodeToken,
+  productoController.obtener_detalles_ingresos_admin
+);
+
+api.get(
+  "/obtener_comprobante_ingreso/:nombre", 
   
   productoController.obtener_comprobante_ingreso
 );

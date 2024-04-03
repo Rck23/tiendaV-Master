@@ -91,6 +91,13 @@ const routes = [
     },
 
     {
+      path: "/ingreso/:id",
+      name: "ingreso-detalle",
+      component: () => import("@/views/Ingresos/DetalleIngresoApp.vue"),
+      meta: { requiresAuth: true },
+    },
+
+    {
       path: "/categorias",
       name: "categorias",
       component: () => import("@/views/Categorias/IndexCategoriaApp.vue"),

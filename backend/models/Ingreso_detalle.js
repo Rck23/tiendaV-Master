@@ -16,7 +16,8 @@ var Ingreso_detalleEsquema = esquema({
 
      ingreso: { type: esquema.ObjectId, ref: 'ingreso', required: true },
      producto: { type: esquema.ObjectId, ref: 'producto', required: true },
-  // Fecha de creación del ingreso
+
+     // Fecha de creación del ingreso
   createdAt: { type: Date, default: Date.now },
 });
 
