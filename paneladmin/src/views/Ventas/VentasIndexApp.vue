@@ -86,20 +86,17 @@
                                 </tbody>
                                 <tbody v-if="ventas.length == 0">
                                     <tr>
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <div class="row justify-content-center">
-                                                    <div class="col-12 col-md-6 col-xl-6 my-5">
+                                                    <div class="col-12 col-md-6 col-xl-6 my-3">
                                                         
                                                         <div class="text-center">
                                                         
-                                                        <!-- Preheading -->
-                                                        <h6 class="text-uppercase text-muted mb-4">
-                                                            404 error
-                                                        </h6>
+                                                        
 
                                                         <!-- Heading -->
                                                         <h1 class="display-4 mb-3">
-                                                            No se encontraron registros 😭
+                                                            No se encontraron ventas 
                                                         </h1>
 
                                                         <!-- Subheading -->

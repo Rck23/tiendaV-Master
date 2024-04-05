@@ -1,51 +1,9 @@
 <template>
   <!-- Footer-->
   <footer class="main-footer">
-    <!-- Services block-->
-    <div class="text-dark-700 py-6">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 service-column" data-aos="fade-right">
-            <img
-              class="svg-icon service-icon"
-              src="/assets/media/camion.gif"
-              alt=""
-            />
-            <div class="service-text">
-              <h6 class="text-uppercase">Envios gratis</h6>
-              <p class="text-muted fw-light text-sm mb-0">
-                Envios gratis desde $900
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4 service-column" data-aos="fade-up">
-            <img
-              class="svg-icon service-icon"
-              src="/assets/media/euro.gif"
-              alt=""
-            />
-            <div class="service-text">
-              <h6 class="text-uppercase">Dinero seguro</h6>
-              <p class="mb-0 text-muted text-sm">Tu dinero esta 100% seguro</p>
-            </div>
-          </div>
-          <div class="col-lg-4 service-column" data-aos="fade-left">
-            <img
-              class="svg-icon service-icon"
-              src="/assets/media/tailandes.gif"
-              alt=""
-            />
-            <div class="service-text">
-              <h6 class="text-uppercase">449-123-45-47</h6>
-              <p class="mb-0 text-muted text-sm">9:30am - 5:00pm disponibles</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Main block - menus, subscribe form-->
+    
 <div
- class="py-6 text-muted d-flex flex-column justify-content-center align-items-center"
+ class="py-6 text-muted d-flex flex-column justify-content-center align-items-center mt-7"
  style="background-color: #fbdcb3 !important; height: 300px"
 >
  <div class="container">
