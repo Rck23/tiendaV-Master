@@ -29,14 +29,16 @@
               <div class="col-12">
                 <button
                   v-if="!section_form"
-                  class="btn btn-dark btn-sm"
+                  class="btn text-white"
+                  style="background: #1f49b6; border-radius: 10px"
                   v-on:click="section_form = true"
                 >
                   Nueva categoria
                 </button>
                 <button
                   v-if="section_form"
-                  class="btn btn-dark btn-sm"
+                  class="btn text-white"
+                  style="background: #f19000; border-radius: 10px"
                   v-on:click="section_form = false"
                 >
                   Ocultar
@@ -47,10 +49,12 @@
                   <input
                     type="text"
                     class="form-control"
+                    
+                    style=" border-radius: 10px"
                     placeholder="Nueva categoria"
                     v-model="nueva_categoria"
                   />
-                  <button class="btn btn-dark" v-on:click="crear_categoria()">
+                  <button class="btn text-white" style="background: #1f49b6; border-radius: 10px" v-on:click="crear_categoria()">
                     Crear categoría
                   </button>
                 </div>
@@ -64,10 +68,10 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <a href="profile-posts.html" class="avatar">
+                        <a class="avatar">
                           <img
-                            src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-5.jpg"
-                            alt="..."
+                            src="/assets/img/categoria.png"
+                            alt="categorias"
                             class="avatar-img rounded-circle"
                           />
                         </a>
@@ -75,8 +79,8 @@
                       <div class="col ms-n2">
                         <!-- Title -->
                         <h4 class="mb-1 name">
-                          <a href="profile-posts.html"
-                            >{{ item.categoria.titulo }} ({{ item.nproductos }}
+                          <a>
+                            {{ item.categoria.titulo }} ({{ item.nproductos }}
                             Productos)
                           </a>
                         </h4>
@@ -95,23 +99,25 @@
                         <a
                           v-b-modal="'estado-' + item.categoria._id"
                           v-if="item.categoria.estado"
-                          class="btn btn-sm btn-danger text-white"
-                          style="margin-right: 1rem"
+                          class="btn btn-sm text-white"
+                          style="margin-right: 1rem; border-radius: 10px; background: #f19000"
                         >
                           Ocultar
                         </a>
                         <a
                           v-b-modal="'estado-' + item.categoria._id"
                           v-if="!item.categoria.estado"
-                          class="btn btn-sm btn-primary text-white"
-                          style="margin-right: 1rem"
+                          class="btn btn-sm text-white"
+                          style="background: #1f49b6; margin-right: 1rem; border-radius: 10px"
+              
                         >
                           Mostrar
                         </a>
 
                         <button
                           v-on:click="openInputGroup(item.categoria._id)"
-                          class="btn btn-sm btn-dark text-white"
+                          class="btn btn-sm text-white"
+                          style="background: #1f49b6; margin-right: 1rem; border-radius: 10px"
                         >
                           Subcategoria
                         </button>
@@ -155,9 +161,11 @@
                         class="form-control"
                         placeholder="Nueva categoria"
                         v-model="nueva_subcategoria"
+                        style="border-radius: 10px;"
                       />
                       <button
-                        class="btn btn-dark"
+                      class="btn text-white"
+                          style="background: #f19000; margin-right: 1rem; border-radius: 10px"
                         v-on:click="crear_subcategoria()"
                       >
                         Crear subcategoría
@@ -175,9 +183,11 @@
                           >
                             {{ subitem.titulo }}
                             <a
-                              style="cursor: pointer"
+                          
                               v-b-modal="'delete-' + subitem._id"
                               class="btn btn-sm btn-danger text-white"
+                            
+                              style="cursor: pointer;  margin-right: 1rem; border-radius: 10px"
                             >
                               Eliminar
                             </a>

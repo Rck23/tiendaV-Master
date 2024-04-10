@@ -37,34 +37,18 @@
             <li class="nav-item">
               <router-link
                 style="color: #1f49b6"
-                class="nav-link fw-bold text-uppercase"
+                class="nav-link fw-bold text-uppercase fs-5"
                 to="/shop"
                 >¿Por que planify?</router-link
               >
             </li>
-            <!-- <li class="nav-item">
-              <router-link
-                style="color: #1f49b6"
-                class="nav-link fw-bold text-uppercase"
-                to="/shop"
-                >Planners</router-link
-              >
-            </li> -->
-
-             <!-- <li class="nav-item">
-              <router-link
-                style="color: #1f49b6"
-                class="nav-link fw-bold text-uppercase"
-                to="/especial"
-                >to do list</router-link
-              >
-            </li> -->
+            
 
             
         
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle fs-5"
                 href="#"
                 style="color: #1f49b6"
                 id="navbarDarkDropdownMenuLink"
@@ -95,35 +79,35 @@
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Work Out</a
+                    :to="{name:'Pworkout'}"
+                    >Work Out</router-link
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Horarios</a
+                    :to="{name:'Phorario'}"
+                    >Horarios</router-link
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Kanban</a
+                    :to="{name:'Pkanban'}"
+                    >Kanban</router-link
                   >
                 </li>
                 <li>
-                  <a
+                  <router-link
                     class="dropdown-item fw-bold"
                     style="color: #ed8808"
-                    href="#"
-                    >Gastos</a
+                    :to="{name:'Pgastos'}"
+                    >Gastos</router-link
                   >
                 </li>
               </ul>
@@ -131,7 +115,7 @@
       
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  class="nav-link dropdown-toggle fs-5"
                   href="#"
                   style="color: #1f49b6"
                   id="navbarDarkDropdownMenuLink"
@@ -146,43 +130,43 @@
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
                   <li>
-                    <a
+                    <router-link
                       class="dropdown-item fw-bold"
                       style="color: #ed8808"
-                      href="#"
-                      >Metas</a
+                      :to="{name:'TDmetas'}"
+                      >Metas</router-link
                     >
                   </li>
                   <li>
-                    <a
+                    <router-link
                       class="dropdown-item fw-bold"
                       style="color: #ed8808"
-                      href="#"
-                      >Viveres</a
+                      :to="{name:'TDviveres'}"
+                      >Viveres</router-link
                     >
                   </li>
                   <li>
-                    <a
+                    <router-link
                       class="dropdown-item fw-bold"
                       style="color: #ed8808"
-                      href="#"
-                      >Viajes</a
+                      :to="{name:'TDviajes'}"
+                      >Viajes</router-link
                     >
                   </li>
                   <li>
-                    <a
+                    <router-link
                       class="dropdown-item fw-bold"
                       style="color: #ed8808"
-                      href="#"
-                      >Hábitos</a
+                      :to="{name:'TDhabitos'}"
+                      >Hábitos</router-link
                     >
                   </li>
                   <li>
-                    <a
+                    <router-link
                       class="dropdown-item fw-bold"
                       style="color: #ed8808"
-                      href="#"
-                      >Kids</a
+                      :to="{name:'TDkids'}"
+                      >Kids</router-link
                     >
                   </li>
                 </ul>
@@ -193,7 +177,7 @@
             <li class="nav-item">
               <router-link
                 style="color: #1f49b6"
-                class="nav-link fw-bold text-uppercase"
+                class="nav-link fw-bold text-uppercase fs-5"
                 to="/especial"
                 >personalizalo</router-link
               >
@@ -201,8 +185,8 @@
             <li class="nav-item">
               <router-link
                 style="color: #1f49b6"
-                class="nav-link fw-bold text-uppercase"
-                to="/especial"
+                class="nav-link fw-bold text-uppercase fs-5"
+                to="#"
                 >contactanos</router-link
               >
             </li>

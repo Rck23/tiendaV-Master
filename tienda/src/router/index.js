@@ -75,6 +75,16 @@ const routes = [
     name: "Pmensual",
     component: () => import("@/views/productos/producto/MensualView.vue"),
   }, 
+  {
+    path: "/productos/producto/Pworkout",
+    name: "Pworkout",
+    component: () => import("@/views/productos/producto/WorkOutView.vue"),
+  }, 
+  {
+    path: "/productos/producto/Pkanban",
+    name: "Pkanban",
+    component: () => import("@/views/productos/producto/KanbanView.vue"),
+  }, 
 ];
 
 const router = new VueRouter({

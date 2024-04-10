@@ -103,7 +103,7 @@
                           <td>
                             <!-- Avatar -->
                             <div class="avatar avatar-xs align-middle me-2">
-                              <img class="avatar-img rounded-circle" src="/assets/img/avatar-1.jpg" alt="..." />
+                              <img class="avatar-img rounded-circle" src="/assets/img/avatar-1.png" alt="..." />
                             </div>
                             <a class="item-name text-reset">{{ item.nombres }} {{ item.apellidos }}</a>
                           </td>
@@ -117,12 +117,7 @@
                               item.email
                             }}</a>
                           </td>
-                          <!-- <td>
-                          
-                                                      Phone
-                                                      <a class="item-phone text-reset" href="tel:1-123-456-4890">(988) 568-3568</a>
-                          
-                                                    </td> -->
+                 
 
                           <td>
                             <!-- Badge -->

@@ -8,7 +8,7 @@
       </button>
 
       <!-- Brand -->
-      <a class="" href="./index.html">
+      <a class="" href="#">
         <img
           src="https://res.cloudinary.com/dh80ed02z/image/upload/v1710875319/Imgs%20Planify/mdghiqrv6ol0hk5qu0fn.png"
           class=" mx-auto" style="width: 100%; " alt="..." />
@@ -22,16 +22,16 @@
           <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <div class="avatar avatar-sm avatar-online">
-              <img src="/assets/img/avatar-1.jpg" class="avatar-img rounded-circle" alt="..." />
+              <img src="/assets/img/gatito.png" class="avatar-img rounded-circle" alt="fotoPerfil" />
             </div>
           </a>
 
           <!-- Menu -->
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarIcon">
-            <a href="./profile-posts.html" class="dropdown-item">Perfil</a>
-            <a href="./account-general.html" class="dropdown-item">Configuracion</a>
+            <a  class="dropdown-item">Perfil</a>
+            <a  class="dropdown-item">Configuracion</a>
             <hr class="dropdown-divider" />
-            <a href="./sign-in.html" class="dropdown-item">Salir</a>
+            <a class="dropdown-item">Salir</a>
           </div>
         </div>
       </div>
@@ -132,17 +132,17 @@
             <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <div class="avatar avatar-sm avatar-online">
-                <img src="/assets/img/avatar-1.jpg" style="-webkit-mask-image: none" class="avatar-img rounded-circle"
+                <img src="/assets/img/gatito.png" style="-webkit-mask-image: none" class="avatar-img rounded-circle"
                   alt="..." />
               </div>
             </a>
 
             <!-- Menu -->
             <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-              <a href="./profile-posts.html" class="dropdown-item">Perfil</a>
-              <a href="./account-general.html" class="dropdown-item">Configuraciones</a>
+              <a  class="dropdown-item">Perfil</a>
+              <a  class="dropdown-item">Configuraciones</a>
               <hr class="dropdown-divider" />
-              <a href="./sign-in.html" class="dropdown-item">Salir</a>
+              <a  class="dropdown-item">Salir</a>
             </div>
           </div>
 

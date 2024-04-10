@@ -90,8 +90,8 @@
                       <select name="" class="form-select" v-model="empleado.rol">
                         <option value="" disabled selected>Seleccionar</option>
                         <option value="Administrador">Administrador</option>
-                        <option value="Vendedor">Vendedor</option>
-                        <option value="Inventariado">Inventariado</option>
+                        <option value="Empleado">Empleado</option>
+                        <option value="Editor">Editor</option>
                       </select>
                     </div>
                   </div>

@@ -5,7 +5,7 @@ import Vuex from "vuex";
 // Usamos Vuex en nuestra aplicación Vue
 Vue.use(Vuex);
 
-// Creamos una nueva instancia de Vuex Store para manejar el estado global de la aplicación
+// Creamos una nueva instancia de Vuex Store para manejar el estado global
 export default new Vuex.Store({
   // Estado global de la aplicación, que incluye el token de autenticación almacenado en localStorage
   state: {

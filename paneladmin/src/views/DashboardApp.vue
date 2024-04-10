@@ -14,10 +14,10 @@
                 <div class="row align-items-center">
                   <div class="col">
                     <!-- Pretitle -->
-                    <h6 class="header-pretitle">Empleados</h6>
+                    <h6 class="header-pretitle">Panel</h6>
 
                     <!-- Title -->
-                    <h1 class="header-title">Panel de empleados</h1>
+                    <h1 class="header-title">Dashboard</h1>
                   </div>
                 </div>
                 <!-- / .row -->
@@ -26,13 +26,9 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
-                        <a class="nav-link active"> Todos los empleados </a>
+                        <a class="nav-link active"> Todo </a>
                       </li>
-                      <li class="nav-item">
-                        <router-link to="/colaborador/create" class="nav-link">
-                          Nuevo empleado</router-link
-                        >
-                      </li>
+                    
                     </ul>
                   </div>
                 </div>
