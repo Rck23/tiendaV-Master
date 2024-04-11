@@ -85,6 +85,16 @@ const routes = [
     name: "Pkanban",
     component: () => import("@/views/productos/producto/KanbanView.vue"),
   }, 
+  {
+    path: "/productos/producto/TDviajes",
+    name: "TDviajes",
+    component: () => import("@/views/productos/producto/todo/ViajesView.vue"),
+  }, 
+  {
+    path: "/productos/producto/TDkids",
+    name: "TDkids",
+    component: () => import("@/views/productos/producto/todo/KidsView.vue"),
+  }, 
 ];
 
 const router = new VueRouter({

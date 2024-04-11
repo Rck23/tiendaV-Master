@@ -9,7 +9,7 @@
           <div style="margin: 50px 100px 100px 100px">
             <p class="fs-2 mb-0">Planner</p>
             <h2 class="mb-2">Semanal</h2>
-            <p class="fs-4 mt-4" style="text-align: justify; width: 30rem">
+            <p class=" mt-4" style="text-align: justify; font-size: 25px; width: 34rem">
               Administra tu tiempo de manera efectiva. Es una herramienta que 
               te ayuda a organizar tus actividades, tareas y metas en un formato 
               semanal.
@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      <div class="row" style="height: 15rem; margin: -70px 10px 10px 50px">
+      <div class="row" style="height: 15rem; margin: -70px 10px 10px 20px">
         <div
           class="col col-4"
           style="
@@ -111,7 +111,7 @@
                 Lo más <br />
                 popular
               </h2>
-              <p style="margin-top: 20px; width: 88%" class="fs-5">
+              <p style="margin-top: 20px; width: 88%; font-size: 17px;" >
                 Este es el estilo más pedido. Ve a
                 <strong>OPCIONES AVANZADAS</strong> si quieres otra
                 configuración.
@@ -120,61 +120,68 @@
           </div>
         </div>
         <div class="colo col-5">
-            <div>
-              <h3>Tamaño</h3>
-              <div class="carda-container">
-                <div class="card border-white " style="width: 100px; margin: 0px 44px 0px 0px; ">
-                  <img
-                    src="/assets/imgs/poster.png"
-                    class="card-img"
-                    alt="carta"
-                    style="width: 70%; margin: 30px;"
-                  />
-                  <div class="">
-                    <p class="fw-bold fs-5">
-                      Carta<br />
-                      21 x 28 cm
-                    </p>
+              <div>
+                <h3>Tamaño</h3>
+                <div class="carda-container">
+                  <div class="carda border-white " style="width: 120px; margin: 0px 5px 0px 0px; ">
+                    <img
+                      src="/assets/imgs/poster.png"
+                      class="card-img"
+                      alt="carta"
+                      style="width: 70%; margin: 30px 0px 30px 10px ;"
+                    />
+                    <div class="">
+                      <p class="fw-bold fs-5">
+                        Carta<br />
+                        21 x 28 cm
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <img src="/assets/media/anadir.png" alt="mas" class="signo" />
-            <div>
-              <h3>Material</h3>
-              <div class="carda-container">
-                <div class="card border-white " style="width: 180px">
-                  <img
-                    src="/assets/imgs/vinil_imantado.png"
-                    class="card-img-top"
-                    alt="vinil_imantado"
-                    style="width: 110px"
-                  />
-                  <div class="">
-                      <p class="fw-bold fs-5"><b>Vinil imantado</b> Sustrato Flexible Color Blanco Imán</p>
-                </div>
-            </div>
-              </div>
-            </div>
-            <img src="/assets/media/anadir.png" alt="mas" class="signo" />
-            <div>
-              <h3>Acabados</h3>
-              <div class="carda-container">
-                <div class="card border-white" style="width: 100px; margin: 115px 44px 0px 0px;">
-                   <!-- <img
-                    src="/assets/imgs/blanco.png"
-                    class=""
-                    alt="blanco"
-                    style="width: 120px; border: #fff"
-                  />  -->
-                  <div class="">
-                    <p class="fw-bold fs-4 ">N/A.</p>
+              <img src="/assets/media/anadir.png" alt="mas" class="signo" style=" margin: 88px 60px 0px -60px; " />
+              <div>
+                <h3>Material</h3>
+                <div class="carda-container">
+                  <div class="carda  border-white " style="width: 165px; margin: 0px 5px 0px 0px;">
+                    <img
+                      src="/assets/imgs/vinil_imantado.png"
+                      class="card-img-top"
+                      alt="vinil_imantado"
+                      style="width: 110px; margin: 0px;"
+                    />
+                    <div class="">
+                        <p class="fw-bold" style="font-size: 15px;">
+                            <b style="font-size: 18px;">Vinil imantado</b>
+                            Sustrato Flexible Color Blanco Imán
+                        </p>
                   </div>
-                </div>
-                <!-- Repite el div.card para más cards -->
               </div>
+                </div>
+              </div>
+              <img src="/assets/media/anadir.png" alt="mas" class="signo" style=" margin: 88px 50px 0px -122px; "/>
+              <div>
+                <h3>Acabados</h3>
+                <div class="carda-container">
+                  <div class="carda border-white" style="width: 100px; margin: 115px 5px 0px 0px;">
+                     <!-- <img
+                      src="/assets/imgs/blanco.png"
+                      class=""
+                      alt="blanco"
+                      style="width: 120px; border: #fff"
+                    />  -->
+                    <div class="">
+                      <p class="fw-bold fs-4 ">N/A.</p>
+                    </div>
+                  </div>
+                  <!-- Repite el div.card para más cards -->
+                </div>
+              </div>
+
+
+          
+
             </div>
-          </div>
 
       </div>
       

@@ -9,7 +9,7 @@
           <div style="margin: 50px 100px 100px 100px">
             <p class="fs-2 mb-0">Planner</p>
             <h2 class="mb-2">Mensual</h2>
-            <p class="fs-4 mt-4" style="text-align: justify; width: 30rem">
+            <p class="mt-4" style="text-align: justify; font-size: 25px; width: 34rem">
               Divide tu tiempo en un formato mensual, permitiéndote visualizar y
               administrar tus tareas, eventos y metas de una forma más amplia.
             </p>
@@ -110,7 +110,7 @@
                 Lo más <br />
                 popular
               </h2>
-              <p style="margin-top: 20px; width: 88%" class="fs-5">
+              <p style="margin-top: 20px; width: 88%; font-size: 17px;">
                 Este es el estilo más pedido. Ve a
                 <strong>OPCIONES AVANZADAS</strong> si quieres otra
                 configuración.
@@ -118,62 +118,73 @@
             </div>
           </div>
         </div>
+
         <div class="colo col-5">
-          <div>
-            <h3>Tamaño</h3>
-            <div class="carda-container">
-              <div class="card border-white" style="width: 7rem">
-                <img
-                  src="/assets/imgs/poster.png"
-                  class="card-img"
-                  alt="poster"
-                  style="width: 150px"
-                />
-                <div class="">
-                  <p class="fw-bold fs-5">
-                    Poster <br />
-                    120 x 80cm
-                  </p>
+              <div>
+                <h3>Tamaño</h3>
+                <div class="carda-container">
+                  <div class="carda border-white " style="width: 130px; margin: 0px 5px 0px 0px; ">
+                    <img
+                      src="/assets/imgs/poster.png"
+                      class="card-img"
+                      alt="carta"
+                      style="width: 140%; margin: 0px 0px 10px 0px ;"
+                    />
+                    <div class="">
+                      <p class="fw-bold fs-5">
+                        Poster<br />
+                        120 x 80 cm
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <img src="/assets/media/anadir.png" alt="mas" class="signo" />
-          <div>
-            <h3>Material</h3>
-            <div class="carda-container">
-              <div class="card border-white" style="width: 7rem">
-                <img
-                  src="/assets/imgs/pvc.png"
-                  class="card-img-top"
-                  alt="pvc"
-                  style="width: 110px"
-                />
-                <div class="">
-                  <p class="fw-bold fs-5">Sustrato PVC (Rígido)</p>
+              <img src="/assets/media/anadir.png" alt="mas" class="signo" style=" margin: 88px 60px 0px -0px; " />
+              <div>
+                <h3>Material</h3>
+                <div class="carda-container">
+                  <div class="carda  border-white " style="width: 165px; margin: 0px 5px 0px 0px;">
+                    <img
+                      src="/assets/imgs/pvc.png"
+                      class="card-img-top"
+                      alt="pvc"
+                      style="width: 110px; margin: 0px;"
+                    />
+                    <div class="">
+                        <p class="fw-bold" style="font-size: 15px;">
+                            <b style="font-size: 18px;">PVC</b> <br>
+                            Sustrato PVC (Rígido) 
+                        </p>
+                  </div>
+              </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <img src="/assets/media/anadir.png" alt="mas" class="signo" />
-          <div>
-            <h3>Acabados</h3>
-            <div class="carda-container">
-              <div class="card border-white" style="width: 7rem">
-                <img
-                  src="/assets/imgs/cinta_doble_cara.png"
-                  class="card-img-top"
-                  alt="cinta_doble_cara"
-                  style="width: 120px"
-                />
-                <div class="">
-                  <p class="fw-bold fs-5">Cinta doble cara.</p>
+              <img src="/assets/media/anadir.png" alt="mas" class="signo" style=" margin: 88px 60px 0px -88px; "/>
+              <div>
+                <h3>Acabados</h3>
+                <div class="carda-container">
+                  <div class="carda border-white" style="width: 130px; margin: 0px 5px 0px 0px;">
+                     <img
+                      src="/assets/imgs/cinta_doble_cara.png"
+                      class=""
+                      alt="cinta_doble_cara"
+                      style="width: 120px; border: #fff"
+                    /> 
+                    <div class="">
+                      <p class="fw-bold" style="font-size: 15px;">
+                            <b style="font-size: 18px;">Cinta doble cara</b> <br>
+                            
+                        </p>                    </div>
+                  </div>
+                  <!-- Repite el div.card para más cards -->
                 </div>
               </div>
-              <!-- Repite el div.card para más cards -->
+
+
+          
+
             </div>
-          </div>
-        </div>
+
       </div>
     </section>
 

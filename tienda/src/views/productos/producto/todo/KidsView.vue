@@ -7,18 +7,18 @@
             style="background-color: #f18a00; height: 33rem"
           >
             <div style="margin: 50px 100px 100px 100px">
-                <h2 class="mb-2">Work Out</h2>
-              <p class="fs-2 mb-0">Planner</p>
+              <p class="fs-2 mb-0">Tablero</p>
+              <h2 class="mb-2">de Logros<span class="rotado">KIDS</span> </h2>
               <p class=" mt-4" style="text-align: justify; font-size: 25px; width: 34rem">
-                Una agenda de ejercicios, te ayuda a mantener un registro de tus rutinas,
-                objetivos, entrenaminetos e incluso tu nutrición diaria.
+                Divide tu tiempo en un formato mensual, permitiéndote visualizar y administrar
+                tus tareas, eventos y metas de una forma más amplia.
               </p>
             </div>
           </div>
           <div class="col-4" style="background-color: #f18a00">
             <img
-              src="/assets/imgs/workout.png"
-              alt="mensual"
+              src="/assets/imgs/kids.png"
+              alt="kidss"
               style=" width: 100%"
             />
           </div>
@@ -90,7 +90,7 @@
           </div>
         </div>
   
-        <div class="row" style="height: 15rem; margin: -82px 10px 10px 10px">
+        <div class="row" style="height: 15rem; margin: -82px 10px 10px 20px">
           <div
             class="col col-4"
             style="
@@ -110,7 +110,7 @@
                   Lo más <br />
                   popular
                 </h2>
-                <p style="margin-top: 20px; width: 88%; font-size: 17px;">
+                <p style="margin-top: 20px; width: 88%; font-size: 17px;" >
                   Este es el estilo más pedido. Ve a
                   <strong>OPCIONES AVANZADAS</strong> si quieres otra
                   configuración.
@@ -151,7 +151,7 @@
                     />
                     <div class="">
                         <p class="fw-bold" style="font-size: 15px;">
-                            <b style="font-size: 18px;">Vinil Pintarrón</b>
+                            <b style="font-size: 18px; ">Vinil Pintarrón</b>
                             Sustrato Flexible Color Blanco Adherible
                         </p>
                   </div>
@@ -181,9 +181,12 @@
           
 
             </div>
-  
+            
+
+          
+
         </div>
-        
+
         
       </section>
   
@@ -419,7 +422,7 @@
   .contenedor {
     display: flex;
     align-items: center; /* Alinea los elementos verticalmente en el centro */
-    padding: 0px;
+    padding: 10px;
   }
   .contenedor img {
     width: 50%; /* Ajusta el ancho de la imagen */
@@ -434,6 +437,14 @@
     color: #0047ba;
   }
   
+  .rotado {
+ color: #0047ba;
+ font-size: 66px;
+ transform: rotate(-7deg);
+ display: inline-block; /* Asegura que el contenedor tenga un tamaño basado en su contenido */
+
+}
+
   .colo {
     display: flex;
     justify-content: space-between; /* Distribuye el espacio entre las columnas */
@@ -450,21 +461,28 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0px;
-    margin-bottom: 10px; /* Añade un margen debajo del contenedor de las cards para separarlos de los signos de "+" */
+    margin-bottom: 0px; /* Añade un margen debajo del contenedor de las cards para separarlos de los signos de "+" */
+
+  }
+  .card{
+    margin: 0;
   }
   .carda {
     background-color: #fff;
-    padding: 0px; /* Añade un poco de padding para mejorar la apariencia */
+    padding: 10px; /* Añade un poco de padding para mejorar la apariencia */
+    margin-right: 5px; /* Ajusta el espacio entre las tarjetas */
+
     width: 100%; /* Asegura que las cards ocupen todo el ancho disponible */
   }
   .carda img {
     width: 100%;
-    height: auto;
+    margin: 0;
+  
   }
   .signo {
     width: 30px; /* Ajusta el tamaño del signo de "+" */
     height: 30px;
-    margin: 88px 30px 0px 0px; /* Añade un margen debajo del signo de "+" para separarlo de las cards siguientes */
+    margin: 88px 0px 0px 0px; /* Añade un margen debajo del signo de "+" para separarlo de las cards siguientes */
   }
   </style>
   
@@ -472,8 +490,9 @@
   import Estilo from '@/components/Estilo.vue'
   
   export default {
-    name: "WorkOutView",
-
+    name: "KidsView",
+  
+    
     components: {
       Estilo
       }

@@ -7,18 +7,19 @@
             style="background-color: #f18a00; height: 33rem"
           >
             <div style="margin: 50px 100px 100px 100px">
-                <h2 class="mb-2">Work Out</h2>
-              <p class="fs-2 mb-0">Planner</p>
+              <p class="fs-2 mb-0">Planner de</p>
+              <h2 class="mb-2">Viaje</h2>
               <p class=" mt-4" style="text-align: justify; font-size: 25px; width: 34rem">
-                Una agenda de ejercicios, te ayuda a mantener un registro de tus rutinas,
-                objetivos, entrenaminetos e incluso tu nutrición diaria.
+                Utiliza el Planificador de viaje para marcar los lugares
+                (ciudades y atracciones turísticas) e información que te interese,
+                para facilitar la planificación de tu viaje.
               </p>
             </div>
           </div>
           <div class="col-4" style="background-color: #f18a00">
             <img
-              src="/assets/imgs/workout.png"
-              alt="mensual"
+              src="/assets/imgs/viaje.png"
+              alt="viajes"
               style=" width: 100%"
             />
           </div>
@@ -90,7 +91,7 @@
           </div>
         </div>
   
-        <div class="row" style="height: 15rem; margin: -82px 10px 10px 10px">
+        <div class="row" style="height: 15rem; margin: -60px 10px 10px 20px">
           <div
             class="col col-4"
             style="
@@ -110,7 +111,7 @@
                   Lo más <br />
                   popular
                 </h2>
-                <p style="margin-top: 20px; width: 88%; font-size: 17px;">
+                <p style="margin-top: 20px; width: 88%; font-size: 17px;" >
                   Este es el estilo más pedido. Ve a
                   <strong>OPCIONES AVANZADAS</strong> si quieres otra
                   configuración.
@@ -144,15 +145,15 @@
                 <div class="carda-container">
                   <div class="carda  border-white " style="width: 165px; margin: 0px 5px 0px 0px;">
                     <img
-                      src="/assets/imgs/vinil_pintarron.png"
+                      src="/assets/imgs/vinil_imantado.png"
                       class="card-img-top"
-                      alt="vinil_pintarron"
+                      alt="vinil_imantado"
                       style="width: 110px; margin: 0px;"
                     />
                     <div class="">
                         <p class="fw-bold" style="font-size: 15px;">
-                            <b style="font-size: 18px;">Vinil Pintarrón</b>
-                            Sustrato Flexible Color Blanco Adherible
+                            <b style="font-size: 18px;">Vinil imantado</b>
+                            Sustrato Flexible Color Blanco Imán
                         </p>
                   </div>
               </div>
@@ -181,9 +182,12 @@
           
 
             </div>
-  
+            
+
+          
+
         </div>
-        
+
         
       </section>
   
@@ -419,7 +423,7 @@
   .contenedor {
     display: flex;
     align-items: center; /* Alinea los elementos verticalmente en el centro */
-    padding: 0px;
+    padding: 10px;
   }
   .contenedor img {
     width: 50%; /* Ajusta el ancho de la imagen */
@@ -450,21 +454,28 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0px;
-    margin-bottom: 10px; /* Añade un margen debajo del contenedor de las cards para separarlos de los signos de "+" */
+    margin-bottom: 0px; /* Añade un margen debajo del contenedor de las cards para separarlos de los signos de "+" */
+
+  }
+  .card{
+    margin: 0;
   }
   .carda {
     background-color: #fff;
-    padding: 0px; /* Añade un poco de padding para mejorar la apariencia */
+    padding: 10px; /* Añade un poco de padding para mejorar la apariencia */
+    margin-right: 5px; /* Ajusta el espacio entre las tarjetas */
+
     width: 100%; /* Asegura que las cards ocupen todo el ancho disponible */
   }
   .carda img {
     width: 100%;
-    height: auto;
+    margin: 0;
+  
   }
   .signo {
     width: 30px; /* Ajusta el tamaño del signo de "+" */
     height: 30px;
-    margin: 88px 30px 0px 0px; /* Añade un margen debajo del signo de "+" para separarlo de las cards siguientes */
+    margin: 88px 0px 0px 0px; /* Añade un margen debajo del signo de "+" para separarlo de las cards siguientes */
   }
   </style>
   
@@ -472,8 +483,9 @@
   import Estilo from '@/components/Estilo.vue'
   
   export default {
-    name: "WorkOutView",
-
+    name: "ViajesView",
+  
+    
     components: {
       Estilo
       }
